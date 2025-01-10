@@ -1,22 +1,34 @@
 #pragma once
-
 #include <string>
+#include <random>
 #include "Item.h"
 
 using namespace std;
 class Monster
 {
-private:
-	string name;
-	int health;
-	int attack;
-public:
-	string getName();
-	int getHealth();
-	void takeDamage(int damage);
-	Item* dropItem();
+	enum MonstetrKind	//êµ³ì´ í´ë˜ìŠ¤ë¥¼ ë‚˜ëˆ ê°€ë©° í•  í•„ìš”ê°€..?
+	{
+		Goblin,
+		Troll,
+		Orc,
+		Dragon
+	};
 
-	//¼ø¼ö°¡»óÇÔ¼ö
-	//°ø°İ È½¼ö³ª ¹æ½ÄÀº ¸ó½ºÅÍ¸¶´Ù ´Ù¸£°Ô...
-	virtual int getAttack() = 0;
+protected:
+	string name;	//ì´ë¦„
+	int health;		//ì²´ë ¥
+	int attack;		//ê³µê²©ë ¥
+	MonstetrKind species;
+
+
+public:
+	string GetName();
+	int GetHealth();
+	int GetRandom(int _min, int _max);	//ëœë¤ ì •ìˆ˜ ë°›ê¸°
+	
+	void SettingStateInit(MonstetrKind _monsterkind);
+	void TakeDamage(int damage);
+	Item* DropItem();
+	string SpeciesToString(MonstetrKind _monsterkind);	//ì¢… ì¢…ë¥˜ ë¬¸ìì—´ë¡œ ì „í™˜
+
 };
