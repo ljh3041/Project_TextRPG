@@ -3,7 +3,7 @@
 
 GameManager::GameManager()
 {
-
+1
 }
 
 GameManager::~GameManager()
