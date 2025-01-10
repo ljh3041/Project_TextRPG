@@ -103,6 +103,11 @@ int main()
             Sleep(1000);
             cout << "상점 오픈!" << endl;
             //shop의 display 함수 실행
+
+            cout << "1번 항목 : asd 가격 : 123" << endl;
+            cout << "2번 항목 : qwe 가격 : 234" << endl;
+            cout << "3번 항목 : zxc 가격 : 345" << endl;
+            Sleep(1000);
         }
         else
         {
