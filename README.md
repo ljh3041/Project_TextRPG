@@ -15,4 +15,4 @@ https://teamsparta.notion.site/Unreal-1-2-CH-2-RPG-16f2dc3ef514807a85a4ffd57c2d6
 
 ![image](https://github.com/user-attachments/assets/85edb47a-37d6-4cb9-a47e-436c720a556c)
 
-비쥬얼 스튜디오 내부에서 소스파일과 헤더파일 부분을 우클릭해서 폴더를 직접 추가하면 됩니다.
+비쥬얼 스튜디오 내부에서 소스파일과 헤더파일 부분을 우클릭해서 기존항목을 선택한 다음 폴더를 직접 추가하면 됩니다.
