@@ -1,5 +1,5 @@
-#include "GameManager.h"
-#include "Character.h"
+#include "../headerFile/GameManager.h"
+#include "../headerFile/Character.h"
 
 GameManager::GameManager()
 {

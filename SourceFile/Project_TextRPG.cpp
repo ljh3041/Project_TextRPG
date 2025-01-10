@@ -9,15 +9,15 @@
 #pragma endregion
 
 #pragma region AddedHeader
-#include "GameManager.h"
-#include "Character.h"
-#include "Item.h"
-#include "Monster.h"
-#include "Orc.h"
-#include "Troll.h"
-#include "Goblin.h"
-#include "BossMonster.h"
-#include "Shop.h"
+#include "../headerFile/GameManager.h"
+#include "../headerFile/Character.h"
+#include "../headerFile/Item.h"
+#include "../headerFile/Monster.h"
+#include "../headerFile/Orc.h"
+#include "../headerFile/Troll.h"
+#include "../headerFile/Goblin.h"
+#include "../headerFile/BossMonster.h"
+#include "../headerFile/Shop.h"
 #pragma endregion
 
 using namespace std;

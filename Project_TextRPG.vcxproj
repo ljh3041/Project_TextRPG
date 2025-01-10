@@ -18,6 +18,29 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="headerFile\BossMonster.h" />
+    <ClInclude Include="headerFile\Character.h" />
+    <ClInclude Include="headerFile\GameManager.h" />
+    <ClInclude Include="headerFile\Goblin.h" />
+    <ClInclude Include="headerFile\Item.h" />
+    <ClInclude Include="headerFile\Monster.h" />
+    <ClInclude Include="headerFile\Orc.h" />
+    <ClInclude Include="headerFile\Shop.h" />
+    <ClInclude Include="headerFile\Troll.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SourceFile\BossMonster.cpp" />
+    <ClCompile Include="SourceFile\Character.cpp" />
+    <ClCompile Include="SourceFile\GameManager.cpp" />
+    <ClCompile Include="SourceFile\Goblin.cpp" />
+    <ClCompile Include="SourceFile\Item.cpp" />
+    <ClCompile Include="SourceFile\Monster.cpp" />
+    <ClCompile Include="SourceFile\Orc.cpp" />
+    <ClCompile Include="SourceFile\Project_TextRPG.cpp" />
+    <ClCompile Include="SourceFile\Shop.cpp" />
+    <ClCompile Include="SourceFile\Troll.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -126,29 +149,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="BossMonster.cpp" />
-    <ClCompile Include="Character.cpp" />
-    <ClCompile Include="GameManager.cpp" />
-    <ClCompile Include="Goblin.cpp" />
-    <ClCompile Include="Item.cpp" />
-    <ClCompile Include="Monster.cpp" />
-    <ClCompile Include="Orc.cpp" />
-    <ClCompile Include="Project_TextRPG.cpp" />
-    <ClCompile Include="Shop.cpp" />
-    <ClCompile Include="Troll.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="BossMonster.h" />
-    <ClInclude Include="Character.h" />
-    <ClInclude Include="GameManager.h" />
-    <ClInclude Include="Goblin.h" />
-    <ClInclude Include="Item.h" />
-    <ClInclude Include="Monster.h" />
-    <ClInclude Include="Orc.h" />
-    <ClInclude Include="Shop.h" />
-    <ClInclude Include="Troll.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
