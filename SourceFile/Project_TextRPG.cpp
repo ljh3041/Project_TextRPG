@@ -49,9 +49,6 @@ int main()
     }
     int stage = 1;
 
-
-
-
     ///
 
     // 테스트용 변수
@@ -62,26 +59,56 @@ int main()
         cout << "================================" << endl;
         cout << "inGame" << endl;
         cout << "진행 시간 : " << time << endl;
+        cout << "현재 스테이지 : " << stage << endl;
         cout << "================================" << endl;
+        
+        cout << "할 행동을 고르시오." << endl;
+        cout << "1 : 전투   2 : 상점   3 : 다른 거" << endl;
         //분기 생성
         //1. 전투 2. 상점. 3. ~~~
         //if 1이면....
+        int selectStage = 0;
+        cin >> selectStage;
+        if (selectStage == 1)
+        {
+            //플레이어 레벨 가져오기
+            //int characterLevel = character.getLevel();
 
-        //플레이어 레벨 가져오기
-        //int characterLevel = character.getLevel();
-        
-        //몬스터 생성
-        //ex) generateMonster();
-        
-        //배틀
-        //GameManager,battle(character)
+            //몬스터 생성
+            //ex) generateMonster();
 
-        //else if 2 이면..
-        // //while문으로 한번 더...
-        //shop의 display 함수 실행
-        //여기서 다시 분기문
-        //index 변수에 입력해서 1 ~ n까지의 아이템 인덱스 입력해서 뭘 살지 입력하고,
-        // 플레이어의 골드값과 아이템의 값을 비교하여 살 수 있는지 아닌지 결정
+            //배틀
+            //GameManager,battle(character)
+            cout << "1번 선택" << endl;
+
+            Sleep(1000);
+            cout << "몬스터와 조우!" << endl;
+
+            Sleep(1000);
+            cout << "캐릭터가 몬스터에게 10의 데미지!" << endl;
+
+            Sleep(1000);
+            cout << "몬스터가 캐릭터에게 20의 데미지!" << endl;
+        }
+        else if (selectStage == 2)
+        {
+            //else if 2 이면..
+            // //while문으로 한번 더...
+
+            //여기서 다시 분기문
+            //index 변수에 입력해서 1 ~ n까지의 아이템 인덱스 입력해서 뭘 살지 입력하고,
+            // 플레이어의 골드값과 아이템의 값을 비교하여 살 수 있는지 아닌지 결정
+            cout << "2번 선택" << endl;
+
+            Sleep(1000);
+            cout << "상점 오픈!" << endl;
+            //shop의 display 함수 실행
+        }
+        else
+        {
+            cout << "다른거 선택" << endl;
+
+        }
 
 
         Sleep(1000);
