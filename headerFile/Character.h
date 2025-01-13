@@ -29,17 +29,12 @@ private:
 public:
     static Character* GetInstance(const string& characterName);
     static void ReleaseInstance();
-    static bool IsValidName(const string& characterName); // �̸� ����
+    static bool IsValidName(const string& characterName); // 이름 검증
 
     void DisplayStatus();
     void LevelUp();
     void UseItem(int index);
-   // void VisitShop();
-
-    void displayStatus();
-    void levelUp();
-    void useItem(int index);
-    void visitShop();
+   // void VisitShop(); 
 
 //✨ update  
         int getlevel() const {
