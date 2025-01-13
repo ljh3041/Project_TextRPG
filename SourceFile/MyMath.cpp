@@ -21,5 +21,6 @@ float GetRandomf(float _min, float _max)
 	// 범위 내 난수 생성기 (최소, 최대)
 	std::uniform_real_distribution<> dist(_min, _max);
 
-	return dist(gen);
+
+	return static_cast<float>( dist(gen));
 }

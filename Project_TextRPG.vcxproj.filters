@@ -60,6 +60,9 @@
     <ClInclude Include="headerFile\MonsterData.h">
       <Filter>헤더 파일\Monster</Filter>
     </ClInclude>
+    <ClInclude Include="headerFile\DecoWord.h">
+      <Filter>헤더 파일\Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFile\Character.cpp">
@@ -97,6 +100,9 @@
     </ClCompile>
     <ClCompile Include="headerFile\MonsterData.cpp">
       <Filter>소스 파일\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\DecoWord.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
