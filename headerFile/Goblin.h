@@ -6,5 +6,6 @@ using namespace std;
 class Goblin : public Monster
 {
 public:
-	Goblin();
+	Goblin() : Monster("Goblin") {}
+	Goblin(const std::string& _name) : Monster(_name) {}
 };

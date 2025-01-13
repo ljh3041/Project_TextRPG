@@ -1,9 +1,9 @@
 #pragma once
 #include <string>
-#include <random>
 #include "Item.h"
-#include "MyMath.h"
+#include "Character.h"
 #include "MonsterData.h"
+#include "MyMath.h"
 
 using namespace std;
 class Monster
@@ -15,8 +15,13 @@ protected:
 	int attack = 0;		//공격력
 
 public:
+	Monster() {};
+	Monster(string _name);
 	string GetName();
 	int GetHealth();
+	int GetAttack();
+	int GetRandomHealthStat();
+	int GetRandomAttackStat();
 
 	void TakeDamage(int damage);
 	Item* DropItem();
