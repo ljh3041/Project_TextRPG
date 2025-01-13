@@ -29,27 +29,38 @@ private:
 public:
     static Character* GetInstance(const string& characterName);
     static void ReleaseInstance();
-    static bool IsValidName(const string& characterName); // 이름 검증
+    static string IsValidName(); // 이름 검증
 
     void DisplayStatus();
     void LevelUp();
     void UseItem(int index);
-   // void VisitShop(); 
+    void VisitShop(); 
 
 //✨ update  
-        int getlevel() const {
+    int getlevel() const 
+    {
 
         return level;
     }
-    int gethealth() const {
+    int gethealth() const 
+    {
         return health;
     }
-    int getattack() const {
+    int getattack() const 
+    {
         return attack;
     }
-    string getname() const {
+    string getname() const 
+    {
         return name;
     }
+
+    int getgold() const
+    {
+        return gold;    
+    }
+
+    void setgold(int settleGold);
 
     //✨ update  
 
