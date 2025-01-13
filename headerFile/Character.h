@@ -29,8 +29,8 @@ private:
 public:
     static Character* GetInstance(const string& characterName);
     static void ReleaseInstance();
-    static string IsValidName(); // 이름 검증
-
+    
+    string NameValidation(); // 이름 검증
     void DisplayStatus();
     void LevelUp();
     void UseItem(int index);
