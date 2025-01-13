@@ -123,6 +123,13 @@ void Character::UseItem(int index)
     delete item;
     inventory.erase(inventory.begin() + index);
 }
+
+//? update  
+void Character::TakeDamage(int damage)
+{
+    health -= damage;
+}
+
 /*void Character::VisitShop()
 {
     cout << "상점에 입장했습니다. 여기 사장님 아들이 만득인데 만득이가 작년에 코인했다가 쫄딱 망해가지고 사장님도 돈독이 바짝 올라있어요.." << endl;
