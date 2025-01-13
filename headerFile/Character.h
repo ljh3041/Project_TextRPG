@@ -29,15 +29,21 @@ private:
 public:
     static Character* GetInstance(const string& characterName);
     static void ReleaseInstance();
-    static bool IsValidName(const string& characterName); // ÀÌ¸§ °ËÁõ
+    static bool IsValidName(const string& characterName); // ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     void DisplayStatus();
     void LevelUp();
     void UseItem(int index);
    // void VisitShop();
 
-    //? update  
-    int getlevel() const {
+    void displayStatus();
+    void levelUp();
+    void useItem(int index);
+    void visitShop();
+
+//âœ¨ update  
+        int getlevel() const {
+
         return level;
     }
     int gethealth() const {
@@ -49,6 +55,8 @@ public:
     string getname() const {
         return name;
     }
-    //? update  
+
+    //âœ¨ update  
+
     void TakeDamage(int damage);
 };
