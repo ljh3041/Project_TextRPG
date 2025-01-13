@@ -52,5 +52,6 @@ public:
     string getname() const {
         return name;
     }
+    //✨ update  
     void TakeDamage(int damage);
 };
