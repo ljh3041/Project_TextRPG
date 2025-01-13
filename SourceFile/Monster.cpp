@@ -1,21 +1,30 @@
 #include "../headerFile/Monster.h"
-#include <string>
 
 
+Monster::Monster()
+{
+	
+}
 
-string Monster::getName()
+string Monster::GetName()
 {
 	return name;
 }
-int Monster::getHealth()
+
+int Monster::GetHealth()
 {
+	//monsterDatas.at("Goblin").health;
+	//GetRandom(0, 4);
 	return health;
+
 }
-void Monster::takeDamage(int damage)
+
+void Monster::TakeDamage(int damage)
 {
 	health = health - damage;
 }
-Item* Monster::dropItem()
+
+Item* Monster::DropItem()
 {
 	Item* item = nullptr;
 	return item;

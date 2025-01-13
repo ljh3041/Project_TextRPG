@@ -1,22 +1,23 @@
 #pragma once
-
 #include <string>
+#include <random>
 #include "Item.h"
+#include "MyMath.h"
+#include "MonsterData.h"
 
 using namespace std;
 class Monster
 {
-private:
-	string name;
-	int health;
-	int attack;
-public:
-	string getName();
-	int getHealth();
-	void takeDamage(int damage);
-	Item* dropItem();
 
-	//¼ø¼ö°¡»óÇÔ¼ö
-	//°ø°İ È½¼ö³ª ¹æ½ÄÀº ¸ó½ºÅÍ¸¶´Ù ´Ù¸£°Ô...
-	virtual int getAttack() = 0;
+protected:
+	string name = "";	//ì´ë¦„
+	int health = 0;		//ì²´ë ¥
+	int attack = 0;		//ê³µê²©ë ¥
+
+public:
+	string GetName();
+	int GetHealth();
+
+	void TakeDamage(int damage);
+	Item* DropItem();
 };

@@ -13,56 +13,62 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\Monster">
+      <UniqueIdentifier>{ce5a0a52-0960-496e-8fae-1d8025a73f49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Monster">
+      <UniqueIdentifier>{e008881b-1571-47c3-8f06-a5c5c194e288}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Math">
+      <UniqueIdentifier>{26e472b3-155b-48cc-9bc6-1001c9748354}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Math">
+      <UniqueIdentifier>{e25c9fc3-0a79-4c5e-9da0-e25736cc3422}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="headerFile\BossMonster.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="headerFile\Character.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="headerFile\GameManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="headerFile\Goblin.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="headerFile\Item.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="headerFile\Monster.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="headerFile\Orc.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="headerFile\Shop.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="headerFile\BossMonster.h">
+      <Filter>헤더 파일\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="headerFile\Goblin.h">
+      <Filter>헤더 파일\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="headerFile\Monster.h">
+      <Filter>헤더 파일\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="headerFile\Orc.h">
+      <Filter>헤더 파일\Monster</Filter>
+    </ClInclude>
     <ClInclude Include="headerFile\Troll.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="MyMath.h">
+      <Filter>헤더 파일\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFile\MonsterData.h">
+      <Filter>헤더 파일\Monster</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SourceFile\BossMonster.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="SourceFile\Character.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="SourceFile\GameManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFile\Goblin.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="SourceFile\Item.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="SourceFile\Monster.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="SourceFile\Orc.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="SourceFile\Project_TextRPG.cpp">
@@ -71,8 +77,23 @@
     <ClCompile Include="SourceFile\Shop.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="SourceFile\BossMonster.cpp">
+      <Filter>소스 파일\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\Goblin.cpp">
+      <Filter>소스 파일\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\Monster.cpp">
+      <Filter>소스 파일\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\Orc.cpp">
+      <Filter>소스 파일\Monster</Filter>
+    </ClCompile>
     <ClCompile Include="SourceFile\Troll.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\MyMath.cpp">
+      <Filter>소스 파일\Math</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

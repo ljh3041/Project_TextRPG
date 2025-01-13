@@ -28,6 +28,8 @@
     <ClInclude Include="headerFile\Orc.h" />
     <ClInclude Include="headerFile\Shop.h" />
     <ClInclude Include="headerFile\Troll.h" />
+    <ClInclude Include="MyMath.h" />
+    <ClInclude Include="SourceFile\MonsterData.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFile\BossMonster.cpp" />
@@ -36,6 +38,7 @@
     <ClCompile Include="SourceFile\Goblin.cpp" />
     <ClCompile Include="SourceFile\Item.cpp" />
     <ClCompile Include="SourceFile\Monster.cpp" />
+    <ClCompile Include="SourceFile\MyMath.cpp" />
     <ClCompile Include="SourceFile\Orc.cpp" />
     <ClCompile Include="SourceFile\Project_TextRPG.cpp" />
     <ClCompile Include="SourceFile\Shop.cpp" />
