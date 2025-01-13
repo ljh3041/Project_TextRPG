@@ -2,7 +2,7 @@
 #include <string>
 #include <unordered_map>
 
-struct Stats	//몬스터 스텟들
+struct Stats	//몬스터 개체값들
 {
 	int health;
 	int attack;

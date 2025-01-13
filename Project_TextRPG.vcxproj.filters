@@ -54,10 +54,10 @@
     <ClInclude Include="headerFile\Troll.h">
       <Filter>헤더 파일\Monster</Filter>
     </ClInclude>
-    <ClInclude Include="MyMath.h">
+    <ClInclude Include="headerFile\MyMath.h">
       <Filter>헤더 파일\Math</Filter>
     </ClInclude>
-    <ClInclude Include="SourceFile\MonsterData.h">
+    <ClInclude Include="headerFile\MonsterData.h">
       <Filter>헤더 파일\Monster</Filter>
     </ClInclude>
   </ItemGroup>
@@ -94,6 +94,9 @@
     </ClCompile>
     <ClCompile Include="SourceFile\MyMath.cpp">
       <Filter>소스 파일\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="headerFile\MonsterData.cpp">
+      <Filter>소스 파일\Monster</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

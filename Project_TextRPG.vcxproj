@@ -25,13 +25,14 @@
     <ClInclude Include="headerFile\Goblin.h" />
     <ClInclude Include="headerFile\Item.h" />
     <ClInclude Include="headerFile\Monster.h" />
+    <ClInclude Include="headerFile\MonsterData.h" />
+    <ClInclude Include="headerFile\MyMath.h" />
     <ClInclude Include="headerFile\Orc.h" />
     <ClInclude Include="headerFile\Shop.h" />
     <ClInclude Include="headerFile\Troll.h" />
-    <ClInclude Include="MyMath.h" />
-    <ClInclude Include="SourceFile\MonsterData.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="headerFile\MonsterData.cpp" />
     <ClCompile Include="SourceFile\BossMonster.cpp" />
     <ClCompile Include="SourceFile\Character.cpp" />
     <ClCompile Include="SourceFile\GameManager.cpp" />
