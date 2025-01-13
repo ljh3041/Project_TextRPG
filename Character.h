@@ -10,7 +10,7 @@ class Character
 private:
 	static Character* instance;
 	Character();
-	~Character()
+    ~Character();
     
     string name;
     int level;
