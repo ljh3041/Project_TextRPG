@@ -79,7 +79,7 @@ void Character::DisplayStatus()
     cout << "공격력: " << attack << endl;
     cout << "경험치: " << experience << "/100" << endl;
     cout << "골드: " << gold << endl;
-    cout << "이정도네요. 화이팅!" << 
+    cout << "이정도네요. 화이팅!" << endl;
 }
 
 void Character::LevelUp()
@@ -104,7 +104,7 @@ void Character::LevelUp()
     maxHealth += (level * 20);
     attack += (level * 5);
     health = maxHealth;
-    expeprience = 0;
+    experience = 0;
     cout << "레벨이 올랐는데 왜 올랐냐면 경험치가 100이 쌓이면 레벨이 오르는데 방금 전투로 필요경험치 100이 누적되셨어요." << 
         "\n그래서 현재 레벨은 " << level << "입니다." << "\n그리고 최대 체력은 "<< maxHealth <<"이고 공격력은 "<< attack <<"입니다."endl;
 
@@ -115,7 +115,7 @@ void Character::UseItem(int index)
 {
     Item* item = inventory[index];
     item->Use(this);
-    cout << item->GetName() << "을(를) 사용했습니다." << endl;
+    cout << item -> GetName() << "을(를) 사용했습니다." << endl;
         
     delete item;
     inventory.erase(inventory.begin() + index);

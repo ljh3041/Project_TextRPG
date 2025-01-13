@@ -9,7 +9,7 @@ class Character
 {
 private:
 	static Character* instance;
-	Character();
+	Character(const string& characterName);
     ~Character();
     
     string name;
