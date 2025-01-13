@@ -7,7 +7,7 @@ Monster::Monster(string _name)
 	const std::unordered_map<std::string, Stats>::const_iterator it = monsterDatas.find(_name);
 	if (it != monsterDatas.end())
 	{
-		this->name = _name;														//몬스터 데이터에 있으면 이름넣기
+		DecoWord::getInstance().nickname(this->name);							//몬스터 데이터에 있으면 별명 먼저 넣어주기
 		this->health = monsterDatas.at(_name).health * GetRandomHealthStat();	//그 몬스터의 체력계수와 레벨, 랜덤값을 계산한 최종 체력
 		this->attack = monsterDatas.at(_name).attack * GetRandomAttackStat();;	//그 몬스터의 공격계수와 레벨, 랜덤값을 계산한 최종 공격력
 	}

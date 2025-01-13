@@ -4,6 +4,7 @@
 #include "Character.h"
 #include "MonsterData.h"
 #include "MyMath.h"
+#include "DecoWord.h"
 
 using namespace std;
 class Monster
@@ -26,6 +27,4 @@ public:
 	void TakeDamage(int damage);
 	Item* DropItem();
 
-	//✨ update  
-	//virtual int getAttack() = 0;
 };
