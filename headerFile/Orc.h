@@ -6,5 +6,6 @@ class Orc : public Monster
 {
 
 public:
-	Orc();
+	Orc() : Monster("Orc") {}
+	Orc(const std::string& _name) : Monster(_name) {}
 };
