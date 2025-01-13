@@ -9,7 +9,7 @@ Character* Character::instance = nullptr;
 Character::Character(const string& characterName) : level(1), health(200), maxHealth(200), attack(30), experience(0), gold(0)
 {
     name = characterName;
-    cout << "캐릭터가 생성되었습니다." << name << "님! 한번 가보실까요?" << endl;
+    cout << "캐릭터가 생성되었습니다. " << name << "님! 준비운동은 하셨나요? 준비운동의 중요성에 대해 아시나요? 준비운동은 운동 중 부상위험을 획기적으로 줄여줄 수 있습니다." << endl;
 }
 
 Character::~Character()
@@ -29,6 +29,7 @@ Character* Character::GetInstance(const string& characterName)
         return nullptr;
                     
     }
+
     if (instance == nullptr) 
     { 
         instance = new Character(characterName);
@@ -72,38 +73,54 @@ bool Character::IsValidName(const string& characterName) // 이름 검증
 
 void Character::DisplayStatus()
 {
-
+    cout << "-현재 상태에 대해 말씀드리자면, " << endl;
+    cout << "레벨은 " << level << endl;
+    cout << "체력: " << health << "/" << maxHealth << endl;
+    cout << "공격력: " << attack << endl;
+    cout << "경험치: " << experience << "/100" << endl;
+    cout << "골드: " << gold << endl;
+    cout << "이정도네요. 화이팅!" << 
 }
-
 
 void Character::LevelUp()
-{
-    int expForLevel = 0;
-    experience += 20;   
-    expForLevel += 20;
-
-    if (expForLevel == 100)
+{      
+    if (level == 10)
     {
-        if (level == 10)
-        {
-            cout << "레벨업할 수 있는 경험치에 도달은 했는데 지금 최고레벨이라 이제 못 올려요. 그래도 계속 나아가셨으면 좋겠어요. 도전은 아름답잖아요. 그래도 체력은 채워드릴게요." << endl;
-            health = maxHealth;
-        }
-        else
-        {
-            level++;
-            maxHealth += (level * 20);
-            attack += (level * 5);
-            health = maxHealth;
-            expForLevel = 0;
-            cout << "레벨이 올랐는데 왜 올랐냐면 경험치가 100이 쌓이면 레벨이 오르는데 방금 전투로 필요경험치 100이 누적되셨어요." << "\n그래서 현재 레벨은 " << level << "입니다." << endl;
-        }
+        cout << "레벨업할 수 있는 경험치에 도달은 했는데 지금 최고레벨이라 이제 못 올려요. 그래도 계속 나아가셨으면 좋겠어요. 도전은 아름답잖아요. 체력은 채워드릴게요." << endl;
+        health = maxHealth;
+        cout << "현재 체력: " << health << endl;
+        return;
     }
+    
+    experience += 20;      
+
+    if (experience < 100)
+    {
+        cout <<"경험치를 20 획득했어요. 레벨업까지 필요한 경험치는 " << 100 - experience << "입니다." << endl;
+        return;
+    }
+    
+    level++;
+    maxHealth += (level * 20);
+    attack += (level * 5);
+    health = maxHealth;
+    expeprience = 0;
+    cout << "레벨이 올랐는데 왜 올랐냐면 경험치가 100이 쌓이면 레벨이 오르는데 방금 전투로 필요경험치 100이 누적되셨어요." << 
+        "\n그래서 현재 레벨은 " << level << "입니다." << "\n그리고 최대 체력은 "<< maxHealth <<"이고 공격력은 "<< attack <<"입니다."endl;
+
+
 }
+
 void Character::UseItem(int index)
 {
-
+    Item* item = inventory[index];
+    item->Use(this);
+    cout << item->GetName() << "을(를) 사용했습니다." << endl;
+        
+    delete item;
+    inventory.erase(inventory.begin() + index);
 }
+
 void Character::VisitShop()
 {
     cout << "상점에 입장했습니다. 여기 사장님 아들이 만득인데 만득이가 작년에 코인했다가 쫄딱 망해가지고 사장님도 돈독이 바짝 올라있어요.." << endl;

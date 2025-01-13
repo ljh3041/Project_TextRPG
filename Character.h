@@ -17,7 +17,7 @@ private:
     int health;
     int maxHealth;
     int attack;
-    int experience;
+    int experience;    
     int gold;
 
     vector<Item*> inventory;
