@@ -20,4 +20,7 @@ public:
 
 	void TakeDamage(int damage);
 	Item* DropItem();
+
+	//✨ update  
+	//virtual int getAttack() = 0;
 };
