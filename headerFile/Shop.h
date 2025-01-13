@@ -1,29 +1,31 @@
-#pragma once
-#include "Item.h"
-#include "Character.h"
+﻿#pragma once
+#ifndef SHOP_H
+#define SHOP_H
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cstdlib>
+#include <ctime>
+#include "Character.h" 
+#include "Item.h" 
+
 using namespace std;
 
-//Singleton Pattern
 class Shop
 {
 private:
-	static Shop* instance;
+    Character& character;
+    vector<Item> items_for_sale;
 
-	Shop();
-	~Shop();
-
-	Shop(const Shop&) = delete;
-	Shop& operator=(const Shop&) = delete;
+    vector<Item> RandomItem();
 
 public:
-	static Shop* GetInstance() {
-		if (instance == nullptr) {
-			instance = new Shop();
-		}
-		return instance;
-	}
-
-	void displayItems();
-	void buyItem(int index, Character* player);
-	void sellItem(int index, Character* player);
+    Shop(Character& c);
+    void EnterShop();
+    void ShopSelection();
+    void BuyItem();
+    void SellItem();
 };
+
+#endif//SHOP_H
