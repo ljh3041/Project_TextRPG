@@ -1,9 +1,20 @@
 #include "../headerFile/GameManager.h"
 #include "../headerFile/Character.h"
 #include "../headerFile/Shop.h"
+
+#include "../headerFile/Orc.h"
+#include "../headerFile/Goblin.h"
+#include "../headerFile/Troll.h"
+#include <iostream>
+
+
+extern GameManager* gameManager;
+extern Character* player;
+
 #include <iostream>
 
 GameManager* GameManager::instance = nullptr;
+
 
 //시작, 종료 대화 바꾸기
 GameManager::GameManager()
@@ -42,6 +53,13 @@ BossMonster* GameManager::generateBossMonster()
 
 void GameManager::battle(Character* player)
 {
+
+	/*
+	while (player->gethealth() != 0 || monster->gethealth() != 0) // 캐릭터.h에 gethealth 추가
+	{
+	}
+	*/
+
 	while (player->gethealth() != 0 || monster->gethealth() != 0) // 캐릭터.h에 gethealth 추가
 	{
 		/*공격;
@@ -49,6 +67,7 @@ void GameManager::battle(Character* player)
 		피격;
 		플레이어  데미지;*/
 	}
+
 }
 
 void GameManager::visitShop(Character* player)
@@ -74,6 +93,10 @@ void GameManager::visitShop(Character* player)
 
 void GameManager::displayInventory(Character* player)
 {
+
+	
+	player->displayStatus();
+
 	cout << "(플레이어 이름)의 상태" << endl << "체력 : " << gameManager->gelhealth() << endl << "공격력 : " << endl << " 경험치 : " << endl << "골드 : " << endl; //캐릭터 - 골드 
 	//or
 	cout << player->displayStatus();
@@ -90,6 +113,22 @@ void StartGame()
 		gameManager->displayInventory(player);
 		gameManager->visitShop(player);
 	}
+	gameManager->generateBossMonster();
+	gameManager->battle(player);
+
+}
+
+//종합
+void StartGame()
+{
+	/*
+	while (player.level != 10) { 
+		gameManager->generateMonster();
+		gameManager->battle(player);
+		gameManager->displayInventory(player);
+		gameManager->visitShop(player);
+	}
+	*/
 	gameManager->generateBossMonster();
 	gameManager->battle(player);
 }
