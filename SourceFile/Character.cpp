@@ -30,12 +30,7 @@ Character::~Character()
 
 Character* Character::GetInstance(const string& characterName)
 {
-    if (IsValidName(characterName) == false)
-    {
-        return nullptr;
-
-    }
-
+    
     if (instance == nullptr)
     {
         instance = new Character(characterName);
@@ -52,29 +47,42 @@ void Character::ReleaseInstance()
     }
 }
 
-bool Character::IsValidName(const string& characterName) // 이름 검증
+string Character::IsValidName() // 이름 검증
 {
-    if (characterName.size() < 1)
-    {
-        cout << "캐릭터 이름은 한 글자 이상 입력해주세요. 이름이란게, 고대 로마에서는 이름이 곧 운명이라고 할 정도로 인간에게 이름이란 중요한 것이라고 봤거든요." << endl;
-        return false;
-    }
+    string characterName;    
 
-    if (characterName.size() >= 30)
-    {
-        cout << "적당히 하세요. 30글자는 심하잖아요. 군대가면 관등성명대다 전역하겠어요." << endl;
-        return false;
-    }
+    cout << "캐릭터의 이름을 2세 이름짓듯 설레고도 신중한 마음으로 입력해주세요. 너무 짧아도 안되고 너무 길어도 안돼요. 그리고 영어와 숫자로만 입력해주세요. 그래야 사주가 좋대요. " << endl;
+  
+    while (true)
+    {  
+        cout << "신중하게 지은 이름: " << endl;
+        cin >> characterName;
 
-    for (char v : characterName)
-    {
-        if (isalnum(v) == false)
+        if (characterName.size() < 1)
         {
-            cout << "영어랑 숫자만 입력 가능합니다. 왜냐면 C++ 만든 곳이 미국회사라서 영어가 기본이기도하고 한글도 어떻게 하면 가능은 하다는데 너무 복잡해져서 아직은 무리인거같아요." << endl;
-            return false;
+            cout << "캐릭터 이름은 한 글자 이상 입력해주세요. 이름이란게, 고대 로마에서는 이름이 곧 운명이라고 할 정도로 인간에게 이름이란 중요한 것이라고 봤거든요." << endl;
+            continue;
         }
+
+        if (characterName.size() >= 30)
+        {
+            cout << "적당히 하세요. 30자는 심하잖아요. 군대가면 관등성명대다 전역하겠어요." << endl;
+            continue;
+        }
+        
+        bool isValid = true;
+        for (char v : characterName)
+        {            
+            if (isalnum(v) == false) // 영어랑 숫자만 가려내는 함수
+            {
+                cout << "영어랑 숫자만 입력 가능합니다. 왜냐면 C++ 만든 곳이 미국회사라서 영어가 기본이기도하고 한글도 어떻게 하면 가능은 하다는데 너무 복잡해져서 아직은 무리인거같아요." << endl;
+                isValid = false;
+                break;
+            }
+        }
+        if (isValid) { break; }
     }
-    return true;
+    return characterName;
 }
 
 void Character::DisplayStatus()
@@ -123,12 +131,28 @@ void Character::UseItem(int index)
     inventory.erase(inventory.begin() + index);
 }
 
-/*void Character::VisitShop()
+void Character::VisitShop()
 {
     cout << "상점에 입장했습니다. 여기 사장님 아들이 만득인데 만득이가 작년에 코인했다가 쫄딱 망해가지고 사장님도 돈독이 바짝 올라있어요.." << endl;
     GameManager::GetInstance()->VisitShop(this);
-}*/
+}
 
+void Character:: setgold(int settleGold) // +값이 들어오면 몬스터 사냥보상으로 인식, -값이 들어오면 상점 소모비용으로 인식
+{
+    gold += settleGold;
+
+    if (settleGold > 0)
+    {
+        cout << "몬스터가 두부 심부름값으로 들고가던 " << settleGold << "G를 획득했습니다! 몬스터의 어머니는 오늘 두부도 잃고 자식도 잃었네요. \n현재 보유 골드 " << gold << "G 입니다." << endl;
+        return;
+    }
+    else if (settleGold < 0)
+    {
+        cout << "시원하게 지르셨네요. 총 구매비용 " << settleGold * -1 << ", 현재 보유 골드 " << gold << "입니다. 아껴쓰시는게 좋겠어요. 요즘같은 고물가시대에.. 포션같은거보단 현금입니다." << endl;
+        return;
+    }
+    else { return; } // 0원일 시 통과
+}
 
 //✨ update  
 void Character::TakeDamage(int damage)
