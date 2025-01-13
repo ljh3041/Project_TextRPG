@@ -106,7 +106,7 @@ void Character::LevelUp()
     health = maxHealth;
     experience = 0;
     cout << "레벨이 올랐는데 왜 올랐냐면 경험치가 100이 쌓이면 레벨이 오르는데 방금 전투로 필요경험치 100이 누적되셨어요." << 
-        "\n그래서 현재 레벨은 " << level << "입니다." << "\n그리고 최대 체력은 "<< maxHealth <<"이고 공격력은 "<< attack <<"입니다."endl;
+        "\n그래서 현재 레벨은 " << level << "입니다." << "\n그리고 최대 체력은 "<< maxHealth <<"이고 공격력은 "<< attack <<"입니다."<< endl;
 
 
 }
