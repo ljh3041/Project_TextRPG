@@ -47,7 +47,7 @@ void Character::ReleaseInstance()
     }
 }
 
-string Character::IsValidName() // 이름 검증
+string Character::NameValidation() // 이름 검증
 {
     string characterName;    
 
