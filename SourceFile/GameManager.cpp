@@ -13,6 +13,7 @@ GameManager::~GameManager()
 
 
 
+
 Monster* GameManager::generateMonster()
 {
 	Monster* monster = nullptr;
