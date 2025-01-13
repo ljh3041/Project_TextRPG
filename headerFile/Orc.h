@@ -2,7 +2,7 @@
 
 #include "Monster.h"
 using namespace std;
-class Orc
+class Orc : public Monster
 {
 private:
 	string name;

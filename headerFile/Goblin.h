@@ -3,7 +3,7 @@ using namespace std;
 #include "Monster.h"
 
 
-class Goblin
+class Goblin : public Monster
 {
 private:
 	string name;

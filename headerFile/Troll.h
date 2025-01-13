@@ -1,7 +1,7 @@
 #pragma once
 #include "Monster.h"
 using namespace std;
-class Troll : Monster
+class Troll : public Monster
 {
 private:
 	string name;
