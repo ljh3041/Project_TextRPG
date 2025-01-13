@@ -33,4 +33,7 @@ void Character::visitShop()
 {
 
 }
-
+void Character::TakeDamage(int damage)
+{
+	health -= damage;
+}

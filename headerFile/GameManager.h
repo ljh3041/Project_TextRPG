@@ -27,7 +27,7 @@ public:
 
 	Monster* generateMonster();
 	BossMonster* generateBossMonster();
-	void battle(Character* player);
+	void battle(Character* player, Monster* monster);
 	void visitShop(Character* player);
 	void displayInventory(Character* player);
 };

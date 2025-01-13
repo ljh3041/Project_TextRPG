@@ -38,4 +38,19 @@ public:
     void levelUp();
     void useItem(int index);
     void visitShop();
+
+//✨ update  
+        int getlevel() const {
+        return level;
+    }
+    int gethealth() const {
+        return health;
+    }
+    int getattack() const {
+        return attack;
+    }
+    string getname() const {
+        return name;
+    }
+    void TakeDamage(int damage);
 };
