@@ -10,8 +10,8 @@ class Character
 private:
 	static Character* instance;
 	Character();
-	~Character();
-
+	~Character()
+    
     string name;
     int level;
     int health;
@@ -27,15 +27,12 @@ private:
 	Character& operator=(const Character&) = delete;
 
 public:
-    static Character* GetInstance() {
-        if (instance == nullptr) {
-            instance = new Character();
-        }
-        return instance;
-    }
-
-    void displayStatus();
-    void levelUp();
-    void useItem(int index);
-    void visitShop();
+    static Character* GetInstance(const string& characterName); // 이름검증을 위해 소스파일로 코드 이동
+    static void ReleaseInstance();
+    static bool IsValidName(const string& characterName); // 이름 검증 함수
+    
+    void LevelUp();
+    void UseItem(int index);
+    void VisitShop();
+    void DisplayStatus();
 };
