@@ -9,7 +9,7 @@ class Character
 {
 private:
 	static Character* instance;
-	Character();
+	Character(const string& characterName);
 	~Character();
 
     string name;
@@ -27,12 +27,14 @@ private:
 	Character& operator=(const Character&) = delete;
 
 public:
-    static Character* GetInstance() {
-        if (instance == nullptr) {
-            instance = new Character();
-        }
-        return instance;
-    }
+    static Character* GetInstance(const string& characterName);
+    static void ReleaseInstance();
+    static bool IsValidName(const string& characterName); // �̸� ����
+
+    void DisplayStatus();
+    void LevelUp();
+    void UseItem(int index);
+   // void VisitShop();
 
     void displayStatus();
     void levelUp();
@@ -41,6 +43,7 @@ public:
 
 //✨ update  
         int getlevel() const {
+
         return level;
     }
     int gethealth() const {
@@ -52,6 +55,8 @@ public:
     string getname() const {
         return name;
     }
+
     //✨ update  
+
     void TakeDamage(int damage);
 };
