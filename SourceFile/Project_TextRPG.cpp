@@ -39,11 +39,6 @@ int main() {
 	Sleep(500);
 	player-> SetName(playerName);
 
-	//player->NameValidation();
-	//player->GetInstance();//Character* player = Character::GetInstance(); // 캐릭터 생성 로직 변경 필요 혹은 물어보기
-	//cout << player->GetLevel();
-	//Monster* monster = new Monster;
-	//BossMonster* bossmonster = new BossMonster;
 	int stage = 1;
 	while (player->GetLevel() != 10) {
 		int ncnt = 0;
