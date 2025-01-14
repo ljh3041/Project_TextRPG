@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <thread> // sleep_for
-#include <chrono> // ½Ã°£ ´ÜÀ§ »ç¿ë
+#include <chrono> // ì‹œê°„ ë‹¨ìœ„ ì‚¬ìš©
 #include "Monster.h"
 #include "BossMonster.h"
 #include "Character.h"
@@ -36,29 +36,29 @@ public:
 	Monster* generateMonster();
 	BossMonster* generateBossMonster();
 	void battle(Character* player, Monster* monster);
-	void visitShop(Character* player);
+	void visitShop();
 	void displayInventory(Character* player);
 };
 
 
 GameManager* GameManager::instance = nullptr;
 
-//½ÃÀÛ, Á¾·á ´ëÈ­ ¹Ù²Ù±â
+//ì‹œì‘, ì¢…ë£Œ ëŒ€í™” ë°”ê¾¸ê¸°
 GameManager::GameManager()
 {
-	cout << "TMI ½ÃÀÛ" << endl;
+	cout << "TMI ì‹œì‘" << endl;
 }
 
 GameManager::~GameManager()
 {
-	cout << "Á¾·á" << endl;
+	cout << "ì¢…ë£Œ" << endl;
 }
 
-//¸ó½ºÅÍ ·£´ı ¼ÒÈ¯
+//ëª¬ìŠ¤í„° ëœë¤ ì†Œí™˜
 Monster* GameManager::generateMonster()
 {
 	Monster* monster = nullptr;
-	int type = rand() % 3; // 0, 1, 2 Áß ·£´ı ¼±ÅÃ (Goblin, Orc, Troll)
+	int type = rand() % 3; // 0, 1, 2 ì¤‘ ëœë¤ ì„ íƒ (Goblin, Orc, Troll)
 	switch (type) {
 	case 0:
 		monster = new Goblin();
@@ -70,82 +70,109 @@ Monster* GameManager::generateMonster()
 		monster = new Troll();
 		break;
 	}
-	cout << monster << "°¡ ÃâÇöÇß´Ù!" << endl;
+	cout << monster << "ê°€ ì¶œí˜„í–ˆë‹¤!" << endl;
 	return monster;
 }
 
 BossMonster* GameManager::generateBossMonster()
 {
-	BossMonster* monster = new BossMonster;
-	cout << "º¸½º ¸ó½ºÅÍ " << monster << "°¡ ³ªÅ¸³µ´Ù!" << endl;
-	return monster;
+	BossMonster* bossmonster = new BossMonster;
+	cout << "ë³´ìŠ¤ ëª¬ìŠ¤í„° " << bossmonster << "ê°€ ë‚˜íƒ€ë‚¬ë‹¤!" << endl;
+	return bossmonster;
 }
 
 void GameManager::battle(Character* player, Monster* monster)
 {
-	while (player->gethealth() != 0 || monster->GetHealth() != 0) // Ä³¸¯ÅÍ.h¿¡ gethealth Ãß°¡
+	while (player->GetHealth() != 0 || monster->GetHealth() != 0) // ìºë¦­í„°.hì— gethealth ì¶”ê°€
 	{
-		//ÇÃ·¹ÀÌ¾î °ø°İ
-		cout << player->getname() << "ÀÇ °ø°İ! " << player->getattack() << "ÀÇ ÇÇÇØ" << endl;
+		//í”Œë ˆì´ì–´ ê³µê²©
+		cout << player->GetName() << "ì˜ ê³µê²©! " << player->GetAttack() << "ì˜ í”¼í•´" << endl;
 		this_thread::sleep_for(chrono::seconds(1 / 2));
-		monster->TakeDamage(player->getattack());
-		cout << monster->GetName() << "ÀÇ ³²Àº Ã¼·Â " << monster->GetHealth() << endl;
+		monster->TakeDamage(player->GetAttack());
+		cout << monster->GetName() << "ì˜ ë‚¨ì€ ì²´ë ¥ " << monster->GetHealth() << endl;
 		this_thread::sleep_for(chrono::seconds(1));
-		//¸ó½ºÅÍ °ø°İ
-		cout << monster->GetName() << "ÀÇ °ø°İ! " << monster->GetAttack() << "ÀÇ ÇÇÇØ" << endl;
+		//ëª¬ìŠ¤í„° ê³µê²©
+		cout << monster->GetName() << "ì˜ ê³µê²©! " << monster->GetAttack() << "ì˜ í”¼í•´" << endl;
 		this_thread::sleep_for(chrono::seconds(1 / 2));
 		player->TakeDamage(monster->GetAttack());
-		cout << player->getname() << "ÀÇ ³²Àº Ã¼·Â " << player->gethealth() - monster->GetAttack() << endl;
+		cout << player->GetName() << "ì˜ ë‚¨ì€ ì²´ë ¥ " << player->GetHealth() - monster->GetAttack() << endl;
 		this_thread::sleep_for(chrono::seconds(1));
+		//useitem?
 	}
 }
 
-void GameManager::visitShop(Character* player)
+void GameManager::bossbattle(Character* player, BossMonster* bossmonster)
 {
+	while (player->GetHealth() != 0 || bossmonster->GetHealth() != 0)
+	{
+		//í”Œë ˆì´ì–´ ê³µê²©
+		cout << player->GetName() << "ì˜ ê³µê²©! " << player->GetAttack() << "ì˜ í”¼í•´" << endl;
+		this_thread::sleep_for(chrono::seconds(1 / 2));
+		bossmonster->TakeDamage(player->GetAttack());
+		cout << bossmonster->GetName() << "ì˜ ë‚¨ì€ ì²´ë ¥ " << bossmonster->GetHealth() << endl;
+		this_thread::sleep_for(chrono::seconds(1));
+		//ë³´ìŠ¤ ëª¬ìŠ¤í„° ê³µê²©
+		cout << bossmonster->GetName() << "ì˜ ê³µê²©! " << bossmonster->GetAttack() << "ì˜ í”¼í•´" << endl;
+		this_thread::sleep_for(chrono::seconds(1 / 2));
+		player->TakeDamage(monster->GetAttack());
+		cout << player->GetName() << "ì˜ ë‚¨ì€ ì²´ë ¥ " << player->GetHealth() - bossmonster->GetAttack() << endl;
+		this_thread::sleep_for(chrono::seconds(1));
+		//useitem?
+	}
+	if (bossmonster->GetHealth() <= 0)
+	{
+		cout << "ìŠ¹ë¦¬" << endl;
+	}
+	else
+		cout << "íŒ¨ë°°" << endl;
+}
+
+void GameManager::visitShop()//Character* player)
+{
+	Shop* shop = nullptr;
 	char visit;
 	int shopcnt = 0;
-	cout << "»óÁ¡¿¡ ¹æ¹®ÇÏ½Ã°Ú½À´Ï±î? Y / N" << endl;
+	cout << "ìƒì ì— ë°©ë¬¸í•˜ì‹œê² ìŠµë‹ˆê¹Œ? Y / N" << endl;
 	cin >> visit;
 	while (shopcnt == 0) {
 		if (visit == 'Y' || visit == 'y')
 		{
-		//	player->visitShop();
+			shop->GetInstance();
 			shopcnt++;
 		}
 		else if (visit == 'N' || visit == 'n')
 		{
-			cout << "°ø¹é?" << endl;
+			cout << "ê³µë°±?" << endl;
 			shopcnt++;
 		}
 	}
-
 }
 
 void GameManager::displayInventory(Character* player)
 {
-	cout << "(ÇÃ·¹ÀÌ¾î ÀÌ¸§)ÀÇ »óÅÂ" << endl << "Ã¼·Â : " << player->gethealth() << endl << "°ø°İ·Â : " << endl << " °æÇèÄ¡ : " << endl << "°ñµå : " << endl; //Ä³¸¯ÅÍ - °ñµå 
+	//cout << "(í”Œë ˆì´ì–´ ì´ë¦„)ì˜ ìƒíƒœ" << endl << "ì²´ë ¥ : " << player->GetHealth() << endl << "ê³µê²©ë ¥ : " << endl << " ê²½í—˜ì¹˜ : " << endl << "ê³¨ë“œ : " << endl; //ìºë¦­í„° - ê³¨ë“œ 
 	//or
 	//cout << player->displayStatus();
+	player->DisplayStatus()
 }
 
-//Á¾ÇÕ
+//ì¢…í•©
 void StartGame()
 {
 	//GameManager* gameManager = GameManager::GetInstance();
 	//Character* player = Character::GetInstance();
 	Monster* monster = nullptr;
-	BossMonster* bossMonster = new BossMonster;
+	BossMonster* bossMonster = nullptr;
 	/*
-	while (player->getlevel() != 10) { // Ä³¸¯ÅÍ.h¿¡ getlevel Ãß°¡
+	while (player->getlevel() != 10) { // ìºë¦­í„°.hì— getlevel ì¶”ê°€
 		gameManager->generateMonster();
 		gameManager->battle(player, monster);
 		gameManager->displayInventory(player);
 		gameManager->visitShop(player);
 	}
 	gameManager->generateBossMonster();
-	gameManager->battle(player, monster);
+        gameManager->bossbattle(player, bossmonster);
 	*/
-	cout << "½Â¸®Çß½À´Ï´Ù! " << endl;
 }
 
 
