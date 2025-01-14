@@ -24,25 +24,29 @@ using namespace std;
 
 
 #pragma region GlobalVariable
+/*
 GameManager* GameManager::instance = nullptr;
 Character* Character::instance = nullptr;
 Shop* Shop::instance = nullptr;
+*/
 #pragma endregion
 
 
 int main()
 {
-    GameManager* gameManager = GameManager::GetInstance();
+    /*GameManager* gameManager = GameManager::GetInstance();
     Character* character = Character::GetInstance();
-    Shop* shop = Shop::GetInstance();
+    */
+    //Shop* shop = Shop::GetInstance();
     // 게임 매니저가 처리하는 부분.
     // 메인 루프 속에서 게임의 진행이 처리
     
     ///
-
+    /*
     Item item_01 = Item();
     Item item_02 = Item();
     Item item_03 = Item();
+    */
     for (int i = 0; i < 3; i++)
     {
         //Shop 에 만들어진 아이템을 집어넣는 기능. 혹은 shop 생성 당시에 아이템을 바로 넣을 것.//
