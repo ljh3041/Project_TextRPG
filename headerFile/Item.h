@@ -56,3 +56,10 @@ public:
     virtual void useItem() {} //사용 효과
     virtual int getNumber() { return number; } //횟수 리턴
 };
+
+/*
+string Item::getName()
+{
+    return name;
+}
+*/
