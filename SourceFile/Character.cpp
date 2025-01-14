@@ -12,15 +12,14 @@ Character* Character::instance = nullptr;
 
 Character::Character()
 {
-    
     level = 1;
     health = 200;
     maxHealth = 200;
     attack = 30;
     experience = 0;
-    gold = 0;
-
-    
+    gold = 1000;
+    inventoryWeight = 0;
+    maxInventoryWeight = 3;
 }
 
 Character::~Character()
@@ -153,7 +152,7 @@ void Character::LevelUp()
 
 void Character::SetGold(int settleGold)
 {
-    gold += settleGold;
+    gold = settleGold;
     cout << "\n현재 보유 골드 " << gold << "G 입니다." << endl;
     /*int messageCall = GetRandom(0, 2); // 상점수입과 혼동될 수 있어 보류
 
@@ -239,4 +238,31 @@ void Character::EndFight()
     {
         inventory[i]->EndFight();
     }
+}
+
+
+int Character::GetInventoryWeight()
+{
+    return inventoryWeight;
+}
+
+int Character::GetMaxInventoryWeight()
+{
+    return maxInventoryWeight;
+}
+
+
+void Character::AddToInventory(Item* item)
+{
+    inventory.push_back(item);
+}
+
+vector<Item*> Character::GetInventory()
+{
+    return inventory;
+}
+
+void Character::remove_from_inventory(Item* item)
+{
+    //find item and remove item
 }

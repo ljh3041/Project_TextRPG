@@ -1,7 +1,7 @@
 ﻿#include "../headerFile/Shop.h"
 #include "../headerFile/EquipmentItem.h"
 
-//생성자
+
 Shop::Shop()
 {
     all_items.push_back(new Sword40());
@@ -26,10 +26,9 @@ vector<Item*> Shop::RandomItem()
 // 현재 보유 골드, 인벤토리 상태 표시 함수
 void Shop::EnterShop()
 {
-    /*
-    cout << "현재 보유 골드 : " << character.GetGold() << endl;
-    cout << "인벤토리 무게 : " << character.inventoryweight << "/" << character.maxinventoryweight << endl;
-    */
+    cout << "현재 보유 골드 : " << Character::GetInstance()->GetGold() << endl;
+    cout << "인벤토리 무게 : " << Character::GetInstance()->GetInventoryWeight()
+        << "/" << Character::GetInstance()->GetMaxInventoryWeight() << endl;
 }
 
 
@@ -73,67 +72,69 @@ void Shop::ShopSelection()
 // 아이템 구매 함수
 void Shop::BuyItem()
 {
+    size_t i = 0;
     cout << "구매 가능한 아이템 : " << endl;
-    for (size_t i = 0; i < items_for_sale.size(); i++)
+    for (i = 0; i < items_for_sale.size(); i++)
     {
         cout << i + 1 << "." << items_for_sale[i]->GetName()
             << ": 가격 " << items_for_sale[i]->GetPrice()
             << ", 무게 " << items_for_sale[i]->GetWeight() << endl;
     }
 
-    cout << "4.뒤로가기" << endl;
+    cout <<  ++i << ".뒤로가기" << endl;
     cout << "구매할 아이템을 선택하세요 : " << endl;
     int choice;
     cin >> choice;
 
-    if (choice == 4) return;
+    if (choice == i) return;
 
     Item* selected_item = items_for_sale[choice - 1];
-    /*
-    if (character.getGold() < selected_item.getPrice())
+    
+    if (Character::GetInstance()->GetGold() < selected_item->GetPrice())
     {
-        cout << "골드가 부족합니다. 보유 골드 : " << character.getGold() << endl;
+        cout << "골드가 부족합니다. 보유 골드 : " << Character::GetInstance()->GetGold() << endl;
         return;
     }
-    if (character.inventoryweight + selected_item.getWeight() > character.maxinventoryweight)
+    if (Character::GetInstance()->GetInventoryWeight() + selected_item->GetWeight() >
+        Character::GetInstance()->GetMaxInventoryWeight())
     {
         cout << "인벤토리 최대치를 초과합니다. 현재 무게 : "
-            << character.inventoryweight << " "
-            << selected_item.GetName() << " 무게 : "
-            << selected_item.GetWeight() << endl;
+            << Character::GetInstance()->GetInventoryWeight() << " "
+            << selected_item->GetName() << " 무게 : "
+            << selected_item->GetWeight() << endl;
         return;
     }
 
-    character.SetGold = character.GetGold - selected_item.GetPrice();
-    character.add_to_inventory(selected_item);
+    Character::GetInstance()->SetGold(Character::GetInstance()->GetGold() - selected_item->GetPrice());
+    Character::GetInstance()->AddToInventory(selected_item);
     items_for_sale.erase(items_for_sale.begin() + (choice - 1));
-    cout << "구매 성공! 남은 골드 : " << character.GetGold() << endl;
-    */
+    cout << "구매 성공! 남은 골드 : " << Character::GetInstance()->GetGold() << endl;
+    
 }
 
 // 아이템 판매 로직
 void Shop::SellItem()
 {
-    /*
+    
     cout << "보유 중인 아이템:" << endl;
-    for (size_t i = 0; i < character.GetInventory().size(); i++)
+    for (size_t i = 0; i < Character::GetInstance()->GetInventory().size(); i++)
     {
-        cout << i + 1 << ". " << character.GetInventory()[i].GetName()
-            << ": 판매 가격 " << character.GetInventory()[i].GetPrice() / 2 << endl; // 판매 가격을 일단 절반으로 가정
+        cout << i + 1 << ". " << (Character::GetInstance()->GetInventory())[i]->GetName()
+            << ": 판매 가격 " << (Character::GetInstance()->GetInventory())[i]->GetPrice() / 2 << endl; // 판매 가격을 일단 절반으로 가정
     }
 
-    cout << "뒤로가기: " << character.GetInventory().size() + 1 << endl;
+    cout << "뒤로가기: " << Character::GetInstance()->GetInventory().size() + 1 << endl;
     cout << "판매할 아이템을 선택하세요 : " << endl;
 
     int choice;
     cin >> choice;
 
-    if (choice == character.GetInventory().size() + 1) return; // 뒤로가기 처리
+    if (choice == Character::GetInstance()->GetInventory().size() + 1) return; // 뒤로가기 처리
 
-    Item selected_item = character.GetInventory()[choice - 1]; // 선택한 아이템
-    character.remove_from_inventory(selected_item); // 인벤토리에서 제거
-    character.SetGold(character.GetGold() + selected_item.GetPrice() / 2);
-    cout << "판매 성공! 현재 보유 골드: " << character.GetGold() << endl;
-    */
+    Item* selected_item = Character::GetInstance()->GetInventory()[choice - 1]; // 선택한 아이템
+    Character::GetInstance()->remove_from_inventory(selected_item); // 인벤토리에서 제거
+    Character::GetInstance()->SetGold(Character::GetInstance()->GetGold() + selected_item->GetPrice() / 2);
+    cout << "판매 성공! 현재 보유 골드: " << Character::GetInstance()->GetGold() << endl;
+    
 }
 

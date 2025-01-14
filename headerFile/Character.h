@@ -27,6 +27,8 @@ private:
 
     vector<Item*> inventory;
 
+    int inventoryWeight;
+    int maxInventoryWeight;
 
     Character(const Character&) = delete;
     Character& operator=(const Character&) = delete;
@@ -87,5 +89,11 @@ public:
     void StartFight();
 
     void EndFight();
+
+    int GetInventoryWeight();
+    int GetMaxInventoryWeight();
+    void AddToInventory(Item* item);
+    vector<Item*> GetInventory();
+    void remove_from_inventory(Item* item);
 };
 

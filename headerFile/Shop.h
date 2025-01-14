@@ -15,6 +15,8 @@ using namespace std;
 class Shop
 {
 private:
+    static Shop* instance;
+
     vector<Item*> all_items;//모든 아이템 저장 백터
     vector<Item*> items_for_sale;//판매할 아이템
 
@@ -27,9 +29,13 @@ public:
     void ShopSelection();
     void BuyItem();
     void SellItem();
-    static Shop& getInstance() {
-        static Shop shopinstance; // 유일한 객체 생성
-        return shopinstance;
+
+
+    static Shop* GetInstance() {
+        if (instance == nullptr) {
+            instance = new Shop();
+        }
+        return instance;
     }
 };
 

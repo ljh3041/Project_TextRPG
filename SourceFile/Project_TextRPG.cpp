@@ -25,16 +25,18 @@ using namespace std;
 
 
 #pragma region GlobalVariable
-/*
-GameManager* GameManager::instance = nullptr;
-Character* Character::instance = nullptr;
-Shop* Shop::instance = nullptr;
-*/
+
+GameManager* gameManager = nullptr;
+Character* player = nullptr;
+Shop* shop = nullptr;
+
 #pragma endregion
 
 int main() {
-	GameManager* gameManager = GameManager::GetInstance();
-	Character* player = Character::GetInstance();
+	gameManager = GameManager::GetInstance();
+	player = Character::GetInstance();
+	shop = Shop::GetInstance();
+
 	string playerName = player->NameValidation();
 	Monster* enemy = GameManager::GetInstance()->getMonster();
 	
@@ -59,9 +61,19 @@ int main() {
 			cout << "몬스터와 조우!" << endl;
 			Sleep(500);
 
-			gameManager->generateMonster();
-			gameManager->battle(player, GameManager::GetInstance()->getMonster());
-			stage++;
+			if (stage < 10)
+			{
+				gameManager->generateMonster();
+				gameManager->battle(player, GameManager::GetInstance()->getMonster());
+				stage++;
+			}
+			else
+			{
+				//한번에 battle함수로만 컨트롤 하고, monster generate에서 bossmonster를 생성하는 것도 
+				gameManager->generateBossMonster();
+				//gameManager->bossbattle(player, GameManager::GetInstance()->getBossMonster());
+			}
+
 		}
 		else if (stageguide == 2)
 		{
