@@ -212,10 +212,11 @@ void Character::LevelUp()
     GameManager::GetInstance()->VisitShop(this);
 }*/
 
-void Character::SetGold(int settleGold) // + 값이 들어오면 몬스터 사냥보상으로 인식, - 값이 들어오면 상점 소모비용으로 인식
+void Character::SetGold(int settleGold)
 {
     gold += settleGold;
-    int messageCall = GetRandom(0, 2);
+    cout << "\n현재 보유 골드 " << gold << "G 입니다." << endl;
+    /*int messageCall = GetRandom(0, 2); // 상점수입과 혼동될 수 있어 보류
     vector<string>goldMessageA =
     {
         "몬스터가 두부 심부름값으로 들고가던 ",
@@ -229,19 +230,20 @@ void Character::SetGold(int settleGold) // + 값이 들어오면 몬스터 사�
         "몬스터의 어머니는 올해 생일선물 받긴 글렀네요.",
         "맛있는거 사먹으라고 꼬깃한 쌈짓돈 쥐어주시는 모습이 아른거려요.."
     };
-
+    cout << goldMessageA[messageCall] << settleGold << "G를 획득했습니다!" << goldMessageB[messageCall] << endl;
+    cout << "\n현재 보유 골드 " << gold << "G 입니다." << endl;
+       
+    // 상점에는 구매기능 외에 판매기능도 있어서 사냥보상과 구분 어려움.
     if (settleGold > 0)
     {
-        cout << goldMessageA[messageCall] << settleGold << "G를 획득했습니다!" << goldMessageB[messageCall] << endl;
-        cout << "\n현재 보유 골드 " << gold << "G 입니다." << endl;
-        return;
+         return;
     }
     else if (settleGold < 0)
     {
         cout << "시원하게 지르셨네요. 총 구매비용 " << settleGold * -1 << ", 현재 보유 골드 " << gold << "입니다. 좀 아껴쓰시는게 좋겠어요. 요즘같은 고물가시대에.. 포션따위보단 현금입니다." << endl;
         return;
     }
-    else { return; } // 0원일 시 통과
+    else { return; } // 0원일 시 통과*/
 }
 
 //✨ update  
