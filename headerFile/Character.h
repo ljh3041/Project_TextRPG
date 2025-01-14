@@ -38,8 +38,8 @@ public:
     string NameValidation(); // 이름 검증
     void DisplayStatus();
     void LevelUp();
-    void UseItem(int index);
-    void VisitShop();
+    //void UseItem(int index);
+    //void VisitShop();
 
 
     //✨ update  
@@ -74,7 +74,7 @@ public:
    
     //✨ update  
 
-    void TakeDamage(int damage);
+    //void TakeDamage(int damage);
 
 };
 
@@ -196,7 +196,7 @@ void Character::LevelUp()
         cout << "현재 체력: " << health << endl;
     }
 }
-void Character::UseItem(int index)
+/*void Character::UseItem(int index)
 {
     Item* item = inventory[index];
     item->Use(this);
@@ -206,11 +206,11 @@ void Character::UseItem(int index)
     inventory.erase(inventory.begin() + index);
 }
 
-void Character::VisitShop()
+/*void Character::VisitShop()
 {
     cout << "상점에 입장했습니다. 여기 사장님 아들이 만득인데 만득이가 작년에 코인했다가 쫄딱 망해가지고 사장님도 돈독이 바짝 올라있어요.." << endl;
     GameManager::GetInstance()->VisitShop(this);
-}
+}*/
 
 void Character::SetGold(int settleGold) // + 값이 들어오면 몬스터 사냥보상으로 인식, - 값이 들어오면 상점 소모비용으로 인식
 {
