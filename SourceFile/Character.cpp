@@ -60,13 +60,13 @@ string Character::NameValidation() // 이름 검증
 
         if (characterName.size() < 1)
         {
-            cout << "캐릭터 이름은 한 글자 이상 입력해주세요. 이름이란게, 고대 로마에서는 이름이 곧 운명이라고 할 정도로 인간에게 이름이란 중요한 것이라고 봤거든요." << endl;
+            cout << "\n캐릭터 이름은 한 글자 이상 입력해주세요. 이름이란게, 고대 로마에서는 이름이 곧 운명이라고 할 정도로 인간에게 이름이란 중요한 것이라고 봤거든요." << endl;
             continue;
         }
 
         if (characterName.size() >= 30)
         {
-            cout << "적당히 하세요. 30자는 심하잖아요. 군대가면 관등성명대다 전역하겠어요." << endl;
+            cout << "\n적당히 하세요. 30자는 심하잖아요. 군대가면 관등성명대다 전역하겠어요." << endl;
             continue;
         }
         
@@ -75,13 +75,14 @@ string Character::NameValidation() // 이름 검증
         {            
             if (isalnum(v) == false) // 영어랑 숫자만 가려내는 함수
             {
-                cout << "영어랑 숫자만 입력 가능합니다. 왜냐면 C++ 만든 곳이 미국회사라서 영어가 기본이기도하고 한글도 어떻게 하면 가능은 하다는데 너무 복잡해져서 아직은 무리인거같아요." << endl;
+                cout << "\n영어랑 숫자만 입력 가능합니다. 왜냐면 C++ 만든 곳이 미국회사라서 영어가 기본이기도하고 한글도 어떻게 하면 가능은 하다는데 너무 복잡해져서 아직은 무리인거같아요." << endl;
                 isValid = false;
                 break;
             }
         }
         if (isValid) { break; }
     }
+    cout << "\n좋은 이름입니다. 장수할 이름이에요." << endl;
     return characterName;
 }
 
