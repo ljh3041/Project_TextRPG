@@ -30,6 +30,7 @@ Character::~Character()
     inventory.clear();
 }
 
+
 Character* Character::GetInstance(const string& characterName)
 {
 
@@ -145,6 +146,7 @@ void Character::SetGold(int settleGold)
     gold += settleGold;
     cout << "\n현재 보유 골드 " << gold << "G 입니다." << endl;
     /*int messageCall = GetRandom(0, 2); // 상점수입과 혼동될 수 있어 보류
+
     vector<string>goldMessageA =
     {
         "몬스터가 두부 심부름값으로 들고가던 ",
@@ -158,13 +160,12 @@ void Character::SetGold(int settleGold)
         "몬스터의 어머니는 올해 생일선물 받긴 글렀네요.",
         "맛있는거 사먹으라고 꼬깃한 쌈짓돈 쥐어주시는 모습이 아른거려요.."
     };
-    cout << goldMessageA[messageCall] << settleGold << "G를 획득했습니다!" << goldMessageB[messageCall] << endl;
-    cout << "\n현재 보유 골드 " << gold << "G 입니다." << endl;
 
-    // 상점에는 구매기능 외에 판매기능도 있어서 사냥보상과 구분 어려움.
     if (settleGold > 0)
     {
-         return;
+        cout << goldMessageA[messageCall] << settleGold << "G를 획득했습니다!" << goldMessageB[messageCall] << endl;
+        cout << "\n현재 보유 골드 " << gold << "G 입니다." << endl;
+        return;
     }
     else if (settleGold < 0)
     {

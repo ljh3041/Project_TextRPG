@@ -6,6 +6,7 @@
 #include <cctype>
 #include <vector>
 #include "Item.h"
+
 using namespace std;
 
 //Singleton Pattern
@@ -73,7 +74,7 @@ public:
    
     //✨ update  
 
-    //void TakeDamage(int damage);
+    void TakeDamage(int damage);
 
 };
 
