@@ -127,7 +127,7 @@ void Character::UseItem(int index)
 {
     Item* item = inventory[index];
     item->Use(this);
-    cout << item->GetName() << "을(를) 사용했습니다." << endl;
+    cout << item->getName() << "을(를) 사용했습니다." << endl;
 
     delete item;
     inventory.erase(inventory.begin() + index);
@@ -139,7 +139,7 @@ void Character::VisitShop()
     GameManager::GetInstance()->VisitShop(this);
 }
 
-void Character:: setgold(int settleGold) // + 값이 들어오면 몬스터 사냥보상으로 인식, - 값이 들어오면 상점 소모비용으로 인식
+void Character:: SetGold(int settleGold) // + 값이 들어오면 몬스터 사냥보상으로 인식, - 값이 들어오면 상점 소모비용으로 인식
 {
     gold += settleGold;
     int messageCall = GetRandom(0, 2);

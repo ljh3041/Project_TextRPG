@@ -37,30 +37,30 @@ public:
     void VisitShop();
 
     //✨ update  
-    int getlevel() const
+    int GetLevel() const
     {
 
         return level;
     }
-    int gethealth() const
+    int GetHealth() const
     {
         return health;
     }
-    int getattack() const
+    int GetAttack() const
     {
         return attack;
     }
-    string getname() const
+    string GetName() const
     {
         return name;
     }
 
-    int getgold() const
+    int GetGold() const
     {
         return gold;
     }
 
-    void setgold(int settleGold);
+    void SetGold(int settleGold);
    
     //✨ update  
 
