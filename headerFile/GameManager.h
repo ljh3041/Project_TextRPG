@@ -139,7 +139,7 @@ void GameManager::visitShop()//Character* player)
 	while (shopcnt == 0) {
 		if (visit == 'Y' || visit == 'y')
 		{
-			shop->GetInstance();
+			shop->getInstance();
 			shopcnt++;
 		}
 		else if (visit == 'N' || visit == 'n')
@@ -155,7 +155,7 @@ void GameManager::displayInventory(Character* player)
 	//cout << "(플레이어 이름)의 상태" << endl << "체력 : " << player->GetHealth() << endl << "공격력 : " << endl << " 경험치 : " << endl << "골드 : " << endl; //캐릭터 - 골드 
 	//or
 	//cout << player->displayStatus();
-	player->DisplayStatus()
+	player->DisplayStatus();
 }
 
 //종합
