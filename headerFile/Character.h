@@ -75,7 +75,7 @@ public:
 
     void SetGold(int settleGold);
 
-    void SetName(string characterName);
+    void SetName(const string& characterName);
 
     // 아이템 관련 함수
     int GetItemAttack();
