@@ -2,7 +2,6 @@
 #include <iostream>
 #include "Monster.h"
 
-using namespace std;
 
 class Orc : public Monster
 {

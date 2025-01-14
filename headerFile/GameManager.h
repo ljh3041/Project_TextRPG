@@ -10,6 +10,7 @@
 #include "Orc.h"
 #include "Troll.h"
 #include "Goblin.h"
+#include "Shop.h"
 
 using namespace std;
 
@@ -115,7 +116,7 @@ void GameManager::bossbattle(Character* player, BossMonster* bossmonster)
 		//보스 몬스터 공격
 		cout << bossmonster->GetName() << "의 공격! " << bossmonster->GetAttack() << "의 피해" << endl;
 		this_thread::sleep_for(chrono::seconds(1 / 2));
-		player->TakeDamage(monster->GetAttack());
+		player->TakeDamage(bossmonster->GetAttack());
 		cout << player->GetName() << "의 남은 체력 " << player->GetHealth() - bossmonster->GetAttack() << endl;
 		this_thread::sleep_for(chrono::seconds(1));
 		//useitem?

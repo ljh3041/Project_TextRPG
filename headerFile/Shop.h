@@ -26,6 +26,10 @@ public:
     void ShopSelection();
     void BuyItem();
     void SellItem();
+    //static Shop& getInstance() {
+    //    static Shop shopinstance; // 유일한 객체 생성
+    //    return shopinstance;
+    //}
 };
 
 //생성자
