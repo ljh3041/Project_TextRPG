@@ -37,15 +37,18 @@ int main() {
 	Character* player = Character::GetInstance();
 	//player->NameValidation();
 	//player->GetInstance();//Character* player = Character::GetInstance(); // 캐릭터 생성 로직 변경 필요 혹은 물어보기
-	cout << player->GetLevel();
-	Monster* monster = nullptr;
-	BossMonster* bossmonster = nullptr;
+	//cout << player->GetLevel();
+	//Monster* monster = new Monster;
+	//BossMonster* bossmonster = new BossMonster;
 	int stage = 1;
 	while (player->GetLevel() != 10) {
 		int ncnt = 0;
 		int selectStage = 0;
+		Sleep(2000);
+
 		while (ncnt == 0)
 		{
+			system("cls");
 			cout << "================================" << endl;
 			cout << "inGame" << endl;
 			cout << "현재 스테이지 : " << stage << endl;
@@ -61,6 +64,7 @@ int main() {
 				cout << "몬스터와 조우!" << endl;
 				Sleep(500);
 
+				Monster* monster = new Monster;
 				gameManager->generateMonster();
 				gameManager->battle(player, monster);
 				ncnt++;
@@ -84,14 +88,16 @@ int main() {
 				Sleep(500);
 
 				gameManager->displayInventory(player);
+				Sleep(3000);
 			}
 			else
 			{
 				cout << "다시 입력해주세요. " << endl;
+				Sleep(1000);
+				system("cls");
 			}
+			Sleep(500);
 		}
-		Sleep(500);
-		system("cls");
 
 		///////////////////////////////////////////////보스
 		if (player->GetLevel() == 10)
@@ -114,6 +120,7 @@ int main() {
 					cout << "몬스터와 조우!" << endl;
 					Sleep(500);
 
+					BossMonster* bossmonster = new BossMonster;
 					gameManager->generateBossMonster();
 					gameManager->bossbattle(player, bossmonster);
 					ncnt++;
