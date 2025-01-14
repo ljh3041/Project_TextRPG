@@ -89,6 +89,11 @@ string Character::NameValidation() // 이름 검증
     return characterName;
 }
 
+void Character::SetName(string characterName)
+{
+    name = characterName;
+}
+
 void Character::DisplayStatus()
 {
     cout << "-현재 상태에 대해 말씀드리자면, " << endl;
