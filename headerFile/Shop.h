@@ -15,12 +15,14 @@ using namespace std;
 class Shop
 {
 private:
-    vector<Item> items_for_sale;
+    vector<Item*> all_items;//모든 아이템 저장 백터
+    vector<Item*> items_for_sale;//판매할 아이템
 
-    vector<Item> RandomItem();
+    vector<Item*> RandomItem();// 아이템을 랜덤으로 선택
 
 public:
     Shop();
+    ~Shop();
     void EnterShop();
     void ShopSelection();
     void BuyItem();
