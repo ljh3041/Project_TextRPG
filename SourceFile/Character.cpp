@@ -18,7 +18,7 @@ Character::Character()
     experience = 0;
     gold = 0;
 
-    cout << "캐릭터가 생성되었습니다. " << name << "님! 준비운동은 하셨나요? 준비운동의 중요성에 대해 아시나요? 준비운동은 운동 중 부상위험을 획기적으로 줄여줄 수 있습니다." << endl;
+    
 }
 
 Character::~Character()
@@ -91,7 +91,8 @@ string Character::NameValidation() // 이름 검증
 
 void Character::SetName(const string& characterName)
 {
-    name = characterName;
+    name = characterName;    
+    cout << "캐릭터가 생성되었습니다. " << name << "님! 준비운동은 하셨나요? 준비운동의 중요성에 대해 아시나요? 준비운동은 운동 중 부상위험을 획기적으로 줄여줄 수 있습니다." << endl;
 }
 
 void Character::DisplayStatus()
