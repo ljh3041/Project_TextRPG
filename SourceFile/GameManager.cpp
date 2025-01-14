@@ -44,8 +44,10 @@ BossMonster* GameManager::generateBossMonster()
 
 void GameManager::battle(Character* player, Monster* monster)
 {
-	while (player->GetHealth() != 0 || monster->GetHealth() != 0) // 캐릭터.h에 gethealth 추가
+	player->StartFight();
+	while ((player->GetHealth() >= 0) ^ (monster->GetHealth() >= 0)) // 캐릭터.h에 gethealth 추가
 	{
+		player->UseItem();
 		//플레이어 공격
 		cout << player->GetName() << "의 공격! " << player->GetAttack() << "의 피해" << endl;
 		Sleep(500);
@@ -60,6 +62,7 @@ void GameManager::battle(Character* player, Monster* monster)
 		Sleep(1000);
 		//useitem?
 	}
+	player->EndFight();
 	if (monster->GetHealth() <= 0)
 	{
 		cout << "승리" << endl;
@@ -74,8 +77,10 @@ void GameManager::battle(Character* player, Monster* monster)
 
 void GameManager::bossbattle(Character* player, BossMonster* bossmonster)
 {
-	while (player->GetHealth() != 0 || bossmonster->GetHealth() != 0)
+	player->StartFight();
+	while ((player->GetHealth() <= 0) ^ (bossmonster->GetHealth() <= 0))
 	{
+		player->UseItem();
 		//플레이어 공격
 		cout << player->GetName() << "의 공격! " << player->GetAttack() << "의 피해" << endl;
 		Sleep(500);
@@ -88,8 +93,8 @@ void GameManager::bossbattle(Character* player, BossMonster* bossmonster)
 		player->TakeDamage(bossmonster->GetAttack());
 		cout << player->GetName() << "의 남은 체력 " << player->GetHealth() - bossmonster->GetAttack() << endl;
 		Sleep(1000);
-		//useitem?
 	}
+	player->EndFight();
 	if (bossmonster->GetHealth() <= 0)
 	{
 		cout << "승리" << endl;
@@ -106,30 +111,12 @@ void GameManager::bossbattle(Character* player, BossMonster* bossmonster)
 void GameManager::visitShop()//Character* player)
 {
 	Shop* shop = new Shop;
-	/*Shop* shop = nullptr;
-	char visit;
-	int shopcnt = 0;
-	cout << "상점에 방문하시겠습니까? Y / N" << endl;
-	cin >> visit;
-	while (shopcnt == 0) {
-		if (visit == 'Y' || visit == 'y')
-		{
-			shop->getInstance();
-			shopcnt++;
-		}
-		else if (visit == 'N' || visit == 'n')
-		{
-			cout << "공백?" << endl;
-			shopcnt++;
-		}
-	}*/
+	shop->EnterShop();
+	shop->ShopSelection();
 }
 
 void GameManager::displayInventory(Character* player)
 {
-	//cout << "(플레이어 이름)의 상태" << endl << "체력 : " << player->GetHealth() << endl << "공격력 : " << endl << " 경험치 : " << endl << "골드 : " << endl; //캐릭터 - 골드 
-	//or
-	//cout << player->displayStatus();
 	player->DisplayStatus();
 }
 
