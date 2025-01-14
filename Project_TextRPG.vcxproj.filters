@@ -25,15 +25,18 @@
     <Filter Include="헤더 파일\Math">
       <UniqueIdentifier>{e25c9fc3-0a79-4c5e-9da0-e25736cc3422}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Item">
+      <UniqueIdentifier>{95673f76-ad80-4046-b8b7-04710ef12b56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Item">
+      <UniqueIdentifier>{565dc3a9-e329-43ae-bcde-4cedb06f774c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headerFile\Character.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="headerFile\GameManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="headerFile\Item.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="headerFile\Shop.h">
@@ -63,15 +66,21 @@
     <ClInclude Include="headerFile\DecoWord.h">
       <Filter>헤더 파일\Monster</Filter>
     </ClInclude>
+    <ClInclude Include="headerFile\Item.h">
+      <Filter>헤더 파일\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="headerFile\ConsumableItem.h">
+      <Filter>헤더 파일\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="headerFile\EquipmentItem.h">
+      <Filter>헤더 파일\Item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFile\Character.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="SourceFile\GameManager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="SourceFile\Item.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="SourceFile\Project_TextRPG.cpp">
@@ -103,6 +112,12 @@
     </ClCompile>
     <ClCompile Include="SourceFile\DecoWord.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\ConsumableItem.cpp">
+      <Filter>소스 파일\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\EquipmentItem.cpp">
+      <Filter>소스 파일\Item</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

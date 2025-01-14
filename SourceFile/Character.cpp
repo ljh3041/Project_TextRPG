@@ -181,3 +181,52 @@ void Character::TakeDamage(int damage)
     health -= damage;
 }
 
+void Character::Healing(int heal)
+{
+    health -= heal;
+}
+
+//아이템 관련 함수
+int Character::GetItemAttack()
+{
+    int itemAttack = 0;
+    for (size_t i = 0; i < inventory.size(); i++)
+    {
+        itemAttack += inventory[i]->GetAttack();
+    }
+    return itemAttack;
+}
+
+int Character::GetItemHealth()
+{
+    int itemHealth = 0;
+    for (size_t i = 0; i < inventory.size(); i++)
+    {
+        itemHealth += inventory[i]->GetHealth();
+    }
+    return itemHealth;
+}
+
+void Character::UseItem()
+{
+    for (size_t i = 0; i < inventory.size(); i++)
+    {
+        inventory[i]->UseItem();
+    }
+}
+
+void Character::StartFight()
+{
+    for (size_t i = 0; i < inventory.size(); i++)
+    {
+        inventory[i]->StartFight();
+    }
+}
+
+void Character::EndFight()
+{
+    for (size_t i = 0; i < inventory.size(); i++)
+    {
+        inventory[i]->EndFight();
+    }
+}

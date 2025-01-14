@@ -21,7 +21,9 @@
   <ItemGroup>
     <ClInclude Include="headerFile\BossMonster.h" />
     <ClInclude Include="headerFile\Character.h" />
+    <ClInclude Include="headerFile\ConsumableItem.h" />
     <ClInclude Include="headerFile\DecoWord.h" />
+    <ClInclude Include="headerFile\EquipmentItem.h" />
     <ClInclude Include="headerFile\GameManager.h" />
     <ClInclude Include="headerFile\Goblin.h" />
     <ClInclude Include="headerFile\Item.h" />
@@ -36,10 +38,11 @@
     <ClCompile Include="headerFile\MonsterData.cpp" />
     <ClCompile Include="SourceFile\BossMonster.cpp" />
     <ClCompile Include="SourceFile\Character.cpp" />
+    <ClCompile Include="SourceFile\ConsumableItem.cpp" />
     <ClCompile Include="SourceFile\DecoWord.cpp" />
+    <ClCompile Include="SourceFile\EquipmentItem.cpp" />
     <ClCompile Include="SourceFile\GameManager.cpp" />
     <ClCompile Include="SourceFile\Goblin.cpp" />
-    <ClCompile Include="SourceFile\Item.cpp" />
     <ClCompile Include="SourceFile\Monster.cpp" />
     <ClCompile Include="SourceFile\MyMath.cpp" />
     <ClCompile Include="SourceFile\Orc.cpp" />

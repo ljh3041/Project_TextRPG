@@ -52,6 +52,10 @@ public:
     {
         return health;
     }
+    int GetMaxHealth() const
+    {
+        return maxHealth;
+    }
     int GetAttack() const
     {
         return attack;
@@ -62,6 +66,7 @@ public:
         return name;
     }
     void TakeDamage(int damage);
+    void Healing(int heal);
 
     int GetGold() const
     {
@@ -69,5 +74,16 @@ public:
     }
 
     void SetGold(int settleGold);
+
+    // 아이템 관련 함수
+    int GetItemAttack();
+
+    int GetItemHealth();
+
+    void UseItem();
+
+    void StartFight();
+
+    void EndFight();
 };
 
