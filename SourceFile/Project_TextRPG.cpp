@@ -37,7 +37,7 @@ int main() {
 	Character* player = Character::GetInstance();
 	string playerName = player->NameValidation();
 	Sleep(500);
-	player->SetName(playerName);
+	player-> SetName(playerName);
 
 	//player->NameValidation();
 	//player->GetInstance();//Character* player = Character::GetInstance(); // 캐릭터 생성 로직 변경 필요 혹은 물어보기
