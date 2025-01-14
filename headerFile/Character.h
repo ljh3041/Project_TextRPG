@@ -63,12 +63,13 @@ public:
     }
     void TakeDamage(int damage);
 
-    int getgold() const
+    int GetGold() const
     {
         return gold;
     }
 
-    void setgold(int settleGold);
+    void SetGold(int settleGold);
+
 
    
     //✨ update  
@@ -76,7 +77,6 @@ public:
     void TakeDamage(int damage);
 
 };
-
 
 Character* Character::instance = nullptr;
 
@@ -104,7 +104,7 @@ Character::~Character()
 
 Character* Character::GetInstance(const string& characterName)
 {
-    
+
     if (instance == nullptr)
     {
         instance = new Character(characterName);
@@ -124,11 +124,11 @@ void Character::ReleaseInstance()
 string Character::NameValidation() // 이름 검증
 {
     string characterName;
-    
+
     cout << "캐릭터의 이름을 2세 이름짓듯 설레고도 신중한 마음으로 입력해주세요. 너무 짧아도 안되고 너무 길어도 안돼요. 그리고 영어와 숫자로만 입력해주세요. 그래야 사주가 좋대요. " << endl;
-  
+
     while (true)
-    {  
+    {
         cout << "신중하게 지은 이름: ";
         cin >> characterName;
 
@@ -143,10 +143,10 @@ string Character::NameValidation() // 이름 검증
             cout << "\n적당히 하세요. 30자는 심하잖아요. 군대가면 관등성명대다 전역하겠어요." << endl;
             continue;
         }
-        
+
         bool isValid = true;
         for (char v : characterName)
-        {            
+        {
             if (isalnum(v) == false) // 영어랑 숫자만 가려내는 함수
             {
                 cout << "\n영어랑 숫자만 입력 가능합니다. 왜냐면 C++ 만든 곳이 미국회사라서 영어가 기본이기도하고 한글도 어떻게 하면 가능은 하다는데 너무 복잡해져서 아직은 무리인거같아요." << endl;
@@ -188,19 +188,19 @@ void Character::LevelUp()
     experience = 0;
     cout << "레벨이 올랐는데 왜 올랐냐면 경험치가 100이 쌓이면 레벨이 오르는데 방금 전투로 필요경험치 100이 누적되셨어요." <<
         "\n그래서 현재 레벨은 " << level << "입니다." << "\n그리고 최대 체력은 " << maxHealth << "이고 공격력은 " << attack << "입니다." << endl;
-    
+
     if (level == 10)
     {
-        cout << "최고레벨에 도달했어요! 이제 "<< name << "님을 능가할 용사는 없어요! 마지막 테스트만 통과하면요.. 마지막으로 체력을 채워드릴게요." << endl;
+        cout << "최고레벨에 도달했어요! 이제 " << name << "님을 능가할 용사는 없어요! 마지막 테스트만 통과하면요.. 마지막으로 체력을 채워드릴게요." << endl;
         health = maxHealth;
-        cout << "현재 체력: " << health << endl;        
+        cout << "현재 체력: " << health << endl;
     }
 }
 void Character::UseItem(int index)
 {
     Item* item = inventory[index];
     item->Use(this);
-    cout << item->GetName() << "을(를) 사용했습니다." << endl;
+    cout << item->getName() << "을(를) 사용했습니다." << endl;
 
     delete item;
     inventory.erase(inventory.begin() + index);
@@ -212,7 +212,7 @@ void Character::VisitShop()
     GameManager::GetInstance()->VisitShop(this);
 }
 
-void Character:: setgold(int settleGold) // + 값이 들어오면 몬스터 사냥보상으로 인식, - 값이 들어오면 상점 소모비용으로 인식
+void Character::SetGold(int settleGold) // + 값이 들어오면 몬스터 사냥보상으로 인식, - 값이 들어오면 상점 소모비용으로 인식
 {
     gold += settleGold;
     int messageCall = GetRandom(0, 2);
@@ -247,7 +247,6 @@ void Character:: setgold(int settleGold) // + 값이 들어오면 몬스터 사�
 //✨ update  
 void Character::TakeDamage(int damage)
 {
-	health -= damage;
+    health -= damage;
 }
-
 
