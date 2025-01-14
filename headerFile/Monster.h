@@ -22,8 +22,8 @@ public:
 	string GetName();
 	int GetHealth();
 	int GetAttack();
-	int GetRandomHealthStat();
-	int GetRandomAttackStat();
+	int GetRandomHealthStat(string _name);
+	int GetRandomAttackStat(string _name);
 
 	void TakeDamage(int damage);
 	Item* DropItem();
