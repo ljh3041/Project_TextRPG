@@ -1,22 +1,26 @@
 ﻿#include "../headerFile/Shop.h"
-
+#include "../headerFile/EquipmentItem.h"
 
 //생성자
 Shop::Shop()
 {
+    all_items.push_back(new Sword40());
+    all_items.push_back(new VampiricDagger());
+    all_items.push_back(new HP_Blade4());
+    all_items.push_back(new HealingArmor());
+
     items_for_sale = RandomItem();
 }
 
 
 // 랜덤으로 아이템 뽑기 함수
-vector<Item> Shop::RandomItem()
+vector<Item*> Shop::RandomItem()
 {
     srand(static_cast<unsigned int>(time(0))); // 랜덤 시드 설정
 
-    vector<Item> shuffled_items;// = all_items; // 원본 복사 (나중에 함수 명 변경)
-    random_shuffle(shuffled_items.begin(), shuffled_items.end()); // 배열 섞기
+    random_shuffle(all_items.begin(), all_items.end()); // 배열 섞기
 
-    return vector<Item>(shuffled_items.begin(), shuffled_items.begin() + 3); // 3개 선택해서 반환
+    return vector<Item*>(all_items.begin(), all_items.begin() + 3); // 3개 선택해서 반환
 }
 
 // 현재 보유 골드, 인벤토리 상태 표시 함수
@@ -72,9 +76,9 @@ void Shop::BuyItem()
     cout << "구매 가능한 아이템 : " << endl;
     for (size_t i = 0; i < items_for_sale.size(); i++)
     {
-        cout << i + 1 << "." << items_for_sale[i].GetName()
-            << ": 가격 " << items_for_sale[i].GetPrice()
-            << ", 무게 " << items_for_sale[i].GetWeight() << endl;
+        cout << i + 1 << "." << items_for_sale[i]->GetName()
+            << ": 가격 " << items_for_sale[i]->GetPrice()
+            << ", 무게 " << items_for_sale[i]->GetWeight() << endl;
     }
 
     cout << "4.뒤로가기" << endl;
@@ -84,7 +88,7 @@ void Shop::BuyItem()
 
     if (choice == 4) return;
 
-    Item selected_item = items_for_sale[choice - 1];
+    Item* selected_item = items_for_sale[choice - 1];
     /*
     if (character.getGold() < selected_item.getPrice())
     {
