@@ -89,7 +89,7 @@ string Character::NameValidation() // 이름 검증
     return characterName;
 }
 
-void Character::SetName(string characterName)
+void Character::SetName(const string& characterName)
 {
     name = characterName;
 }
