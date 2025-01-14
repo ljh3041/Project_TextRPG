@@ -15,27 +15,26 @@ using namespace std;
 class Shop
 {
 private:
-    Character& character;
     vector<Item> items_for_sale;
 
     vector<Item> RandomItem();
 
 public:
-    Shop(Character& c);
+    Shop();
     void EnterShop();
     void ShopSelection();
     void BuyItem();
     void SellItem();
-    //static Shop& getInstance() {
-    //    static Shop shopinstance; // 유일한 객체 생성
-    //    return shopinstance;
-    //}
+    static Shop& getInstance() {
+        static Shop shopinstance; // 유일한 객체 생성
+        return shopinstance;
+    }
 };
 
 //생성자
-Shop::Shop(Character& c) : character(c)
+Shop::Shop()
 {
-    items_for_sale = RandomItem();
+
 }
 
 
