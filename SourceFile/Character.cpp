@@ -59,7 +59,7 @@ string Character::NameValidation() // 이름 검증
     while (true)
     {
         cout << "신중하게 지은 이름: ";
-        cin >> characterName;
+        getline(cin, characterName);
 
         if (characterName.size() < 1)
         {
