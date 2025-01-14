@@ -20,7 +20,7 @@ vector<string> DecoWordList1 =
 	"군 제대 후 들뜬 마음으로 고향으로 내려가던",
 	"취미가 여장인"
 	"코딩하다가 머리 터질거 같아 잠깐 산책나온"
-	
+
 };
 
 vector<string> DecoWordList2 =
@@ -43,14 +43,14 @@ vector<string> DecoWordList2 =
 	" 지혜로운",
 	" 멍청한",
 	" 엄청난"
-	
+
 };
 
 string DecoWord::nickname(string _name)
 {
-	int i = GetRandom(0, DecoWordList1.size());
+	int i = GetRandom(0, static_cast<int>(DecoWordList1.size()));
 	_name += DecoWordList1[i];
-	int j = GetRandom(0, DecoWordList2.size());
+	int j = GetRandom(0, static_cast<int>(DecoWordList2.size()));
 	_name += DecoWordList2[j];
 	return _name;
 }
