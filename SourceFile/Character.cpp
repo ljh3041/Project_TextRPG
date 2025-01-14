@@ -55,7 +55,7 @@ string Character::NameValidation() // 이름 검증
   
     while (true)
     {  
-        cout << "신중하게 지은 이름: " << endl;
+        cout << "신중하게 지은 이름: ";
         cin >> characterName;
 
         if (characterName.size() < 1)
@@ -137,7 +137,7 @@ void Character::VisitShop()
     GameManager::GetInstance()->VisitShop(this);
 }
 
-void Character:: setgold(int settleGold) // +값이 들어오면 몬스터 사냥보상으로 인식, -값이 들어오면 상점 소모비용으로 인식
+void Character:: setgold(int settleGold) // + 값이 들어오면 몬스터 사냥보상으로 인식, - 값이 들어오면 상점 소모비용으로 인식
 {
     gold += settleGold;
 
