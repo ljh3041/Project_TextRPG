@@ -8,9 +8,9 @@ using namespace std;
 class Character
 {
 private:
-	static Character* instance;
-	Character(const string& characterName);
-	~Character();
+    static Character* instance;
+    Character(const string& characterName);
+    ~Character();
 
     string name;
     int level;
@@ -23,46 +23,47 @@ private:
     vector<Item*> inventory;
 
 
-	Character(const Character&) = delete;
-	Character& operator=(const Character&) = delete;
+    Character(const Character&) = delete;
+    Character& operator=(const Character&) = delete;
 
 public:
     static Character* GetInstance(const string& characterName);
     static void ReleaseInstance();
-    
+
     string NameValidation(); // 이름 검증
     void DisplayStatus();
     void LevelUp();
     void UseItem(int index);
-    void VisitShop(); 
+    void VisitShop();
 
-//✨ update  
-    int getlevel() const 
+    //✨ update  
+    int getlevel() const
     {
 
         return level;
     }
-    int gethealth() const 
+    int gethealth() const
     {
         return health;
     }
-    int getattack() const 
+    int getattack() const
     {
         return attack;
     }
-    string getname() const 
+    string getname() const
     {
         return name;
     }
 
     int getgold() const
     {
-        return gold;    
+        return gold;
     }
 
     void setgold(int settleGold);
-
+   
     //✨ update  
 
     void TakeDamage(int damage);
+
 };

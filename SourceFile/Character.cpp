@@ -1,4 +1,5 @@
 #include "../headerFile/Character.h"
+#include "../headerFile/MyMath.h"
 #include <string>
 #include <iostream>
 #include <algorithm>
@@ -49,8 +50,8 @@ void Character::ReleaseInstance()
 
 string Character::NameValidation() // 이름 검증
 {
-    string characterName;    
-
+    string characterName;
+    
     cout << "캐릭터의 이름을 2세 이름짓듯 설레고도 신중한 마음으로 입력해주세요. 너무 짧아도 안되고 너무 길어도 안돼요. 그리고 영어와 숫자로만 입력해주세요. 그래야 사주가 좋대요. " << endl;
   
     while (true)
@@ -117,7 +118,7 @@ void Character::LevelUp()
     
     if (level == 10)
     {
-        cout << "레벨업할 수 있는 경험치에 도달은 했는데 지금 최고레벨이라 이제 못 올려요. 그래도 계속 나아가셨으면 좋겠어요. 도전은 아름답잖아요. 체력은 채워드릴게요." << endl;
+        cout << "최고레벨에 도달했어요! 이제 "<< name << "님을 능가할 용사는 없어요! 마지막 테스트만 통과하면요.. 마지막으로 체력을 채워드릴게요." << endl;
         health = maxHealth;
         cout << "현재 체력: " << health << endl;        
     }
@@ -141,15 +142,30 @@ void Character::VisitShop()
 void Character:: setgold(int settleGold) // + 값이 들어오면 몬스터 사냥보상으로 인식, - 값이 들어오면 상점 소모비용으로 인식
 {
     gold += settleGold;
+    int messageCall = GetRandom(0, 2);
+    vector<string>goldMessageA =
+    {
+        "몬스터가 두부 심부름값으로 들고가던 ",
+        "몬스터가 어머니 생일선물 사려고 모았던 ",
+        "몬스터의 할머니가 용돈으로 주셨던 "
+    };
+
+    vector<string>goldMessageB =
+    {
+        "몬스터의 어머니는 오늘 두부도 잃고 자식도 잃었네요.",
+        "몬스터의 어머니는 올해 생일선물 받긴 글렀네요.",
+        "맛있는거 사먹으라고 꼬깃한 쌈짓돈 쥐어주시는 모습이 아른거려요.."
+    };
 
     if (settleGold > 0)
     {
-        cout << "몬스터가 두부 심부름값으로 들고가던 " << settleGold << "G를 획득했습니다! 몬스터의 어머니는 오늘 두부도 잃고 자식도 잃었네요. \n현재 보유 골드 " << gold << "G 입니다." << endl;
+        cout << goldMessageA[messageCall] << settleGold << "G를 획득했습니다!" << goldMessageB[messageCall] << endl;
+        cout << "\n현재 보유 골드 " << gold << "G 입니다." << endl;
         return;
     }
     else if (settleGold < 0)
     {
-        cout << "시원하게 지르셨네요. 총 구매비용 " << settleGold * -1 << ", 현재 보유 골드 " << gold << "입니다. 아껴쓰시는게 좋겠어요. 요즘같은 고물가시대에.. 포션같은거보단 현금입니다." << endl;
+        cout << "시원하게 지르셨네요. 총 구매비용 " << settleGold * -1 << ", 현재 보유 골드 " << gold << "입니다. 좀 아껴쓰시는게 좋겠어요. 요즘같은 고물가시대에.. 포션따위보단 현금입니다." << endl;
         return;
     }
     else { return; } // 0원일 시 통과
