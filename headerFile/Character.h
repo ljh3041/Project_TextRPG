@@ -41,23 +41,20 @@ public:
     void VisitShop(); 
 
 //✨ update  
-    int getlevel() const 
-    {
+        int GetLevel() const {
 
         return level;
     }
-    int gethealth() const 
-    {
+    int GetHealth() const {
         return health;
     }
-    int getattack() const 
-    {
+    int GetAttack() const {
         return attack;
     }
-    string getname() const 
-    {
+    string GetName() const {
         return name;
     }
+    void TakeDamage(int damage);
 
     int getgold() const
     {
@@ -65,12 +62,7 @@ public:
     }
 
     void setgold(int settleGold);
-
-    //✨ update  
-
-    void TakeDamage(int damage);
 };
-
 
 
 Character* Character::instance = nullptr;
