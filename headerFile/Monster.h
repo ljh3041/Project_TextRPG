@@ -3,6 +3,7 @@
 #include "Item.h"
 #include "Character.h"
 #include "MonsterData.h"
+#include "MyMath.h"
 #include "DecoWord.h"
 
 using namespace std;

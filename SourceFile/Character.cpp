@@ -1,10 +1,16 @@
-#include "../headerFile/Character.h"
+﻿#include "../headerFile/Character.h"
+#include <string>
+#include <iostream>
+#include <algorithm>
+#include <cctype>
+#include <vector>
+#include "../headerFile/MyMath.h"
 
 Character* Character::instance = nullptr;
 
-Character::Character()
+Character::Character(const string& characterName)
 {
-    name;
+    name = characterName;
     level = 1;
     health = 200;
     maxHealth = 200;
@@ -24,12 +30,13 @@ Character::~Character()
     inventory.clear();
 }
 
-Character* Character::GetInstance()
+
+Character* Character::GetInstance(const string& characterName)
 {
 
     if (instance == nullptr)
     {
-        instance = new Character();
+        instance = new Character(characterName);
     }
     return instance;
 }
@@ -134,10 +141,12 @@ void Character::LevelUp()
     GameManager::GetInstance()->VisitShop(this);
 }*/
 
-void Character::SetGold(int settleGold) // + 값이 들어오면 몬스터 사냥보상으로 인식, - 값이 들어오면 상점 소모비용으로 인식
+void Character::SetGold(int settleGold)
 {
     gold += settleGold;
-    int messageCall = GetRandom(0, 2);
+    cout << "\n현재 보유 골드 " << gold << "G 입니다." << endl;
+    /*int messageCall = GetRandom(0, 2); // 상점수입과 혼동될 수 있어 보류
+
     vector<string>goldMessageA =
     {
         "몬스터가 두부 심부름값으로 들고가던 ",
@@ -163,7 +172,7 @@ void Character::SetGold(int settleGold) // + 값이 들어오면 몬스터 사�
         cout << "시원하게 지르셨네요. 총 구매비용 " << settleGold * -1 << ", 현재 보유 골드 " << gold << "입니다. 좀 아껴쓰시는게 좋겠어요. 요즘같은 고물가시대에.. 포션따위보단 현금입니다." << endl;
         return;
     }
-    else { return; } // 0원일 시 통과
+    else { return; } // 0원일 시 통과*/
 }
 
 //✨ update  
@@ -171,3 +180,4 @@ void Character::TakeDamage(int damage)
 {
     health -= damage;
 }
+

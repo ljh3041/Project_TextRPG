@@ -6,7 +6,7 @@
 #include <cctype>
 #include <vector>
 #include "Item.h"
-#include "MyMath.h"
+
 using namespace std;
 
 //Singleton Pattern
@@ -14,7 +14,7 @@ class Character
 {
 private:
     static Character* instance;
-    Character();
+    Character(const string& characterName);
     ~Character();
 
     string name;
@@ -32,7 +32,7 @@ private:
     Character& operator=(const Character&) = delete;
 
 public:
-    static Character* GetInstance();
+    static Character* GetInstance(const string& characterName);
     static void ReleaseInstance();
 
     string NameValidation(); // 이름 검증
@@ -74,8 +74,7 @@ public:
    
     //✨ update  
 
-    //void TakeDamage(int damage);
+    void TakeDamage(int damage);
 
 };
-
 
