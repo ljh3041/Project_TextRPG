@@ -102,9 +102,9 @@ void Shop::BuyItem()
     cout << "구매 가능한 아이템 : " << endl;
     for (size_t i = 0; i < items_for_sale.size(); i++)
     {
-        cout << i + 1 << "." << items_for_sale[i].getName()
-            << ": 가격 " << items_for_sale[i].getPrice()
-            << ", 무게 " << items_for_sale[i].getWeight() << endl;
+        cout << i + 1 << "." << items_for_sale[i].GetName()
+            << ": 가격 " << items_for_sale[i].GetPrice()
+            << ", 무게 " << items_for_sale[i].GetWeight() << endl;
     }
 
     cout << "4.뒤로가기" << endl;
