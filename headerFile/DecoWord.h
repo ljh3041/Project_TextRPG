@@ -12,12 +12,12 @@ public:
 	vector<string> DecoWordList1;
 	vector<string> DecoWordList2;
 
-	string nickname(string _name);
+	string nickname(string& _name);
 
 	
 	static DecoWord& getInstance() {
 		static DecoWord instance; // 유일한 객체 생성
-		return instance;
+		return instance;	
 	}
 	
 private:

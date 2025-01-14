@@ -19,6 +19,8 @@ class GameManager
 {
 private:
 	static GameManager* instance;
+	Monster* monster = nullptr;
+	int stage = 0;
 
 	GameManager();
 	~GameManager();
@@ -34,12 +36,17 @@ public:
 		return instance;
 	}
 
-	Monster* generateMonster();
-	BossMonster* generateBossMonster();
+	//게임 페이즈
+	int firstPhase();
+	void visitShop();
 	void battle(Character* player, Monster* monster);
     void bossbattle(Character* player, BossMonster* bossmonster);
-	void visitShop();
+
+
+	void generateMonster();
+	void generateBossMonster();
 	void displayInventory(Character* player);
+	Monster* getMonster();
 };
 
 #endif
