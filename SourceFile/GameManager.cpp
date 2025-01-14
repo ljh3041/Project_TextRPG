@@ -1,15 +1,14 @@
 #include "../headerFile/GameManager.h"
+#include "../headerFile/GraphicInterface.h"
 #include <windows.h>
 #include <conio.h>
 
-
-
 GameManager* GameManager::instance = nullptr;
+Shop* Shop::instance = nullptr;
 
 //시작, 종료 대화 바꾸기
 GameManager::GameManager()
 {
-
 	monster = new Monster;
 }
 
@@ -45,20 +44,30 @@ void GameManager::generateBossMonster()
 	cout << "보스 몬스터 " << monster->GetName() << "가 나타났다!" << endl;
 }
 
+
+//보스와 일반 몬스터 둘 간의 battle함수의 차이가 거의 없음.
+//보스 전투를 다른 방식으로 변경하거나 battle()과 bossbattle()을 합치는 것도 고려.
 void GameManager::battle(Character* player, Monster* monster)
 {
-	player->StartFight();
-	monster;
+	player->StartFight(); //인벤토리 아이템 사용 함수
 	while ((player->GetHealth() > 0) && (monster->GetHealth() > 0)) // 캐릭터.h에 gethealth 추가
 	{
-		player->UseItem();
+		player->UseItem(); // 플레이어 무조건 선턴. 아이템 먼저 사용.
 		//플레이어 공격
+		printPlayer();
 		cout << player->GetName() << "의 공격! " << player->GetAttack() << "의 피해" << endl;
 		Sleep(500);
 		monster->TakeDamage(player->GetAttack());
 		cout << monster->GetName() << "의 남은 체력 " << monster->GetHealth() << endl;
 		Sleep(1000);
+
+		if (monster->GetHealth() <= 0) // 몬스터가 공격하기 전 이미 피가 0 이하면 전투 종료.
+		{
+			break;
+		}
+
 		//몬스터 공격
+		printBoss();
 		cout << monster->GetName() << "의 공격! " << monster->GetAttack() << "의 피해" << endl;
 		Sleep(500);
 		player->TakeDamage(monster->GetAttack());
@@ -66,16 +75,21 @@ void GameManager::battle(Character* player, Monster* monster)
 		Sleep(1000);
 		//useitem?
 	}
-	player->EndFight();
-	if (monster->GetHealth() <= 0)
+	//둘 중 하나의 체력이 0 이하가 되어도 남은 공격 기회는 반드시 사용하는 경우를 수정.
+
+	player->EndFight(); //인벤토리 아이템 사용 함수
+
+
+	if (monster->GetHealth() <= 0) // 플레이어 승리 시 if 문 내에서 함수 종료후 메인으로
 	{
 		cout << "승리" << endl;
-		player->LevelUp();
+		player->LevelUp(); // 플레이어 레벨 업 함수 적용
 		int i = 0;
 		i = _getch();
+		
 		//item 획득 함수;
 	}
-	else
+	else // 플레이어 패배 시 종료
 	{
 		cout << "패배" << endl;
 		exit(0);
@@ -85,15 +99,22 @@ void GameManager::battle(Character* player, Monster* monster)
 void GameManager::bossbattle(Character* player, BossMonster* bossmonster)
 {
 	player->StartFight();
-	while ((player->GetHealth() <= 0) ^ (bossmonster->GetHealth() <= 0))
+	while ((player->GetHealth() > 0) && (bossmonster->GetHealth() > 0))
 	{
-		player->UseItem();
+		player->UseItem();  // 플레이어 무조건 선턴. 아이템 먼저 사용.
+
 		//플레이어 공격
 		cout << player->GetName() << "의 공격! " << player->GetAttack() << "의 피해" << endl;
 		Sleep(500);
 		bossmonster->TakeDamage(player->GetAttack());
 		cout << bossmonster->GetName() << "의 남은 체력 " << bossmonster->GetHealth() << endl;
 		Sleep(1000);
+
+		if (bossmonster->GetHealth() <= 0) // 몬스터가 공격하기 전 이미 피가 0 이하면 전투 종료.
+		{
+			break;
+		}
+
 		//보스 몬스터 공격
 		cout << bossmonster->GetName() << "의 공격! " << bossmonster->GetAttack() << "의 피해" << endl;
 		Sleep(500);
@@ -106,6 +127,9 @@ void GameManager::bossbattle(Character* player, BossMonster* bossmonster)
 	{
 		cout << "승리" << endl;
 		//item 획득 함수;
+		//골드 획득 함수;
+		int gold = 0;
+		player->SetGold(gold);
 		exit(0);
 	}
 	else
@@ -130,11 +154,11 @@ int GameManager::firstPhase()
 	return value;
 }
 
+//반드시 Shop 방문 함수를 GameManager에서 제어해야 하는가?
 void GameManager::visitShop()//Character* player)
 {
-	Shop* shop = new Shop;
-	shop->EnterShop();
-	shop->ShopSelection();
+	Shop::GetInstance()->EnterShop();
+	Shop::GetInstance()->ShopSelection();
 }
 
 void GameManager::displayInventory(Character* player)

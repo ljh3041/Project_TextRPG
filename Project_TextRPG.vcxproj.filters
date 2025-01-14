@@ -75,6 +75,9 @@
     <ClInclude Include="headerFile\EquipmentItem.h">
       <Filter>헤더 파일\Item</Filter>
     </ClInclude>
+    <ClInclude Include="GraphicInterface.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFile\Character.cpp">
