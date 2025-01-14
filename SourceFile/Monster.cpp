@@ -33,7 +33,7 @@ int Monster::GetAttack()
 
 int Monster::GetRandomHealthStat()
 {
-	int _Random = 0;// Character::GetInstance()->getlevel()* GetRandom(20, 30);
+	int _Random = 0;//Character::GetInstance()->getlevel()* GetRandom(20, 30);
 
 	return _Random;
 }

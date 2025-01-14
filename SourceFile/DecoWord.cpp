@@ -48,9 +48,9 @@ vector<string> DecoWordList2 =
 
 string DecoWord::nickname(string _name)
 {
-	int i = GetRandom(0, DecoWordList1.size());
+	int i = GetRandom(0, static_cast<int>( DecoWordList1.size()));
 	_name += DecoWordList1[i];
-	int j = GetRandom(0, DecoWordList2.size());
+	int j = GetRandom(0, static_cast<int>( DecoWordList2.size()));
 	_name += DecoWordList2[j];
 	return _name;
 }
