@@ -14,7 +14,7 @@ class Character
 {
 private:
     static Character* instance;
-    Character(const string& characterName);
+    Character();
     ~Character();
 
     string name;
@@ -32,7 +32,7 @@ private:
     Character& operator=(const Character&) = delete;
 
 public:
-    static Character* GetInstance(const string& characterName);
+    static Character* GetInstance();
     static void ReleaseInstance();
 
     string NameValidation(); // 이름 검증
@@ -69,12 +69,5 @@ public:
     }
 
     void SetGold(int settleGold);
-
-
-   
-    //✨ update  
-
-    void TakeDamage(int damage);
-
 };
 

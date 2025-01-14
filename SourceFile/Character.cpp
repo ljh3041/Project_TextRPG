@@ -8,9 +8,9 @@
 
 Character* Character::instance = nullptr;
 
-Character::Character(const string& characterName)
+Character::Character()
 {
-    name = characterName;
+    
     level = 1;
     health = 200;
     maxHealth = 200;
@@ -31,12 +31,12 @@ Character::~Character()
 }
 
 
-Character* Character::GetInstance(const string& characterName)
+Character* Character::GetInstance()
 {
 
     if (instance == nullptr)
     {
-        instance = new Character(characterName);
+        instance = new Character();
     }
     return instance;
 }
