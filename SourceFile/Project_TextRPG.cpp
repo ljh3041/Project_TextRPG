@@ -33,8 +33,14 @@ Shop* Shop::instance = nullptr;
 
 int main() {
 	GameManager* gameManager = GameManager::GetInstance();
-	//Character* SetName(characterName);
+	//
 	Character* player = Character::GetInstance();
+	string playerName = player->NameValidation();
+	Sleep(500);
+	player->SetName(playerName);
+
+	//GameManager* gameManager = GameManager::GetInstance();
+	//Character* player = Character::GetInstance();
 	//player->NameValidation();
 	//player->GetInstance();//Character* player = Character::GetInstance(); // 캐릭터 생성 로직 변경 필요 혹은 물어보기
 	//cout << player->GetLevel();
