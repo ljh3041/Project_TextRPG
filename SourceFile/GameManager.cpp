@@ -31,14 +31,14 @@ Monster* GameManager::generateMonster()
 		monster = new Troll();
 		break;
 	}
-	cout << monster << "가 출현했다!" << endl;
+	cout << monster->GetName() << "가 출현했다!" << endl;
 	return monster;
 }
 
 BossMonster* GameManager::generateBossMonster()
 {
 	BossMonster* bossmonster = new BossMonster;
-	cout << "보스 몬스터 " << bossmonster << "가 나타났다!" << endl;
+	cout << "보스 몬스터 " << bossmonster->GetName() << "가 나타났다!" << endl;
 	return bossmonster;
 }
 
@@ -66,6 +66,7 @@ void GameManager::battle(Character* player, Monster* monster)
 	if (monster->GetHealth() <= 0)
 	{
 		cout << "승리" << endl;
+		player->LevelUp();
 		//item 획득 함수;
 	}
 	else
