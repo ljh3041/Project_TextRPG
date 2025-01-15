@@ -5,9 +5,9 @@
 Shop::Shop()
 {
     all_items.push_back(new Sword40());
-    all_items.push_back(new VampiricDagger());
     all_items.push_back(new HP_Blade4());
-    all_items.push_back(new HealingArmor());
+    all_items.push_back(new HP_Blade4());
+    all_items.push_back(new HP_Blade4());
 
     items_for_sale = RandomItem();
 }
