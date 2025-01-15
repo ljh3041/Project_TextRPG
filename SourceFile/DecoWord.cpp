@@ -32,9 +32,9 @@ DecoWord::DecoWord()
 
 string DecoWord::nickname(string& _name)
 {
-	int i = GetRandom(0, static_cast<int>(DecoWordList1.size()));
+	int i = GetRandom(0, static_cast<int>(DecoWordList1.size()-1));
 	_name += DecoWordList1[i];
-	int j = GetRandom(0, static_cast<int>(DecoWordList2.size()));
+	int j = GetRandom(0, static_cast<int>(DecoWordList2.size()-1));
 	_name += DecoWordList2[j];
 
 	return _name;
