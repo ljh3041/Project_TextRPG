@@ -147,8 +147,8 @@ void GameManager::battle(Character* player, Monster* monster)
 		{
 			cout << monster->GetName() << "의 남은 체력 " << monster->GetHealth() << endl;
 		}
-		Sleep(1000);
 		player->UseItem(); // 플레이어 무조건 선턴. 아이템 먼저 사용.
+		Sleep(1000);
 
 		if (monster->GetHealth() <= 0) // 몬스터가 공격하기 전 이미 피가 0 이하면 전투 종료.
 		{
@@ -211,8 +211,8 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 		{
 			cout << bossmonster->GetName() << "의 남은 체력 " << bossmonster->GetHealth() << endl;
 		}
-		Sleep(1000);
 		player->UseItem(); // 플레이어 무조건 선턴. 아이템 먼저 사용.
+		Sleep(1000);
 
 		if (bossmonster->GetHealth() <= 0) // 몬스터가 공격하기 전 이미 피가 0 이하면 전투 종료.
 		{
