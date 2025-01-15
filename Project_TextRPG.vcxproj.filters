@@ -72,9 +72,6 @@
     <ClInclude Include="headerFile\EquipmentItem.h">
       <Filter>헤더 파일\Item</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicInterface.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="headerFile\Dragon.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>

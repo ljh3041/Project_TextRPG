@@ -43,6 +43,7 @@ int Monster::GetGold()
 
 int Monster::GetRandomHealthStat(string _name)
 {
+	//(최대체력 계수 * 레벨 ) + (레벨 * (20~30)
 	int final = (monsterDatas.at(_name).health * Character::GetInstance()->GetLevel()) + (Character::GetInstance()->GetLevel() * GetRandom(20, 30));
 	return final;
 }

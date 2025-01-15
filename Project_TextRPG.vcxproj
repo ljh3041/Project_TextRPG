@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GraphicInterface.h" />
     <ClInclude Include="headerFile\Dragon.h" />
     <ClInclude Include="headerFile\Character.h" />
     <ClInclude Include="headerFile\ConsumableItem.h" />
