@@ -6,7 +6,6 @@
 #include <algorithm>
 #include <vector>
 #include <windows.h>
-#include <conio.h>
 #pragma endregion
 
 #pragma region AddedHeader
@@ -19,6 +18,7 @@
 #include "../headerFile/Goblin.h"
 #include "../headerFile/Dragon.h"
 #include "../headerFile/Shop.h"
+#include "../headerFile/MyMath.h"
 #pragma endregion
 
 using namespace std;
@@ -42,8 +42,7 @@ int main() {
 	
 	Sleep(500);
 	player->SetName(playerName);
-	int i = 0;
-	i=_getch();
+	PressAnyKey();
 
 
 	int stage = 1;
@@ -61,7 +60,7 @@ int main() {
 			cout << "몬스터와 조우!" << endl;
 			Sleep(500);
 
-			if (stage < 2)
+			if (stage < 10)
 			{
 				gameManager->generateMonster();
 				gameManager->battle(player, GameManager::GetInstance()->getMonster());
@@ -92,13 +91,14 @@ int main() {
 			Sleep(500);
 
 			gameManager->displayInventory(player);
-			i = _getch();
+			PressAnyKey();
+
 		}
 		else
 		{
 			cout << "다시 입력해주세요. " << endl;
-			i = _getch();
-			system("cls");
+			cout << "\n▶Press Anykey";
+			PressAnyKey();
 		}
 		//Sleep(500);
 	

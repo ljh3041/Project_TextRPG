@@ -1,7 +1,6 @@
 #include "../headerFile/GameManager.h"
 #include "../headerFile/GraphicInterface.h"
 #include <windows.h>
-#include <conio.h>
 
 GameManager* GameManager::instance = nullptr;
 Shop* Shop::instance = nullptr;
@@ -84,8 +83,7 @@ void GameManager::battle(Character* player, Monster* monster)
 	{
 		cout << "승리" << endl;
 		player->LevelUp(); // 플레이어 레벨 업 함수 적용
-		int i = 0;
-		i = _getch();
+		PressAnyKey();
 		
 		//item 획득 함수;
 	}
