@@ -144,11 +144,16 @@ void Character::LevelUp()
     }
 }
 
+void Character::AddGold(int AddGold)
+{
+    gold += AddGold;
+
+    cout << "획득한 골드 : " << AddGold << "G" << endl << "\n현재 보유 골드 " << gold << "G 입니다." << endl;
+}
+
 void Character::SetGold(int settleGold)
 {
-    gold += settleGold;
-
-    cout << "획득한 골드 : " << settleGold << "G" << endl << "\n현재 보유 골드 " << gold << "G 입니다." << endl;
+    gold = settleGold;
 
     /*int messageCall = GetRandom(0, 2); // 상점수입과 혼동될 수 있어 보류
 
@@ -232,7 +237,7 @@ int Character::GetItemHealth()
 void Character::UseItem()
 {
     for (size_t i = 0; i < inventory.size(); i++)
-    {
+    { 
         inventory[i]->UseItem();
         if (inventory[i]->IsUsed() == true)
         {
