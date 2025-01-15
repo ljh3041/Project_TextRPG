@@ -46,7 +46,9 @@ void GameManager::tutorialPhase()
 
 	Character::GetInstance()->NameValidation();
 	Sleep(500);
+	soundTrack1();
 	PressAnyKey();
+	
 }
 
 int GameManager::firstPhase()

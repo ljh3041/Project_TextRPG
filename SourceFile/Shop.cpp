@@ -80,12 +80,7 @@ vector<Item*> Shop::RandomItem()
 }
 
 // 현재 보유 골드, 인벤토리 상태 표시 함수
-void Shop::EnterShop()
-{
-    cout << "현재 보유 골드 : " << Character::GetInstance()->GetGold() << endl;
-    cout << "인벤토리 무게 : " << Character::GetInstance()->GetInventoryWeight()
-        << "/" << Character::GetInstance()->GetMaxInventoryWeight() << endl;
-}
+void Shop::EnterShop() {}
 
 // 상점 선택
 void Shop::ShopSelection()
@@ -94,6 +89,7 @@ void Shop::ShopSelection()
     {
         system("cls");
         printstore();
+
         int choice = GetValidNumber();
 
         switch (choice)
@@ -132,6 +128,16 @@ void Shop::ShopSelection()
 // 아이템 구매 함수
 void Shop::BuyItem()
 {
+    system("cls");
+    cout << "================================" << endl;
+    cout << "상점" << endl;
+    cout << "아이템 목록" << endl;
+    cout << "================================" << endl;
+    cout << "현재 보유 골드 : " << Character::GetInstance()->GetGold() << endl;
+    cout << "인벤토리 무게 : " << Character::GetInstance()->GetInventoryWeight()
+        << "/" << Character::GetInstance()->GetMaxInventoryWeight() << endl;
+
+
     size_t i = 0;
     cout << "구매 가능한 아이템 : " << endl;
     for (i = 0; i < items_for_sale.size(); i++)
@@ -187,6 +193,15 @@ void Shop::BuyItem()
 // 아이템 판매 로직
 void Shop::SellItem()
 {
+    system("cls");
+    cout << "================================" << endl;
+    cout << "상점" << endl;
+    cout << "인벤토리" << endl;
+    cout << "================================" << endl;
+    cout << "현재 보유 골드 : " << Character::GetInstance()->GetGold() << endl;
+    cout << "인벤토리 무게 : " << Character::GetInstance()->GetInventoryWeight()
+        << "/" << Character::GetInstance()->GetMaxInventoryWeight() << endl;
+
 
     cout << "보유 중인 아이템:" << endl << endl;
     for (size_t i = 0; i < Character::GetInstance()->GetInventory().size(); i++)

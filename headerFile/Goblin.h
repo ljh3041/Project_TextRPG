@@ -8,4 +8,6 @@ class Goblin : public Monster
 public:
 	Goblin() : Monster("Goblin") { name += " 고블린"; }
 	Goblin(const std::string& _name) : Monster(_name) {}
+
+	Item* GetItem();
 };
