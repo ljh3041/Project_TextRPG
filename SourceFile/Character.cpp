@@ -193,6 +193,11 @@ void Character::SetInventoryWeight(int weight)
     }
 }
 
+void Character::SetMaxHealth(int adjustMaxHealth)
+{
+    maxHealth += adjustMaxHealth;
+}
+
 void Character::TakeDamage(int damage)
 {
     health -= damage;

@@ -49,6 +49,7 @@ public:
 
     void SetGold(int settleGold);  
     void SetInventoryWeight(int weight);
+    void SetMaxHealth(int adjustMaxHealth);
 
     int GetLevel() const
     {
