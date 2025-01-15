@@ -24,7 +24,7 @@ Character::Character()
     gold = 1000;
     maxLevel = 10;
     inventoryWeight = 0;
-    maxInventoryWeight = 3;
+    maxInventoryWeight = 6;
 }
 
 Character::~Character()
@@ -111,6 +111,7 @@ void Character::DisplayStatus()
     cout << "공격력: " << basicAttack << "(+" << GetItemAttack() << ")" << endl;
     cout << "경험치: " << experience << "/100" << endl;
     cout << "골드: " << gold << endl;
+    cout << "인벤토리 공간: " << inventoryWeight << " / " << maxInventoryWeight << endl;
     cout << "이정도네요. 화이팅!" << endl;
 }
 
