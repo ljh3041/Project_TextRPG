@@ -127,6 +127,7 @@ void GameManager::generateBossMonster()
 //보스 전투를 다른 방식으로 변경하거나 battle()과 bossbattle()을 합치는 것도 고려.
 void GameManager::battle(Character* player, Monster* monster)
 {
+	Shop::GetInstance()->InitializeShop();
 	player->StartFight(); //인벤토리 아이템 사용 함수
 	while ((player->GetHealth() > 0) && (monster->GetHealth() > 0)) // 캐릭터.h에 gethealth 추가
 	{
@@ -250,7 +251,6 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 void GameManager::visitShop()//Character* player)
 {
 	Shop::GetInstance()->EnterShop();
-	Shop::GetInstance()->InitializeShop();
 	Shop::GetInstance()->ShopSelection();
 }
 
