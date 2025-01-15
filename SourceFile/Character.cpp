@@ -109,7 +109,8 @@ void Character::DisplayStatus()
     cout << "레벨: " << level << endl;
     cout << "체력: " << health << "/" << maxHealth << endl;
     cout << "공격력: " << basicAttack << "(+" << GetItemAttack() << ")" << endl;
-    cout << "경험치: " << experience << "/100" << endl;
+    cout << "경험치: " << experience << endl;
+    cout << "레벨업까지: " << expForLevelUp << "/ 100" << endl;
     cout << "골드: " << gold << endl;
     cout << "인벤토리 공간: " << inventoryWeight << " / " << maxInventoryWeight << endl;
     cout << "이정도네요. 화이팅!" << endl;
@@ -135,7 +136,7 @@ void Character::LevelUp()
         expForLevelUp = 0;
         cout << "레벨이 올랐는데 왜 올랐냐면 경험치가 100이 쌓이면 레벨이 오르는데 방금 전투로 필요경험치 100이 누적되셨어요." << endl;
         cout << "그래서 현재 레벨은 " << level << "입니다." << endl;
-        cout << "그리고 최대 체력은 " << maxHealth << "이고 기본공격력은 " << basicAttack << "입니다." << endl;
+        cout << "그리고 기본 최대 체력은 " << maxHealth << "이고 기본공격력은 " << basicAttack << "입니다." << endl;
         cout << "체력도 완전 회복됐습니다. 쩔죠?" << endl;
     }
 
@@ -188,14 +189,14 @@ void Character::SetGold(int settleGold)
 
 void Character::SetInventoryWeight(int weight)
 {
-    if (inventoryWeight + weight < 0)
+    if (weight < 0)
     {
         inventoryWeight = 0;
     }
 
     else
     {
-        inventoryWeight = min(inventoryWeight + weight, maxInventoryWeight);
+        inventoryWeight = min(weight, maxInventoryWeight);
     }
 }
 
@@ -206,12 +207,12 @@ void Character::SetMaxHealth(int adjustMaxHealth)
 
 void Character::TakeDamage(int damage)
 {
-    health -= damage;
+    health = max((health - damage) , 0);
 }
 
 void Character::Healing(int heal)
 {
-    health = min((health + heal), maxHealth);
+    health = min((health + heal), GetTotalHealth());
 }
 
 //아이템 관련 함수
@@ -271,7 +272,7 @@ int Character::GetTotalAttack()
 
 int Character::GetTotalHealth()
 {
-    return health + GetTotalHealth();
+    return maxHealth + GetItemHealth();
 }
 
 
