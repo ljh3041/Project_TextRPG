@@ -58,7 +58,14 @@ void GameManager::battle(Character* player, Monster* monster)
 		cout << player->GetName() << "의 공격! " << player->GetAttack() << "의 피해" << endl;
 		Sleep(500);
 		monster->TakeDamage(player->GetAttack());
-		cout << monster->GetName() << "의 남은 체력 " << monster->GetHealth() << endl;
+		if (monster->GetHealth() <= 0)
+		{
+			cout << monster->GetName() << "의 남은 체력 0 " << endl;
+		}
+		else 
+		{
+			cout << monster->GetName() << "의 남은 체력 " << monster->GetHealth() << endl;
+		}
 		Sleep(1000);
 
 		if (monster->GetHealth() <= 0) // 몬스터가 공격하기 전 이미 피가 0 이하면 전투 종료.
@@ -71,7 +78,14 @@ void GameManager::battle(Character* player, Monster* monster)
 		cout << monster->GetName() << "의 공격! " << monster->GetAttack() << "의 피해" << endl;
 		Sleep(500);
 		player->TakeDamage(monster->GetAttack());
-		cout << player->GetName() << "의 남은 체력 " << player->GetHealth() << endl;
+		if(player->GetHealth() <= 0)
+		{ 
+			cout << player->GetName() << "의 남은 체력 0 " << endl;
+		}
+		else
+		{
+			cout << player->GetName() << "의 남은 체력 " << player->GetHealth() << endl;
+		}
 		Sleep(1000);
 		//useitem?
 	}
@@ -106,7 +120,14 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 		cout << player->GetName() << "의 공격! " << player->GetAttack() << "의 피해" << endl;
 		Sleep(500);
 		bossmonster->TakeDamage(player->GetAttack());
-		cout << bossmonster->GetName() << "의 남은 체력 " << bossmonster->GetHealth() << endl;
+		if (bossmonster->GetHealth() <= 0)
+		{
+			cout << bossmonster->GetName() << "의 남은 체력 0 " << endl;
+		}
+		else
+		{
+			cout << bossmonster->GetName() << "의 남은 체력 " << bossmonster->GetHealth() << endl;
+		}
 		Sleep(1000);
 
 		if (bossmonster->GetHealth() <= 0) // 몬스터가 공격하기 전 이미 피가 0 이하면 전투 종료.
@@ -118,7 +139,14 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 		cout << bossmonster->GetName() << "의 공격! " << bossmonster->GetAttack() << "의 피해" << endl;
 		Sleep(500);
 		player->TakeDamage(bossmonster->GetAttack());
-		cout << player->GetName() << "의 남은 체력 " << player->GetHealth() - bossmonster->GetAttack() << endl;
+		if(player->GetHealth() <= 0)
+		{ 
+			cout << player->GetName() << "의 남은 체력 0 " << endl;
+		}
+		else
+		{
+			cout << player->GetName() << "의 남은 체력 " << player->GetHealth() << endl;
+		}
 		Sleep(1000);
 	}
 	player->EndFight();
