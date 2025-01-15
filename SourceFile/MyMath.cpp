@@ -1,6 +1,5 @@
 #include "../headerFile/MyMath.h"
 
-
 int GetRandom(int _min, int _max)
 {
 	// 난수 엔진 초기화
@@ -24,4 +23,11 @@ float GetRandomf(float _min, float _max)
 
 
 	return static_cast<float>(dist(gen));
+}
+
+void PressAnyKey()
+{
+	int i = 0;
+	std::cout << "\n▶ 아무 키나 입력해주세요.";
+	i = _getch();
 }
