@@ -60,7 +60,7 @@ void GameManager::BattlePhase()
 	cout << "몬스터와 조우!" << endl;
 	Sleep(500);
 
-	if (stage < 10)
+	if (stage < 11)
 	{
 		GameManager::GetInstance()->generateMonster();
 		GameManager::GetInstance()->battle(Character::GetInstance(), GameManager::GetInstance()->getMonster());
@@ -111,7 +111,7 @@ void GameManager::generateMonster()
 		monster = new Troll();
 		break;
 	}
-	monster;
+	//monster;
 	cout << monster->GetName() << "가 출현했다!" << endl;
 }
 
@@ -176,6 +176,7 @@ void GameManager::battle(Character* player, Monster* monster)
 	{
 		cout << "승리" << endl;
 		player->LevelUp(); // 플레이어 레벨 업 함수 적용
+		player->SetGold(monster->GetGold());
 		PressAnyKey();
 		
 		//item 획득 함수;
@@ -230,7 +231,7 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 	player->EndFight();
 	if (bossmonster->GetHealth() <= 0)
 	{
-		cout << "승리" << endl;
+		cout << "승리" << endl; // 엔딩 문구 추가
 		//item 획득 함수;
 		//골드 획득 함수;
 		int gold = 0;
