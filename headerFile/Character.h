@@ -81,15 +81,14 @@ public:
 
     // 아이템 관련 함수
     int GetItemAttack();
-
     int GetItemHealth();
-
     void UseItem();
-
     void StartFight();
-
     void EndFight();
-
+    int GetTotalAttack();
+    int GetTotalHealth();
+    
+    
     int GetInventoryWeight();
     int GetMaxInventoryWeight();
     void AddToInventory(Item* item);
