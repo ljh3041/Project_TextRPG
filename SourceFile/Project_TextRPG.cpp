@@ -100,7 +100,6 @@ int main() {
 			cout << "\n▶Press Anykey";
 			PressAnyKey();
 		}
-		//Sleep(500);
 	
 	}
 	return 0;

@@ -1,6 +1,6 @@
 ﻿#include "../headerFile/Shop.h"
 #include "../headerFile/EquipmentItem.h"
-
+#include <windows.h>
 
 Shop::Shop()
 {
@@ -40,7 +40,7 @@ void Shop::ShopSelection()
     {
         cout << "1.아이템 구매" << endl;
         cout << "2.아이템 판매" << endl;
-        cout << "3.전장으로 이동" << endl;
+        cout << "3.갈림길로 이동" << endl;
         int choice;
         cin >> choice;
 
@@ -60,7 +60,8 @@ void Shop::ShopSelection()
             SellItem(); // 아이템 판매
             break;
         case 3:
-            cout << "전장으로 이동합니다." << endl; // 전장 이동
+            cout << "갈림길로 이동합니다!" << endl; // 전장 이동
+            Sleep(500);
             //나중에 전장이동 생기면 넣기
             return;
         default:
