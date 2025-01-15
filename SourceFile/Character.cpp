@@ -104,10 +104,23 @@ void Character::DisplayStatus()
     cout << "레벨: " << level << endl;
     cout << "체력: " << health << "/" << maxHealth << endl;
     cout << "공격력: " << basicAttack << "(+" << GetItemAttack() << ")" << endl;
-    cout << "경험치: " << experience << endl;
-    cout << "레벨업까지: " << expForLevelUp << "/ 100" << endl;
+    cout << "경험치: " << green << experience << white << endl;
+    cout << "레벨업까지: " << green << expForLevelUp << "/ 100" << white << endl;
     cout << "골드: " << yellow << gold << white << endl;
     cout << "인벤토리 공간: " << inventoryWeight << " / " << maxInventoryWeight << endl;
+    cout << "보유중인 아이템" << endl;
+    if(inventory.size() == 0)
+    {
+        cout << "- 아무것도 없어요. 상점 한번 털고 오시죠." << endl;
+    }
+    else
+    {
+        for (int i = 0; i < inventory.size(); i++)
+        {
+            int num = i + 1;
+            cout << num << " - " << inventory[i]->GetName() << endl;
+        }
+    }
     cout << "이정도네요. 화이팅!" << endl;
 }
 
