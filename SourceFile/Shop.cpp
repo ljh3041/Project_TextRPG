@@ -1,5 +1,6 @@
 ﻿#include "../headerFile/Shop.h"
 #include "../headerFile/EquipmentItem.h"
+#include "../headerFile/ConsumableItem.h"
 #include <windows.h>
 #include "../headerFile/MyMath.h"
 
