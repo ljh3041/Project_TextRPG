@@ -19,11 +19,11 @@ public:
     void UseItem();
 };
 
-class potion300: public Item
+class potion300 : public Item
 {
 public:
     potion300()
-        : Item("체력이 300 이하일 때 체력 300을 회복하는 포션", 1/*weight*/, 30/*price*/, 0/*attack*/, 0/*health*/) {
+        : Item("체력이 100 이하일 때 체력 300을 회복하는 포션", 1/*weight*/, 30/*price*/, 0/*attack*/, 0/*health*/) {
     }
     void UseItem();
 };
@@ -32,7 +32,7 @@ class potion600 : public Item
 {
 public:
     potion600()
-        : Item("체력이 300 이하일 때 체력 600을 회복하는 포션", 1/*weight*/, 60/*price*/, 0/*attack*/, 0/*health*/) {
+        : Item("체력이 100 이하일 때 체력 600을 회복하는 포션", 1/*weight*/, 60/*price*/, 0/*attack*/, 0/*health*/) {
     }
     void UseItem();
 };

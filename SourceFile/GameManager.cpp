@@ -20,8 +20,24 @@ GameManager::~GameManager()
 //Phase
 void GameManager::tutorialPhase()
 {
+
+	int i = 0;
+//   	while (i == 0)
+// 	{
+// 		print8();
+// 		Sleep(1000);
+// 		system("cls");
+// 		print9();
+// 		Sleep(1000);
+// 		system("cls");
+// 		if (_kbhit()) {
+// 			_getch(); // 키 입력을 받음 (입력된 키는 무시)
+// 			break;
+// 		}// 루프 종료
+// 	}
 	//showTeamName();
 	//showGameName();
+
 	Character::GetInstance()->NameValidation();
 	Sleep(500);
 	PressAnyKey();
@@ -133,7 +149,7 @@ void GameManager::battle(Character* player, Monster* monster)
 	player->StartFight(); //인벤토리 아이템 사용 함수
 	while ((player->GetHealth() > 0) && (monster->GetHealth() > 0)) // 캐릭터.h에 gethealth 추가
 	{
-		player->UseItem(); // 플레이어 무조건 선턴. 아이템 먼저 사용.
+		//player->UseItem(); // 플레이어 무조건 선턴. 아이템 먼저 사용.
 		//플레이어 공격
 		printPlayer();
 		cout << player->GetName() << "의 공격! " << player->GetTotalAttack() << "의 피해" << endl;
@@ -147,6 +163,7 @@ void GameManager::battle(Character* player, Monster* monster)
 		{
 			cout << monster->GetName() << "의 남은 체력 " << monster->GetHealth() << endl;
 		}
+		player->UseItem(); // 플레이어 무조건 선턴. 아이템 먼저 사용.
 		Sleep(1000);
 
 		if (monster->GetHealth() <= 0) // 몬스터가 공격하기 전 이미 피가 0 이하면 전투 종료.
@@ -179,7 +196,7 @@ void GameManager::battle(Character* player, Monster* monster)
 	{
 		cout << "승리" << endl;
 		player->LevelUp(); // 플레이어 레벨 업 함수 적용
-		player->SetGold(monster->GetGold());
+		player->AddGold(monster->GetGold());
 		PressAnyKey();
 		
 		//item 획득 함수;
@@ -196,7 +213,7 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 	player->StartFight();
 	while ((player->GetHealth() > 0) && (bossmonster->GetHealth() > 0))
 	{
-		player->UseItem();  // 플레이어 무조건 선턴. 아이템 먼저 사용.
+		//player->UseItem();  // 플레이어 무조건 선턴. 아이템 먼저 사용.
 
 		//플레이어 공격
 		cout << player->GetName() << "의 공격! " << player->GetTotalAttack() << "의 피해" << endl;
@@ -210,6 +227,7 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 		{
 			cout << bossmonster->GetName() << "의 남은 체력 " << bossmonster->GetHealth() << endl;
 		}
+		player->UseItem(); // 플레이어 무조건 선턴. 아이템 먼저 사용.
 		Sleep(1000);
 
 		if (bossmonster->GetHealth() <= 0) // 몬스터가 공격하기 전 이미 피가 0 이하면 전투 종료.
