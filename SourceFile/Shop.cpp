@@ -1,15 +1,21 @@
 ﻿#include "../headerFile/Shop.h"
 #include "../headerFile/EquipmentItem.h"
 #include <windows.h>
+#include "../headerFile/MyMath.h"
 
 Shop::Shop()
 {
+    InitializeShop();
+}
+
+void Shop::InitializeShop() 
+{
+    all_items.clear(); // 기존 아이템 제거
     all_items.push_back(new Sword40());
     all_items.push_back(new HP_Blade4());
     all_items.push_back(new HP_Blade4());
     all_items.push_back(new HP_Blade4());
-
-    items_for_sale = RandomItem();
+    items_for_sale = RandomItem(); // 아이템 재랜덤화
 }
 
 
@@ -41,8 +47,7 @@ void Shop::ShopSelection()
         cout << "1.아이템 구매" << endl;
         cout << "2.아이템 판매" << endl;
         cout << "3.갈림길로 이동" << endl;
-        int choice;
-        cin >> choice;
+        int choice = GetValidNumber();
 
         switch (choice)
         {
@@ -84,10 +89,16 @@ void Shop::BuyItem()
 
     cout <<  ++i << ".뒤로가기" << endl;
     cout << "구매할 아이템을 선택하세요 : " << endl;
-    int choice;
-    cin >> choice;
+    
+    int choice = GetValidNumber();
 
     if (choice == i) return;
+    if (choice > i || choice <= 0)
+
+    {
+        cout << "잘못된 선택입니다." << endl;
+        return;
+    }
 
     Item* selected_item = items_for_sale[choice - 1];
     
@@ -105,9 +116,15 @@ void Shop::BuyItem()
             << selected_item->GetWeight() << endl;
         return;
     }
-
+    //골드 차감 및 인벤토리 아이템 추가
     Character::GetInstance()->SetGold(Character::GetInstance()->GetGold() - selected_item->GetPrice());
     Character::GetInstance()->AddToInventory(selected_item);
+
+    // 인벤토리 무게 업데이트
+    /*
+    Character::GetInstance()->SetInventoryWeight(Character::GetInstance()->GetInventoryWeight() + selected_item->GetWeight())
+    */
+
     items_for_sale.erase(items_for_sale.begin() + (choice - 1));
     cout << "구매 성공! 남은 골드 : " << Character::GetInstance()->GetGold() << endl;
     
@@ -127,8 +144,8 @@ void Shop::SellItem()
     cout << "뒤로가기: " << Character::GetInstance()->GetInventory().size() + 1 << endl;
     cout << "판매할 아이템을 선택하세요 : " << endl;
 
-    int choice;
-    cin >> choice;
+    int choice = GetValidNumber();
+
 
     if (choice == Character::GetInstance()->GetInventory().size() + 1) return; // 뒤로가기 처리
 

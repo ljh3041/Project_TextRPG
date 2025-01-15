@@ -31,3 +31,24 @@ void PressAnyKey()
 	std::cout << "\n▶ 아무 키나 입력해주세요.";
 	i = _getch();
 }
+
+//숫자만 받는 함수
+int GetValidNumber() {
+	int number;
+
+	while (true) {
+		cin >> number;
+
+		// 입력 오류 체크
+		if (cin.fail()) {
+			cin.clear(); // 오류 플래그를 지우기
+			cin.ignore(numeric_limits<streamsize>::max(), '\n'); // 잘못된 입력 무시
+			cout << "잘못된 입력입니다. 숫자를 입력해주세요: " << endl;
+			continue; // 다시 입력 받기
+		}
+
+		// 유효한 입력인 경우 루프 종료
+		cin.ignore(numeric_limits<streamsize>::max(), '\n'); // 추가적으로 줄바꿈까지 무시
+		return number; // 유효한 숫자를 반환
+	}
+}
