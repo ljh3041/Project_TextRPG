@@ -221,6 +221,10 @@ void Character::UseItem()
     for (size_t i = 0; i < inventory.size(); i++)
     {
         inventory[i]->UseItem();
+        if (inventory[i]->IsUsed() == true)
+        {
+            inventory.erase(inventory.begin() + i);
+        }
     }
 }
 
@@ -240,7 +244,18 @@ void Character::EndFight()
     }
 }
 
+int Character::GetTotalAttack()
+{
+    return attack + GetItemAttack();
+}
 
+int Character::GetTotalHealth()
+{
+    return health + GetTotalHealth();
+}
+
+
+//인벤토리 관련 함수
 int Character::GetInventoryWeight()
 {
     return inventoryWeight;
