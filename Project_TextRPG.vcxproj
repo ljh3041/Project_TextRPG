@@ -33,6 +33,7 @@
     <ClInclude Include="headerFile\MyMath.h" />
     <ClInclude Include="headerFile\Orc.h" />
     <ClInclude Include="headerFile\Shop.h" />
+    <ClInclude Include="headerFile\TextColor.h" />
     <ClInclude Include="headerFile\Troll.h" />
   </ItemGroup>
   <ItemGroup>
