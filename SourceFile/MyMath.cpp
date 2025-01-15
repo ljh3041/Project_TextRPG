@@ -1,5 +1,4 @@
 #include "../headerFile/MyMath.h"
-
 int GetRandom(int _min, int _max)
 {
 	// 난수 엔진 초기화
@@ -44,11 +43,12 @@ int GetValidNumber() {
 			cin.clear(); // 오류 플래그를 지우기
 			cin.ignore(numeric_limits<streamsize>::max(), '\n'); // 잘못된 입력 무시
 			cout << "잘못된 입력입니다. 숫자를 입력해주세요: " << endl;
-			continue; // 다시 입력 받기
+			system("cls");
+			//continue; // 다시 입력 받기
 		}
 
 		// 유효한 입력인 경우 루프 종료
-		cin.ignore(numeric_limits<streamsize>::max(), '\n'); // 추가적으로 줄바꿈까지 무시
+		//cin.ignore(numeric_limits<streamsize>::max(), '\n'); // 추가적으로 줄바꿈까지 무시
 		return number; // 유효한 숫자를 반환
 	}
 }

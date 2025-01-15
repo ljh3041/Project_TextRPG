@@ -30,7 +30,7 @@ public:
     void BuyItem();
     void SellItem();
     void InitializeShop();
-
+    void printstore();
 
     static Shop* GetInstance() {
         if (instance == nullptr) {
