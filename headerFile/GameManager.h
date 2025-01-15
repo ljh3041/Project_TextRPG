@@ -38,7 +38,12 @@ public:
 	}
 
 	//게임 페이즈
+	void tutorialPhase();
 	int firstPhase();
+	void BattlePhase();
+	void StorePhase();
+	void StatusPhase();
+
 	void visitShop();
 	void battle(Character* player, Monster* monster);
     void bossbattle(Character* player, Monster* bossmonster);

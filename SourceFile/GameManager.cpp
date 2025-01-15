@@ -17,6 +17,84 @@ GameManager::~GameManager()
 	delete monster;
 }
 
+//Phase
+void GameManager::tutorialPhase()
+{
+	Character::GetInstance()->NameValidation();
+	Sleep(500);
+	PressAnyKey();
+}
+
+int GameManager::firstPhase()
+{
+	int value;
+	while (true) {
+		system("cls");
+		cout << "================================" << endl;
+		cout << "inGame" << endl;
+		cout << "현재 스테이지 : " << stage << endl;
+		cout << "================================" << endl;
+
+		cout << "할 행동을 고르시오." << endl;
+		cout << "1 : 전투   2 : 상점   3 : 상태보기" << endl;
+		cin >> value;
+		if (cin.fail()) {
+			cin.clear(); // 오류 상태를 초기화
+			cin.ignore(100, '\n');
+			cout << "다시 입력해주세요. " << endl;
+			cout << "\n▶Press Anykey";
+			PressAnyKey();
+		}
+		else {
+			cin.ignore(100, '\n');
+			break;
+		}
+	}
+	return value;
+}
+
+void GameManager::BattlePhase()
+{
+	cout << "1번 선택" << endl;
+	Sleep(500);
+	cout << "몬스터와 조우!" << endl;
+	Sleep(500);
+
+	if (stage < 10)
+	{
+		GameManager::GetInstance()->generateMonster();
+		GameManager::GetInstance()->battle(Character::GetInstance(), GameManager::GetInstance()->getMonster());
+		stage++;
+	}
+	else
+	{
+		//한번에 battle함수로만 컨트롤 하고, monster generate에서 bossmonster를 생성하는 것도 
+		GameManager::GetInstance()->generateBossMonster();
+		GameManager::GetInstance()->bossbattle(Character::GetInstance(), GameManager::GetInstance()->getMonster());
+	}
+}
+
+void GameManager::StorePhase()
+{
+	cout << "2번 선택" << endl;
+	Sleep(500);
+	cout << "상점 오픈!" << endl;
+	Sleep(500);
+
+	GameManager::GetInstance()->visitShop();
+}
+
+void GameManager::StatusPhase()
+{
+	cout << "3번 선택" << endl;
+	Sleep(500);
+	cout << "상태보기" << endl;
+	Sleep(500);
+
+	GameManager::GetInstance()->displayInventory(Character::GetInstance());
+	PressAnyKey();
+}
+
 //몬스터 랜덤 소환
 void GameManager::generateMonster()
 {
@@ -166,38 +244,12 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 	}
 }
 
-int GameManager::firstPhase()
-{
-	int value;
-	while (true) {
-		system("cls");
-	cout << "================================" << endl;
-	cout << "inGame" << endl;
-	cout << "현재 스테이지 : " << stage << endl;
-	cout << "================================" << endl;
-
-	cout << "할 행동을 고르시오." << endl;
-	cout << "1 : 전투   2 : 상점   3 : 상태보기" << endl;
-		cin >> value;
-		if (cin.fail()) {
-			cin.clear(); // 오류 상태를 초기화
-			cin.ignore(100, '\n');
-			cout << "다시 입력해주세요. " << endl;
-			cout << "\n▶Press Anykey";
-			PressAnyKey();
-		}
-		else {
-			cin.ignore(100, '\n');
-			break;
-		}
-	}
-	return value;
-}
 
 //반드시 Shop 방문 함수를 GameManager에서 제어해야 하는가?
 void GameManager::visitShop()//Character* player)
 {
 	Shop::GetInstance()->EnterShop();
+	Shop::GetInstance()->InitializeShop();
 	Shop::GetInstance()->ShopSelection();
 }
 
