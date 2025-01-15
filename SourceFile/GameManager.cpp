@@ -20,8 +20,24 @@ GameManager::~GameManager()
 //Phase
 void GameManager::tutorialPhase()
 {
+
+	int i = 0;
+//   	while (i == 0)
+// 	{
+// 		print8();
+// 		Sleep(1000);
+// 		system("cls");
+// 		print9();
+// 		Sleep(1000);
+// 		system("cls");
+// 		if (_kbhit()) {
+// 			_getch(); // 키 입력을 받음 (입력된 키는 무시)
+// 			break;
+// 		}// 루프 종료
+// 	}
 	//showTeamName();
 	//showGameName();
+
 	Character::GetInstance()->NameValidation();
 	Sleep(500);
 	PressAnyKey();
