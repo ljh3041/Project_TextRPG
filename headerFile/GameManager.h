@@ -5,7 +5,7 @@
 #include <thread> // sleep_for
 #include <chrono> // 시간 단위 사용
 #include "Monster.h"
-#include "BossMonster.h"
+#include "Dragon.h"
 #include "Character.h"
 #include "Orc.h"
 #include "Troll.h"
@@ -41,7 +41,7 @@ public:
 	int firstPhase();
 	void visitShop();
 	void battle(Character* player, Monster* monster);
-    void bossbattle(Character* player, BossMonster* bossmonster);
+    void bossbattle(Character* player, Monster* bossmonster);
 
 
 	void generateMonster();
