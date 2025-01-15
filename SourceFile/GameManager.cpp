@@ -20,6 +20,7 @@ GameManager::~GameManager()
 //Phase
 void GameManager::tutorialPhase()
 {
+	int i = 0;
 	Character::GetInstance()->NameValidation();
 	Sleep(500);
 	PressAnyKey();
