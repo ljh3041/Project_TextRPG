@@ -20,27 +20,7 @@ GameManager::~GameManager()
 //Phase
 void GameManager::tutorialPhase()
 {
-	int i = 0;
-	printLoding4();
-	Sleep(1000);
-	system("cls");
-   	while (i == 0)
- 	{
-		printLoding3();
- 		Sleep(1000);
- 		system("cls");
-		if (_kbhit()) {
-			_getch(); // 키 입력을 받음 (입력된 키는 무시)
-			break;
-		}
-		printLoding4();
- 		Sleep(1000);
- 		system("cls");
- 		if (_kbhit()) {
- 			_getch(); // 키 입력을 받음 (입력된 키는 무시)
- 			break;
- 		}// 루프 종료
- 	}
+
 	//showTeamName();
 	//showGameName();
 
@@ -57,7 +37,7 @@ int GameManager::firstPhase()
 	while (true) {
 		system("cls");
 		cout << "================================" << endl;
-		cout << "갈림길" << endl;
+		cout << "inGame" << endl;
 		cout << "현재 스테이지 : " << stage << endl;
 		cout << "================================" << endl;
 
@@ -382,6 +362,7 @@ void GameManager::showGameName()
                                                                                                      
 
 )";
+
 	cout << asciiArt << endl;
 	Sleep(1000);
 
