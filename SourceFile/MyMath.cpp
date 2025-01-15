@@ -43,7 +43,6 @@ int GetValidNumber() {
 			cin.clear(); // 오류 플래그를 지우기
 			cin.ignore(numeric_limits<streamsize>::max(), '\n'); // 잘못된 입력 무시
 			cout << "잘못된 입력입니다. 숫자를 입력해주세요: " << endl;
-			system("cls");
 			//continue; // 다시 입력 받기
 		}
 
