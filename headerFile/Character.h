@@ -48,6 +48,7 @@ public:
     void Healing(int heal);
 
     void SetGold(int settleGold);  
+    void AddGold(int AddGold);
     void SetInventoryWeight(int weight);
 
     int GetLevel() const
