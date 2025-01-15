@@ -16,6 +16,74 @@ GameManager::~GameManager()
 	delete monster;
 }
 
+//Phase
+void GameManager::TutorialPhase()
+{
+	Character::GetInstance()->NameValidation();
+	PressAnyKey();
+}
+
+int GameManager::firstPhase()
+{
+	system("cls");
+	cout << "================================" << endl;
+	cout << "inGame" << endl;
+	cout << "현재 스테이지 : " << stage << endl;
+	cout << "================================" << endl;
+
+	cout << "할 행동을 고르시오." << endl;
+	cout << "1 : 전투   2 : 상점   3 : 상태보기" << endl;
+	int value;
+	cin >> value;
+	return value;
+}
+
+void GameManager::BattlePhase()
+{
+	cout << "1번 선택" << endl;
+	Sleep(500);
+	cout << "몬스터와 조우!" << endl;
+	Sleep(500);
+
+	if (stage < 10)
+	{
+		GameManager().GetInstance()->generateMonster();
+		GameManager().GetInstance()->battle(Character::GetInstance(), GameManager::GetInstance()->getMonster());
+		stage++;
+	}
+	else
+	{
+		GameManager().GetInstance()->generateMonster();
+		GameManager().GetInstance()->battle(Character::GetInstance(), GameManager::GetInstance()->getMonster());
+		stage++;
+	}
+
+}
+
+void GameManager::StorePhase()
+{
+	cout << "2번 선택" << endl;
+	Sleep(500);
+	cout << "상점 오픈!" << endl;
+	Sleep(500);
+	GameManager().GetInstance()->visitShop();
+	PressAnyKey();
+}
+
+void GameManager::StatusPhase()
+{
+	cout << "3번 선택" << endl;
+	Sleep(500);
+	cout << "상태보기" << endl;
+	Sleep(500);
+
+	GameManager::GetInstance()->displayInventory(Character::GetInstance());
+	PressAnyKey();
+
+	Character::GetInstance()->DisplayStatus();
+}
+
+
 //몬스터 랜덤 소환
 void GameManager::generateMonster()
 {
@@ -137,20 +205,6 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 	}
 }
 
-int GameManager::firstPhase()
-{
-	system("cls");
-	cout << "================================" << endl;
-	cout << "inGame" << endl;
-	cout << "현재 스테이지 : " << stage << endl;
-	cout << "================================" << endl;
-
-	cout << "할 행동을 고르시오." << endl;
-	cout << "1 : 전투   2 : 상점   3 : 상태보기" << endl;
-	int value;
-	cin >> value;
-	return value;
-}
 
 //반드시 Shop 방문 함수를 GameManager에서 제어해야 하는가?
 void GameManager::visitShop()//Character* player)
