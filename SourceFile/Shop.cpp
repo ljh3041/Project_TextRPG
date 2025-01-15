@@ -9,34 +9,34 @@ Shop::Shop()
     InitializeShop();
 }
 
-void Shop::InitializeShop() 
+void Shop::InitializeShop()
 {
     all_items.clear(); // 기존 아이템 제거
-  
+
     all_items.push_back(new Sword10());
     all_items.push_back(new Sword20());
     all_items.push_back(new Sword30());
     all_items.push_back(new Sword40());
     all_items.push_back(new Sword50());
-    
+
     all_items.push_back(new ScalingSword10());
     all_items.push_back(new ScalingSword20());
     all_items.push_back(new ScalingSword30());
     all_items.push_back(new ScalingSword40());
     all_items.push_back(new ScalingSword50());
-    
+
     all_items.push_back(new VampiricDagger10());
     all_items.push_back(new VampiricDagger20());
     all_items.push_back(new VampiricDagger30());
     all_items.push_back(new VampiricDagger40());
     all_items.push_back(new VampiricDagger50());
-    
+
     all_items.push_back(new HP_Blade1());
     all_items.push_back(new HP_Blade2());
     all_items.push_back(new HP_Blade3());
     all_items.push_back(new HP_Blade4());
     all_items.push_back(new HP_Blade5());
-   
+
     all_items.push_back(new Armor10());
     all_items.push_back(new Armor20());
     all_items.push_back(new Armor30());
@@ -64,7 +64,7 @@ void Shop::InitializeShop()
     all_items.push_back(new potionQuarter());
     all_items.push_back(new potionHalf());
     all_items.push_back(new potionFull());
-  
+
     items_for_sale = RandomItem(); // 아이템 재랜덤화
 }
 
@@ -132,14 +132,14 @@ void Shop::BuyItem()
     cout << "구매 가능한 아이템 : " << endl;
     for (i = 0; i < items_for_sale.size(); i++)
     {
-        cout << i + 1 << "." << items_for_sale[i]->GetName()
-            << ": 가격 " << items_for_sale[i]->GetPrice()
-            << ", 무게 " << items_for_sale[i]->GetWeight() << endl;
+        cout << i + 1 << ". " << items_for_sale[i]->GetName()
+            << endl << ": 가격 " << items_for_sale[i]->GetPrice()
+            << ", 무게 " << items_for_sale[i]->GetWeight() << endl << endl;
     }
 
-    cout <<  ++i << ".뒤로가기" << endl;
+    cout << ++i << ".뒤로가기" << endl;
     cout << "구매할 아이템을 선택하세요 : " << endl;
-    
+
     int choice = GetValidNumber();
 
     if (choice == i) return;
@@ -151,7 +151,7 @@ void Shop::BuyItem()
     }
 
     Item* selected_item = items_for_sale[choice - 1];
-    
+
     if (Character::GetInstance()->GetGold() < selected_item->GetPrice())
     {
         cout << "골드가 부족합니다. 보유 골드 : " << Character::GetInstance()->GetGold() << endl;
@@ -170,25 +170,25 @@ void Shop::BuyItem()
     Character::GetInstance()->SetGold(Character::GetInstance()->GetGold() - selected_item->GetPrice());
     Character::GetInstance()->AddToInventory(selected_item);
 
-    // 인벤토리 무게 업데이트
-    /*
-    Character::GetInstance()->SetInventoryWeight(Character::GetInstance()->GetInventoryWeight() + selected_item->GetWeight())
-    */
+    //캐릭터 정보 업데이트
+    Character::GetInstance()->SetInventoryWeight(Character::GetInstance()->GetInventoryWeight() + selected_item->GetWeight());//무게
+    Character::GetInstance()->SetMaxHealth(selected_item->GetHealth());//최대체력
+    Character::GetInstance()->Character::Healing(selected_item->GetHealth());//현재체력 회복
 
     items_for_sale.erase(items_for_sale.begin() + (choice - 1));
     cout << "구매 성공! 남은 골드 : " << Character::GetInstance()->GetGold() << endl;
-    
+
 }
 
 // 아이템 판매 로직
 void Shop::SellItem()
 {
-    
-    cout << "보유 중인 아이템:" << endl;
+
+    cout << "보유 중인 아이템:" << endl << endl;
     for (size_t i = 0; i < Character::GetInstance()->GetInventory().size(); i++)
     {
         cout << i + 1 << ". " << (Character::GetInstance()->GetInventory())[i]->GetName()
-            << ": 판매 가격 " << (Character::GetInstance()->GetInventory())[i]->GetPrice() / 2 << endl; // 판매 가격을 일단 절반으로 가정
+            << endl << "판매 가격 : " << (Character::GetInstance()->GetInventory())[i]->GetPrice() / 2 << endl; // 판매 가격을 일단 절반으로 가정
     }
 
     cout << "뒤로가기: " << Character::GetInstance()->GetInventory().size() + 1 << endl;
@@ -200,8 +200,13 @@ void Shop::SellItem()
     if (choice == Character::GetInstance()->GetInventory().size() + 1) return; // 뒤로가기 처리
 
     Item* selected_item = Character::GetInstance()->GetInventory()[choice - 1]; // 선택한 아이템
+
+    //캐릭터 정보 업데이트
     Character::GetInstance()->remove_from_inventory(selected_item); // 인벤토리에서 제거
-    Character::GetInstance()->SetGold(Character::GetInstance()->GetGold() + selected_item->GetPrice() / 2);
+    Character::GetInstance()->SetGold(Character::GetInstance()->GetGold() + selected_item->GetPrice() / 2);//골드획득
+    Character::GetInstance()->Character::TakeDamage(selected_item->GetHealth());//현재체력감소
+    Character::GetInstance()->SetMaxHealth(-1 * selected_item->GetHealth());//최대체력감소
+    Character::GetInstance()->SetInventoryWeight(Character::GetInstance()->GetInventoryWeight()-selected_item->GetWeight());//인벤토리 무게감소
+
     cout << "판매 성공! 현재 보유 골드: " << Character::GetInstance()->GetGold() << endl;
-    
 }
