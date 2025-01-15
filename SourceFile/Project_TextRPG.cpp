@@ -34,19 +34,8 @@ Shop* shop = nullptr;
 
 int main() {
 	gameManager = GameManager::GetInstance();
-	player = Character::GetInstance();
-	shop = Shop::GetInstance();
-
-	string playerName = player->NameValidation();
-	Monster* enemy = GameManager::GetInstance()->getMonster();
-	
-	Sleep(500);
-	player->SetName(playerName);
-	PressAnyKey();
-
-
-	int stage = 1;
 	int stageguide = 0;
+	gameManager->tutorialPhase();
 
 
 	while (1)
@@ -55,44 +44,16 @@ int main() {
 
 		if (stageguide == 1)
 		{
-			cout << "1번 선택" << endl;
-			Sleep(500);
-			cout << "몬스터와 조우!" << endl;
-			Sleep(500);
-
-			if (stage < 10)
-			{
-				gameManager->generateMonster();
-				gameManager->battle(player, GameManager::GetInstance()->getMonster());
-				stage++;
-			}
-			else
-			{
-				//한번에 battle함수로만 컨트롤 하고, monster generate에서 bossmonster를 생성하는 것도 
-				gameManager->generateBossMonster();
-				gameManager->bossbattle(player, GameManager::GetInstance()->getMonster());
-			}
+			gameManager->BattlePhase();
 
 		}
 		else if (stageguide == 2)
 		{
-			cout << "2번 선택" << endl;
-			Sleep(500);
-			cout << "상점 오픈!" << endl;
-			Sleep(500);
-
-			gameManager->visitShop();
+			gameManager->StorePhase();
 		}
 		else if (stageguide == 3)
 		{
-			cout << "3번 선택" << endl;
-			Sleep(500);
-			cout << "상태보기" << endl;
-			Sleep(500);
-
-			gameManager->displayInventory(player);
-			PressAnyKey();
-
+			gameManager->StatusPhase();
 		}
 		else
 		{
