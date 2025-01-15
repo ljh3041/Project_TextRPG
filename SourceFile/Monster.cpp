@@ -9,9 +9,11 @@ Monster::Monster(string _name)
 		DecoWord::getInstance().nickname(this->name);							//몬스터 데이터에 있으면 별명 먼저 넣어주기
 
 		this->health =  GetRandomHealthStat(_name);	//그 몬스터의 체력계수와 레벨, 랜덤값을 계산한 최종 체력
-		this->attack =  GetRandomAttackStat(_name);;	//그 몬스터의 공격계수와 레벨, 랜덤값을 계산한 최종 공격력
+		this->attack =  GetRandomAttackStat(_name);//;	//그 몬스터의 공격계수와 레벨, 랜덤값을 계산한 최종 공격력
+		this->gold = GetRandomgold(_name); //추가
 		health;
 		attack;
+		gold; //추가
 	}
 	else
 	{
@@ -34,6 +36,11 @@ int Monster::GetAttack()
 	return attack;
 }
 
+int Monster::GetGold()
+{
+	return gold;
+}
+
 int Monster::GetRandomHealthStat(string _name)
 {
 	int final = (monsterDatas.at(_name).health * Character::GetInstance()->GetLevel()) + (Character::GetInstance()->GetLevel() * GetRandom(20, 30));
@@ -43,6 +50,12 @@ int Monster::GetRandomHealthStat(string _name)
 int Monster::GetRandomAttackStat(string _name)
 {
 	int final = (monsterDatas.at(_name).attack * Character::GetInstance()->GetLevel()) + (Character::GetInstance()->GetLevel() * GetRandom(5, 10));
+	return final;
+}
+
+int Monster::GetRandomgold(string _name)
+{
+	int final = (monsterDatas.at(_name).gold * Character::GetInstance()->GetLevel()) + (Character::GetInstance()->GetLevel() * GetRandom(5, 10));
 	return final;
 }
 

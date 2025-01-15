@@ -154,8 +154,9 @@ void Character::LevelUp()
 
 void Character::SetGold(int settleGold)
 {
-    gold = settleGold;
-    cout << "\n현재 보유 골드 " << gold << "G 입니다." << endl;
+    gold += settleGold;
+    
+    cout << "획득한 골드 : " << settleGold << "G" << endl << "\n현재 보유 골드 " << gold << "G 입니다." << endl;
     /*int messageCall = GetRandom(0, 2); // 상점수입과 혼동될 수 있어 보류
 
     vector<string>goldMessageA =
