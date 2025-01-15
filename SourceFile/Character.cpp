@@ -211,11 +211,12 @@ void Character::Healing(int heal)
 //아이템 관련 함수
 int Character::GetItemAttack()
 {
+    int itemAttack = 0;
     for (size_t i = 0; i < inventory.size(); i++)
     {
-        extraAttack += inventory[i]->GetAttack();
+        itemAttack += inventory[i]->GetAttack();
     }
-    return extraAttack;
+    return itemAttack;
 }
 
 int Character::GetItemHealth()
