@@ -1,6 +1,7 @@
 #include "../headerFile/GameManager.h"
 #include "../headerFile/GraphicInterface.h"
 #include <windows.h>
+#include <limits>
 
 GameManager* GameManager::instance = nullptr;
 Shop* Shop::instance = nullptr;
@@ -139,7 +140,9 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 
 int GameManager::firstPhase()
 {
-	system("cls");
+	int value;
+	while (true) {
+		system("cls");
 	cout << "================================" << endl;
 	cout << "inGame" << endl;
 	cout << "현재 스테이지 : " << stage << endl;
@@ -147,8 +150,19 @@ int GameManager::firstPhase()
 
 	cout << "할 행동을 고르시오." << endl;
 	cout << "1 : 전투   2 : 상점   3 : 상태보기" << endl;
-	int value;
-	cin >> value;
+		cin >> value;
+		if (cin.fail()) {
+			cin.clear(); // 오류 상태를 초기화
+			cin.ignore(100, '\n');
+			cout << "다시 입력해주세요. " << endl;
+			cout << "\n▶Press Anykey";
+			PressAnyKey();
+		}
+		else {
+			cin.ignore(100, '\n');
+			break;
+		}
+	}
 	return value;
 }
 
