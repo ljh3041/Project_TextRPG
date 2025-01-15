@@ -285,5 +285,8 @@ vector<Item*> Character::GetInventory()
 
 void Character::remove_from_inventory(Item* item)
 {
-    //find item and remove item
+    auto it = find(inventory.begin(), inventory.end(), item);
+    if (it != inventory.end()) {
+        inventory.erase(it); // 선택된 아이템만 제거
+    }
 }
