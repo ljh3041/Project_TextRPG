@@ -71,7 +71,7 @@ void GameManager::battle(Character* player, Monster* monster)
 		cout << monster->GetName() << "의 공격! " << monster->GetAttack() << "의 피해" << endl;
 		Sleep(500);
 		player->TakeDamage(monster->GetAttack());
-		cout << player->GetName() << "의 남은 체력 " << player->GetHealth() - monster->GetAttack() << endl;
+		cout << player->GetName() << "의 남은 체력 " << player->GetHealth() << endl;
 		Sleep(1000);
 		//useitem?
 	}
