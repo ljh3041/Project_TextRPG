@@ -20,7 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicInterface.h" />
-    <ClInclude Include="headerFile\BossMonster.h" />
+    <ClInclude Include="headerFile\Dragon.h" />
     <ClInclude Include="headerFile\Character.h" />
     <ClInclude Include="headerFile\ConsumableItem.h" />
     <ClInclude Include="headerFile\DecoWord.h" />
@@ -37,7 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="headerFile\MonsterData.cpp" />
-    <ClCompile Include="SourceFile\BossMonster.cpp" />
+    <ClCompile Include="SourceFile\Dragon.cpp" />
     <ClCompile Include="SourceFile\Character.cpp" />
     <ClCompile Include="SourceFile\ConsumableItem.cpp" />
     <ClCompile Include="SourceFile\DecoWord.cpp" />

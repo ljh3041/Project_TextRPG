@@ -17,7 +17,7 @@
 #include "../headerFile/Orc.h"
 #include "../headerFile/Troll.h"
 #include "../headerFile/Goblin.h"
-#include "../headerFile/BossMonster.h"
+#include "../headerFile/Dragon.h"
 #include "../headerFile/Shop.h"
 #pragma endregion
 
@@ -61,7 +61,7 @@ int main() {
 			cout << "몬스터와 조우!" << endl;
 			Sleep(500);
 
-			if (stage < 10)
+			if (stage < 2)
 			{
 				gameManager->generateMonster();
 				gameManager->battle(player, GameManager::GetInstance()->getMonster());
@@ -71,7 +71,7 @@ int main() {
 			{
 				//한번에 battle함수로만 컨트롤 하고, monster generate에서 bossmonster를 생성하는 것도 
 				gameManager->generateBossMonster();
-				//gameManager->bossbattle(player, GameManager::GetInstance()->getBossMonster());
+				gameManager->bossbattle(player, GameManager::GetInstance()->getMonster());
 			}
 
 		}

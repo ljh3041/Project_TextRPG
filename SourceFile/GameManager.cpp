@@ -40,7 +40,7 @@ void GameManager::generateMonster()
 void GameManager::generateBossMonster()
 {
 	delete monster;
-	monster = new BossMonster;
+	monster = new Dragon;
 	cout << "보스 몬스터 " << monster->GetName() << "가 나타났다!" << endl;
 }
 
@@ -96,7 +96,7 @@ void GameManager::battle(Character* player, Monster* monster)
 	}
 }
 
-void GameManager::bossbattle(Character* player, BossMonster* bossmonster)
+void GameManager::bossbattle(Character* player, Monster* bossmonster)
 {
 	player->StartFight();
 	while ((player->GetHealth() > 0) && (bossmonster->GetHealth() > 0))
