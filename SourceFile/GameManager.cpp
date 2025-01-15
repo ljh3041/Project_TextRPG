@@ -55,9 +55,9 @@ void GameManager::battle(Character* player, Monster* monster)
 		player->UseItem(); // 플레이어 무조건 선턴. 아이템 먼저 사용.
 		//플레이어 공격
 		printPlayer();
-		cout << player->GetName() << "의 공격! " << player->GetAttack() << "의 피해" << endl;
+		cout << player->GetName() << "의 공격! " << player->GetTotalAttack() << "의 피해" << endl;
 		Sleep(500);
-		monster->TakeDamage(player->GetAttack());
+		monster->TakeDamage(player->GetTotalAttack());
 		if (monster->GetHealth() <= 0)
 		{
 			cout << monster->GetName() << "의 남은 체력 0 " << endl;
@@ -117,9 +117,9 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 		player->UseItem();  // 플레이어 무조건 선턴. 아이템 먼저 사용.
 
 		//플레이어 공격
-		cout << player->GetName() << "의 공격! " << player->GetAttack() << "의 피해" << endl;
+		cout << player->GetName() << "의 공격! " << player->GetTotalAttack() << "의 피해" << endl;
 		Sleep(500);
-		bossmonster->TakeDamage(player->GetAttack());
+		bossmonster->TakeDamage(player->GetTotalAttack());
 		if (bossmonster->GetHealth() <= 0)
 		{
 			cout << bossmonster->GetName() << "의 남은 체력 0 " << endl;
