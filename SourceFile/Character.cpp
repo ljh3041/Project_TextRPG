@@ -203,6 +203,11 @@ void Character::SetInventoryWeight(int weight)
 void Character::SetMaxHealth(int adjustMaxHealth)
 {
     maxHealth += adjustMaxHealth;
+    if (health > maxHealth)
+    {
+        health = maxHealth;
+    }
+    else {}
 }
 
 void Character::TakeDamage(int damage)
