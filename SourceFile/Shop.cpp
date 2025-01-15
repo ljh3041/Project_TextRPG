@@ -108,8 +108,7 @@ void Shop::ShopSelection()
             SellItem(); // 아이템 판매
             break;
         case 3:
-            cout << "3번 선택" << endl;
-            Sleep(500);
+            system("cls");
             Character::GetInstance()->DisplayStatus();
             PressAnyKey();
             break;
@@ -262,7 +261,6 @@ void Shop::printstore() {
                                                                             ====$=;;;;;;;;;;;;;;;!;!!$=$$=
 
 )";
-   //setCursorPosition(10, 1); // 충분히 큰 x 좌표 값 설정
     cout << asciiArt;
 }
 
