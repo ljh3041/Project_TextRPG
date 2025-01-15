@@ -5,6 +5,7 @@
 #include <cctype>
 #include <vector>
 #include <windows.h>
+#include <codecvt>
 
 #include "../headerFile/MyMath.h"
 
@@ -15,9 +16,13 @@ Character::Character()
     level = 1;
     health = 200;
     maxHealth = 200;
-    attack = 30;
+    basicAttack = 30;
+    extraAttack = 0;
+    totalAttack = basicAttack + extraAttack;
     experience = 0;
+    expForLevelUp = 0;
     gold = 1000;
+    maxLevel = 10;
     inventoryWeight = 0;
     maxInventoryWeight = 3;
 }
@@ -51,20 +56,24 @@ void Character::ReleaseInstance()
     }
 }
 
-string Character::NameValidation() // 이름 검증
+void Character::NameValidation() // 이름 검증
 {
-    string characterName;
 
+    locale::global(locale("ko_KR.UTF-8"));// 로케일을 한국어로 설정
+    wcin.imbue(locale("ko_KR.UTF-8"));
+    wcout.imbue(locale("ko_KR.UTF-8"));
+    wstring_convert<codecvt_utf8<wchar_t>> converter;// 와이드 문자열 -> UTF-8 변환기
+    wstring characterName;
     cout << "캐릭터의 이름을 2세 이름짓듯 설레고도 신중한 마음으로 입력해주세요. 너무 짧아도 안되고 너무 길어도 안돼요. 그리고 영어와 숫자로만 입력해주세요. 그래야 사주가 좋대요. " << endl;
 
     while (true)
     {
-        
+
         cout << "신중하게 지은 이름: ";
-        getline(cin, characterName);
+        getline(wcin, characterName);
         system("cls");
 
-        if (characterName.size() < 2) //2여야지 1이면 여기로 들어옴.
+        if (characterName.size() < 1) //한글자 허용
         {
             cout << "캐릭터 이름은 한 글자 이상 입력해주세요. 이름이란게, 고대 로마에서는 이름이 곧 운명이라고 할 정도로 인간에게 이름이란 중요한 것이라고 봤거든요." << endl;
             continue;
@@ -79,9 +88,10 @@ string Character::NameValidation() // 이름 검증
         bool isValid = true;
         for (char v : characterName)
         {
-            if (isalnum(v) == false) // 영어랑 숫자만 가려내는 함수
+            if (!isalnum(v)) // 영어, 숫자만 가려내는 함수
             {
-                cout << "영어랑 숫자만 입력 가능합니다. 왜냐면 C++ 만든 곳이 미국회사라서 영어가 기본이기도하고 한글도 어떻게 하면 가능은 하다는데 너무 복잡해져서 아직은 무리인거같아요." << endl;
+                cout << "영어랑 숫자만 입력 가능합니다. \n왜냐면 C++ 만든 곳이 미국회사라서 영어가 기본이기도하고 \n한글도 어떻게 하면 가능은 하다는데 너무 복잡해져서 아직은 무리인거같아요." << endl;
+                cout << "아니면 한글이어도 혹시 제 마음에 들면 허락해드릴게요." << endl;
                 isValid = false;
                 break;
             }
@@ -89,23 +99,16 @@ string Character::NameValidation() // 이름 검증
         if (isValid) { break; }
     }
     cout << "좋은 이름입니다. 장수할 이름이에요." << endl;
-    name = characterName;
+    name = converter.to_bytes(characterName);
     cout << "\n캐릭터가 생성되었습니다. " << name << "님! 준비운동은 하셨나요? 준비운동의 중요성에 대해 아시나요? 준비운동은 운동 중 부상위험을 획기적으로 줄여줄 수 있습니다." << endl;
-
-    return characterName;
-}
-
-void Character::SetName(const string& characterName)
-{
-    name = characterName;    
 }
 
 void Character::DisplayStatus()
 {
-    cout << "-현재 상태에 대해 말씀드리자면, " << endl;
+    cout << "-" << name << "님의 현재 상태에 대해 말씀드리자면, " << endl;
     cout << "레벨: " << level << endl;
     cout << "체력: " << health << "/" << maxHealth << endl;
-    cout << "공격력: " << attack << endl;
+    cout << "공격력: " << basicAttack << "(+" << GetItemAttack() << ")" << endl;
     cout << "경험치: " << experience << "/100" << endl;
     cout << "골드: " << gold << endl;
     cout << "이정도네요. 화이팅!" << endl;
@@ -113,50 +116,38 @@ void Character::DisplayStatus()
 
 void Character::LevelUp()
 {
-    experience += 20;
-
-    if (experience < 100)
+    if (level < maxLevel)
     {
-        cout << "경험치를 20 획득했어요. 레벨업까지 필요한 경험치는 " << 100 - experience << "입니다." << endl;
-        return;
-    }
+        experience += 20;
+        expForLevelUp += 20;
 
-    level++;
-    maxHealth += (level * 20);
-    attack += (level * 5);
-    health = maxHealth;
-    experience = 0;
-    cout << "레벨이 올랐는데 왜 올랐냐면 경험치가 100이 쌓이면 레벨이 오르는데 방금 전투로 필요경험치 100이 누적되셨어요." <<
-        "\n그래서 현재 레벨은 " << level << "입니다." << "\n그리고 최대 체력은 " << maxHealth << "이고 공격력은 " << attack << "입니다." << endl;
+        if (expForLevelUp < 100)
+        {
+            cout << "경험치를 20 획득했어요. 누적 경험치 " << experience << ", 다음 레벨까지 필요한 경험치는 " << 100 - expForLevelUp << "입니다." << endl;
+            return;
+        }
 
-    if (level == 10)
-    {
-        cout << "최고레벨에 도달했어요! 이제 " << name << "님을 능가할 용사는 없어요! 마지막 테스트만 통과하면요.. 마지막으로 체력을 채워드릴게요." << endl;
+        level++;
+        maxHealth += (level * 20);
+        basicAttack += (level * 5);
         health = maxHealth;
-        cout << "현재 체력: " << health << endl;
+        expForLevelUp = 0;
+        cout << "레벨이 올랐는데 왜 올랐냐면 경험치가 100이 쌓이면 레벨이 오르는데 방금 전투로 필요경험치 100이 누적되셨어요." << endl;
+        cout << "그래서 현재 레벨은 " << level << "입니다." << endl;
+        cout << "그리고 최대 체력은 " << maxHealth << "이고 기본공격력은 " << basicAttack << "입니다." << endl;
+        cout << "체력도 완전 회복됐습니다. 쩔죠?" << endl;
+    }
+
+    if (level == maxLevel)
+    {
+        cout << "최고레벨에 도달했어요! 이제 " << name << "님을 능가할 용사는 없어요! 마지막 테스트만 통과하면요.. " << endl;
     }
 }
-/*void Character::UseItem(int index)
-{
-    Item* item = inventory[index];
-    item->Use(this);
-    cout << item->getName() << "을(를) 사용했습니다." << endl;
-
-    delete item;
-    inventory.erase(inventory.begin() + index);
-}
-
-/*void Character::VisitShop()
-{
-    cout << "상점에 입장했습니다. 여기 사장님 아들이 만득인데 만득이가 작년에 코인했다가 쫄딱 망해가지고 사장님도 돈독이 바짝 올라있어요.." << endl;
-    GameManager::GetInstance()->VisitShop(this);
-}*/
 
 void Character::SetGold(int settleGold)
 {
-    gold += settleGold;
-    
-    cout << "획득한 골드 : " << settleGold << "G" << endl << "\n현재 보유 골드 " << gold << "G 입니다." << endl;
+    gold = settleGold;
+
     /*int messageCall = GetRandom(0, 2); // 상점수입과 혼동될 수 있어 보류
 
     vector<string>goldMessageA =
@@ -187,7 +178,19 @@ void Character::SetGold(int settleGold)
     else { return; } // 0원일 시 통과*/
 }
 
-//✨ update  
+void Character::SetInventoryWeight(int weight)
+{
+    if (inventoryWeight + weight < 0)
+    {
+        inventoryWeight = 0;
+    }
+
+    else
+    {
+        inventoryWeight = min(inventoryWeight + weight, maxInventoryWeight);
+    }
+}
+
 void Character::TakeDamage(int damage)
 {
     health -= damage;
@@ -195,25 +198,17 @@ void Character::TakeDamage(int damage)
 
 void Character::Healing(int heal)
 {
-    if (health + heal >= maxHealth)
-    {
-        health = maxHealth;
-    }
-    else 
-    {
-        health += heal;
-    }
+    health = min((health + heal), maxHealth);
 }
 
 //아이템 관련 함수
 int Character::GetItemAttack()
 {
-    int itemAttack = 0;
     for (size_t i = 0; i < inventory.size(); i++)
     {
-        itemAttack += inventory[i]->GetAttack();
+        extraAttack += inventory[i]->GetAttack();
     }
-    return itemAttack;
+    return extraAttack;
 }
 
 int Character::GetItemHealth()
@@ -256,7 +251,8 @@ void Character::EndFight()
 
 int Character::GetTotalAttack()
 {
-    return attack + GetItemAttack();
+    totalAttack = GetItemAttack() + basicAttack;
+    return totalAttack;
 }
 
 int Character::GetTotalHealth()
