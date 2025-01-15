@@ -38,15 +38,17 @@ public:
 	}
 
 	//게임 페이즈
-	void tutorialPhase();
-	int firstPhase();
-	void BattlePhase();
-	void StorePhase();
-	void StatusPhase();
+	void tutorialPhase();	//튜토리얼 페이즈
+	int firstPhase();		//첫 조우 페이즈
+	void BattlePhase();		//전투 페이즈
+	void StorePhase();		//상점 페이즈
+	void StatusPhase();		//스텟 페이즈
 
 	void visitShop();
 	void battle(Character* player, Monster* monster);
     void bossbattle(Character* player, Monster* bossmonster);
+	void showTeamName();	//팀 이름 출력
+	void showGameName();	//게임 이름 출력
 
 
 	void generateMonster();
