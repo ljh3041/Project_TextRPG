@@ -198,6 +198,7 @@ int GameManager::firstPhase()
 void GameManager::visitShop()//Character* player)
 {
 	Shop::GetInstance()->EnterShop();
+	Shop::GetInstance()->InitializeShop();
 	Shop::GetInstance()->ShopSelection();
 }
 

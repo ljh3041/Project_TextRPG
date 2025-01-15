@@ -29,6 +29,7 @@ public:
     void ShopSelection();
     void BuyItem();
     void SellItem();
+    void InitializeShop();
 
 
     static Shop* GetInstance() {
