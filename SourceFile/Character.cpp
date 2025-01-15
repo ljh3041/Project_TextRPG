@@ -1,13 +1,8 @@
 ﻿#include "../headerFile/Character.h"
-#include <string>
-#include <iostream>
-#include <algorithm>
-#include <cctype>
-#include <vector>
+#include "../headerFile/MyMath.h"
+#include "../headerFile/TextColor.h"
 #include <windows.h>
 #include <codecvt>
-
-#include "../headerFile/MyMath.h"
 
 Character* Character::instance = nullptr;
 
@@ -64,7 +59,7 @@ void Character::NameValidation() // 이름 검증
     wcout.imbue(locale("ko_KR.UTF-8"));
     wstring_convert<codecvt_utf8<wchar_t>> converter;// 와이드 문자열 -> UTF-8 변환기
     wstring characterName;
-    cout << "캐릭터의 이름을 2세 이름짓듯 설레고도 신중한 마음으로 입력해주세요. 너무 짧아도 안되고 너무 길어도 안돼요. 그리고 영어와 숫자로만 입력해주세요. 그래야 사주가 좋대요. " << endl;
+    cout << "캐릭터의 이름을 2세 이름짓듯 설레고도 신중한 마음으로 입력해주세요. 너무 짧아도 안되고 너무 길어도 안돼요. \n그리고 영어와 숫자로만 입력해주세요. 그래야 사주가 좋대요. " << endl;
 
     while (true)
     {
@@ -81,7 +76,7 @@ void Character::NameValidation() // 이름 검증
 
         if (characterName.size() >= 30)
         {
-            cout << "적당히 하세요. 30자는 심하잖아요. 군대가면 관등성명대다 전역하겠어요." << endl;
+            cout << "적당히 하세요. 30자는 심해요 좀.. 군대가면 관등성명대다 전역하겠어요." << endl;
             continue;
         }
 
@@ -100,19 +95,32 @@ void Character::NameValidation() // 이름 검증
     }
     cout << "좋은 이름입니다. 장수할 이름이에요." << endl;
     name = converter.to_bytes(characterName);
-    cout << "\n캐릭터가 생성되었습니다. " << name << "님! 준비운동은 하셨나요? 준비운동의 중요성에 대해 아시나요? 준비운동은 운동 중 부상위험을 획기적으로 줄여줄 수 있습니다." << endl;
+    cout << "\n캐릭터가 생성되었습니다. \n" << name << "님! 준비운동은 하셨나요? 준비운동의 중요성에 대해 아시나요? \n준비운동은 운동 중 부상위험을 획기적으로 줄여줄 수 있습니다." << endl;
 }
 
 void Character::DisplayStatus()
 {
-    cout << "-" << name << "님의 현재 상태에 대해 말씀드리자면, " << endl;
+    cout << "- " << name << "님의 현재 상태에 대해 말씀드리자면, " << endl;
     cout << "레벨: " << level << endl;
     cout << "체력: " << health << "/" << maxHealth << endl;
     cout << "공격력: " << basicAttack << "(+" << GetItemAttack() << ")" << endl;
-    cout << "경험치: " << experience << endl;
-    cout << "레벨업까지: " << expForLevelUp << "/ 100" << endl;
-    cout << "골드: " << gold << endl;
+    cout << "경험치: " << green << experience << white << endl;
+    cout << "레벨업까지: " << green << expForLevelUp << "/ 100" << white << endl;
+    cout << "골드: " << yellow << gold << white << endl;
     cout << "인벤토리 공간: " << inventoryWeight << " / " << maxInventoryWeight << endl;
+    cout << "보유중인 아이템" << endl;
+    if(inventory.size() == 0)
+    {
+        cout << "- 아무것도 없어요. 상점 한번 털고 오시죠." << endl;
+    }
+    else
+    {
+        for (int i = 0; i < inventory.size(); i++)
+        {
+            int num = i + 1;
+            cout << num << " - " << inventory[i]->GetName() << endl;
+        }
+    }
     cout << "이정도네요. 화이팅!" << endl;
 }
 
@@ -150,41 +158,21 @@ void Character::AddGold(int AddGold)
 {
     gold += AddGold;
 
-    cout << "획득한 골드 : " << AddGold << "G" << endl << "\n현재 보유 골드 " << gold << "G 입니다." << endl;
+    int messageCall = GetRandom(0, 2);
+
+    vector<string>goldMessage =
+    {
+        "\n몬스터가 두부 심부름값으로 들고가던 ",
+        "\n몬스터가 어머니 생일선물 사려고 모았던 ",
+        "\n몬스터의 할머니가 용돈으로 주셨던 "
+    };  
+    cout << goldMessage[messageCall] << yellow << AddGold << white << "G를 획득했습니다! " << endl;
+    cout << "\n현재 보유 골드 " << yellow <<  gold << white << "G 입니다." << endl;    
 }
 
 void Character::SetGold(int settleGold)
 {
-    gold = settleGold;
-
-    /*int messageCall = GetRandom(0, 2); // 상점수입과 혼동될 수 있어 보류
-
-    vector<string>goldMessageA =
-    {
-        "몬스터가 두부 심부름값으로 들고가던 ",
-        "몬스터가 어머니 생일선물 사려고 모았던 ",
-        "몬스터의 할머니가 용돈으로 주셨던 "
-    };
-
-    vector<string>goldMessageB =
-    {
-        "몬스터의 어머니는 오늘 두부도 잃고 자식도 잃었네요.",
-        "몬스터의 어머니는 올해 생일선물 받긴 글렀네요.",
-        "맛있는거 사먹으라고 꼬깃한 쌈짓돈 쥐어주시는 모습이 아른거려요.."
-    };
-
-    if (settleGold > 0)
-    {
-        cout << goldMessageA[messageCall] << settleGold << "G를 획득했습니다!" << goldMessageB[messageCall] << endl;
-        cout << "\n현재 보유 골드 " << gold << "G 입니다." << endl;
-        return;
-    }
-    else if (settleGold < 0)
-    {
-        cout << "시원하게 지르셨네요. 총 구매비용 " << settleGold * -1 << ", 현재 보유 골드 " << gold << "입니다. 좀 아껴쓰시는게 좋겠어요. 요즘같은 고물가시대에.. 포션따위보단 현금입니다." << endl;
-        return;
-    }
-    else { return; } // 0원일 시 통과*/
+    gold = settleGold;      
 }
 
 void Character::SetInventoryWeight(int weight)
