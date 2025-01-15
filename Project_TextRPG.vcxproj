@@ -27,6 +27,7 @@
     <ClInclude Include="headerFile\EquipmentItem.h" />
     <ClInclude Include="headerFile\GameManager.h" />
     <ClInclude Include="headerFile\Goblin.h" />
+    <ClInclude Include="headerFile\GraphicInterface.h" />
     <ClInclude Include="headerFile\Item.h" />
     <ClInclude Include="headerFile\Monster.h" />
     <ClInclude Include="headerFile\MonsterData.h" />

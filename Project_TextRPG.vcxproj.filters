@@ -42,9 +42,6 @@
     <ClInclude Include="headerFile\Shop.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="headerFile\BossMonster.h">
-      <Filter>헤더 파일\Monster</Filter>
-    </ClInclude>
     <ClInclude Include="headerFile\Goblin.h">
       <Filter>헤더 파일\Monster</Filter>
     </ClInclude>
@@ -78,6 +75,12 @@
     <ClInclude Include="GraphicInterface.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="headerFile\Dragon.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="headerFile\GraphicInterface.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SourceFile\Character.cpp">
@@ -91,9 +94,6 @@
     </ClCompile>
     <ClCompile Include="SourceFile\Shop.cpp">
       <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="SourceFile\BossMonster.cpp">
-      <Filter>소스 파일\Monster</Filter>
     </ClCompile>
     <ClCompile Include="SourceFile\Goblin.cpp">
       <Filter>소스 파일\Monster</Filter>
@@ -121,6 +121,9 @@
     </ClCompile>
     <ClCompile Include="SourceFile\EquipmentItem.cpp">
       <Filter>소스 파일\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceFile\Dragon.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
