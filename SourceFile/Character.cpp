@@ -194,7 +194,14 @@ void Character::TakeDamage(int damage)
 
 void Character::Healing(int heal)
 {
-    health -= heal;
+    if (health + heal >= maxHealth)
+    {
+        health = maxHealth;
+    }
+    else 
+    {
+        health += heal;
+    }
 }
 
 //아이템 관련 함수

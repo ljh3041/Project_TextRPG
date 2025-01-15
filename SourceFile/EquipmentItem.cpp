@@ -74,7 +74,7 @@ int HP_Blade1::GetAttack()
 	{
 		count = 0;
 		return Character::GetInstance()->GetHealth() * 1 / 100;  //아이템에 추가 공격력을 통해 추가 데미지 구현
-		cout << "4번째 공격에 나의 현재체력의 1%의 추가 피해를 주는 무게2, 체력 10의 도의 효과: " << Character::GetInstance()->GetMaxHealth() * 1 / 100 << "의 추가 데미지" << endl;
+		cout << "4번째 공격에 나의 현재체력의 1%의 추가 피해를 주는 무게2, 체력 10의 도의 효과: " << Character::GetInstance()->GetHealth() * 1 / 100 << "의 추가 데미지" << endl;
 	}
 }
 
@@ -94,7 +94,7 @@ int HP_Blade2::GetAttack()
 	{
 		count = 0;
 		return Character::GetInstance()->GetHealth() * 2 / 100;  //아이템에 추가 공격력을 통해 추가 데미지 구현
-		cout << "4번째 공격에 나의 현재체력의 2%의 추가 피해를 주는 무게2, 체력 20의 도의 효과: " << Character::GetInstance()->GetMaxHealth() * 2 / 100 << "의 추가 데미지" << endl;
+		cout << "4번째 공격에 나의 현재체력의 2%의 추가 피해를 주는 무게2, 체력 20의 도의 효과: " << Character::GetInstance()->GetHealth() * 2 / 100 << "의 추가 데미지" << endl;
 	}
 }
 
@@ -113,7 +113,7 @@ int HP_Blade3::GetAttack()
 	{
 		count = 0;
 		return Character::GetInstance()->GetHealth() * 3 / 100;  //아이템에 추가 공격력을 통해 추가 데미지 구현
-		cout << "4번째 공격에 나의 현재체력의 3%의 추가 피해를 주는 무게2, 체력 30의 도의 효과: " << Character::GetInstance()->GetMaxHealth() * 3 / 100 << "의 추가 데미지" << endl;
+		cout << "4번째 공격에 나의 현재체력의 3%의 추가 피해를 주는 무게2, 체력 30의 도의 효과: " << Character::GetInstance()->GetHealth() * 3 / 100 << "의 추가 데미지" << endl;
 	}
 }
 
@@ -132,7 +132,7 @@ int HP_Blade4::GetAttack()
 	{
 		count = 0;
 		return Character::GetInstance()->GetHealth() * 4 / 100;  //아이템에 추가 공격력을 통해 추가 데미지 구현
-		cout << "4번째 공격에 나의 현재체력의 4%의 추가 피해를 주는 무게2, 체력 40의 도의 효과: " << Character::GetInstance()->GetMaxHealth() * 4 / 100 << "의 추가 데미지" << endl;
+		cout << "4번째 공격에 나의 현재체력의 4%의 추가 피해를 주는 무게2, 체력 40의 도의 효과: " << Character::GetInstance()->GetHealth() * 4 / 100 << "의 추가 데미지" << endl;
 	}
 }
 
@@ -151,7 +151,7 @@ int HP_Blade5::GetAttack()
 	{
 		count = 0;
 		return Character::GetInstance()->GetHealth() * 5 / 100;  //아이템에 추가 공격력을 통해 추가 데미지 구현
-		cout << "3번째 공격에 나의 현재체력의 5%의 추가 피해를 주는 무게2, 체력 50의 도의 효과: " << Character::GetInstance()->GetMaxHealth() * 5 / 100 << "의 추가 데미지" << endl;
+		cout << "3번째 공격에 나의 현재체력의 5%의 추가 피해를 주는 무게2, 체력 50의 도의 효과: " << Character::GetInstance()->GetHealth() * 5 / 100 << "의 추가 데미지" << endl;
 	}
 }
 
@@ -206,6 +206,6 @@ void HealingArmor8::EndFight()
 }
 void HealingArmor10::EndFight()
 {
-	Character::GetInstance()->Healing(Character::GetInstance()->GetMaxHealth() / 10);
-	cout << "전투종료시 전체 체력의 10%를 회복하는 체력 100 방어구의 효과: " << Character::GetInstance()->GetMaxHealth() / 10 << "회복" << endl;
+	Character::GetInstance()->Healing(Character::GetInstance()->GetMaxHealth() * 10 / 100);
+	cout << "전투종료시 전체 체력의 10%를 회복하는 체력 100 방어구의 효과: " << Character::GetInstance()->GetMaxHealth() * 10 / 100 << "회복" << endl;
 }

@@ -11,10 +11,59 @@ Shop::Shop()
 void Shop::InitializeShop() 
 {
     all_items.clear(); // 기존 아이템 제거
+  
+    all_items.push_back(new Sword10());
+    all_items.push_back(new Sword20());
+    all_items.push_back(new Sword30());
     all_items.push_back(new Sword40());
+    all_items.push_back(new Sword50());
+    
+    all_items.push_back(new ScalingSword10());
+    all_items.push_back(new ScalingSword20());
+    all_items.push_back(new ScalingSword30());
+    all_items.push_back(new ScalingSword40());
+    all_items.push_back(new ScalingSword50());
+    
+    all_items.push_back(new VampiricDagger10());
+    all_items.push_back(new VampiricDagger20());
+    all_items.push_back(new VampiricDagger30());
+    all_items.push_back(new VampiricDagger40());
+    all_items.push_back(new VampiricDagger50());
+    
+    all_items.push_back(new HP_Blade1());
+    all_items.push_back(new HP_Blade2());
+    all_items.push_back(new HP_Blade3());
     all_items.push_back(new HP_Blade4());
-    all_items.push_back(new HP_Blade4());
-    all_items.push_back(new HP_Blade4());
+    all_items.push_back(new HP_Blade5());
+   
+    all_items.push_back(new Armor10());
+    all_items.push_back(new Armor20());
+    all_items.push_back(new Armor30());
+    all_items.push_back(new Armor40());
+    all_items.push_back(new Armor50());
+    all_items.push_back(new Armor50());
+
+    all_items.push_back(new ScalingArmor10());
+    all_items.push_back(new ScalingArmor20());
+    all_items.push_back(new ScalingArmor30());
+    all_items.push_back(new ScalingArmor40());
+    all_items.push_back(new ScalingArmor50());
+
+    all_items.push_back(new HealingArmor2());
+    all_items.push_back(new HealingArmor4());
+    all_items.push_back(new HealingArmor6());
+    all_items.push_back(new HealingArmor8());
+    all_items.push_back(new HealingArmor10());
+
+    all_items.push_back(new potion50());
+    all_items.push_back(new potion100());
+    all_items.push_back(new potion300());
+    all_items.push_back(new potion600());
+
+    all_items.push_back(new potionQuarter());
+    all_items.push_back(new potionHalf());
+    all_items.push_back(new potionFull());
+  
     items_for_sale = RandomItem(); // 아이템 재랜덤화
 }
 
@@ -155,4 +204,3 @@ void Shop::SellItem()
     cout << "판매 성공! 현재 보유 골드: " << Character::GetInstance()->GetGold() << endl;
     
 }
-
