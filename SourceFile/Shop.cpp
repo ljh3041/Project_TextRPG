@@ -117,7 +117,7 @@ void Shop::ShopSelection()
             cout << "갈림길로 이동합니다!" << endl; // 전장 이동
             Sleep(500);
             //나중에 전장이동 생기면 넣기
-            break;
+            return;
         default:
             cout << "잘못된 선택입니다." << endl; // 잘못된 선택 처리
             Sleep(500);
