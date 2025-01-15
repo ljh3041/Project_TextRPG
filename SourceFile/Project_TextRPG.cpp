@@ -58,7 +58,6 @@ int main() {
 		else
 		{
 			cout << "다시 입력해주세요. " << endl;
-			cout << "\n▶Press Anykey";
 			PressAnyKey();
 		}
 	
