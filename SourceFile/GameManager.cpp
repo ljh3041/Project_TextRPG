@@ -126,7 +126,7 @@ void GameManager::EndingPhase()
 	system("cls");
 	int speed = 500;
 	Sleep(speed * 3);
-	cout << "\n\n\n\n\n\n\n\n\n\n\n\n                                               'TMI 팔색조 (이)가 조용해졌다.'" << endl;
+	cout << "\n\n\n\n\n\n\n\n\n\n\n\n                                               'TMI 팔색조가 조용해졌다.'" << endl;
 	Sleep(speed * 3);
 	system("cls");
 	Sleep(speed * 3);
