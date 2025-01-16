@@ -4,6 +4,7 @@
 #include <string>
 #include <windows.h>
 #include "GameManager.h"
+#include "TextColor.h"
 
 GameManager* gm = GameManager::GetInstance();
 Monster* mon = GameManager::GetInstance()->getMonster();
@@ -16,7 +17,7 @@ void printPlayer() {
     cout << "                            .--~    " << "                                      ▶--------------------------------------------" << endl;
     cout << "                          ::**::        ," << endl;
     cout << "                           ,*!!*,  . .. " <<endl;
-    cout << "                          -**!!~.. , " << "                                       | 주인공   : " << pl->GetName() << endl;
+    cout << "                          -**!!~.. , " << "                                       | 주인공   : " << yellow << pl->GetName()<<white << endl;
     cout << "                         !=!!,.;,- " << "                                         | 레벨     : " << pl->GetLevel() << endl;
     cout << "                        ;$=;:!*..;!," << "                                        | 체력     : " << pl->GetHealth() << endl;
     cout << "                      ;,    ,!--:-**," << "                                       | 공격력   : " << pl->GetAttack() << endl;
@@ -42,7 +43,7 @@ void printGoblin() {
     cout << "                            --" << "                                            ▶--------------------------------------------" << endl;
     cout << "                           ::~;" << endl;
     cout << "                           ;:;!:" << endl;
-    cout << "                           ;!!*:---" << "                                         | 주인공   : " << pl->GetName() << endl;
+    cout << "                           ;!!*:---" << "                                         | 주인공   : " << yellow << pl->GetName() << white << endl;
     cout << "                           ;*=*::---~" << "                                       | 레벨     : " << pl->GetLevel() << endl;
     cout << "                           ~==!~*.~~-" << "                                       | 체력     : " << pl->GetHealth() << endl;
     cout << "                          .*==;~; ,~" << "                                        | 공격력   : " << pl->GetAttack() << endl;
@@ -73,7 +74,7 @@ void printOrc() {
     cout << "                                ." << "                                         ▶--------------------------------------------" << endl;
     cout << "                             ,,,," << endl;
     cout << "                            ,,::;." << endl;
-    cout << "                            ~~--~." << "                                          | 주인공   : " << pl->GetName() << endl;
+    cout << "                            ~~--~." << "                                          | 주인공   : " << yellow << pl->GetName() << white << endl;
     cout << "                          .,~~~~-,.." << "                                        | 레벨     : " << pl->GetLevel() << endl;
     cout << "                         ,-:----,,-,-" << "                                       | 체력     : " << pl->GetHealth() << endl;
     cout << "                       .,--,.-~-.,-~-" << "                                       | 공격력   : " << pl->GetAttack() << endl;
@@ -104,7 +105,7 @@ void printTroll() {
     cout << "                              . " << "                                          ▶--------------------------------------------" << endl;
     cout << "                             -~-" << endl;
     cout << "                           .,;;;," << endl;
-    cout << "                          .~,~:::." << "                                          | 주인공   : " << pl->GetName() << endl;
+    cout << "                          .~,~:::." << "                                          | 주인공   : " << yellow << pl->GetName() << white << endl;
     cout << "                         .-:-=#:::" << "                                          | 레벨     : " << pl->GetLevel() << endl;
     cout << "                         ~::;:;;:;:" << "                                         | 체력     : " << pl->GetHealth() << endl;
     cout << "                        .::~;!!;;;!:." << "                                       | 공격력   : " << pl->GetAttack() << endl;
