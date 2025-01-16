@@ -124,7 +124,7 @@ void GameManager::generateMonster()
 void GameManager::generateBossMonster()
 {
 	delete monster;
-	monster = new Dragon;
+	monster = new Pitta;
 	cout << "보스 몬스터 " << monster->GetName() << "가 나타났다!" << endl;
 }
 

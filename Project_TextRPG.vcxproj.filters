@@ -75,8 +75,11 @@
     <ClInclude Include="headerFile\GraphicInterface.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="headerFile\Dragon.h">
+    <ClInclude Include="headerFile\Pitta.h">
       <Filter>헤더 파일\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="headerFile\TextColor.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -119,7 +122,7 @@
     <ClCompile Include="SourceFile\EquipmentItem.cpp">
       <Filter>소스 파일\Item</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFile\Dragon.cpp">
+    <ClCompile Include="SourceFile\Pitta.cpp">
       <Filter>소스 파일\Monster</Filter>
     </ClCompile>
   </ItemGroup>
