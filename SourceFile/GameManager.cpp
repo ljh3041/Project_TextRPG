@@ -325,16 +325,16 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 	for (int i = 0; i < 3; i++)
 	{
 		system("cls");
-		BossStanding_dot3();
+		BossStanding_dot3_clean();
 		cout << "          보스 몬스터 출현!" << endl;
 		Sleep(50);
 		system("cls");
-		BossStanding_dot4();
+		BossStanding_dot4_clean();
 		cout << "          보스 몬스터 출현!" << endl;
 		Sleep(50);
 	}
 	system("cls");
-	BossStanding_dot3();
+	BossStanding_dot3_clean();
 	cout << "          보스 몬스터 출현!" << endl;
 	Sleep(1000);
 
@@ -364,19 +364,19 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 	{
 		//player->UseItem();  // 플레이어 무조건 선턴. 아이템 먼저 사용.
 		system("cls");
-		Hit_Boss_dot1();
+		Hit_Boss_dot1_clean();
 		Sleep(150);
 		system("cls");
-		Hit_Boss_dot2();
+		Hit_Boss_dot2_clean();
 		Sleep(80);
 		system("cls");
-		Hit_Boss_dot1();
+		Hit_Boss_dot1_clean();
 		Sleep(150);
 		system("cls");
-		Hit_Boss_dot2();
+		Hit_Boss_dot2_clean();
 		Sleep(80);
 		system("cls");
-		Hit_Boss_dot1();
+		Hit_Boss_dot1_clean();
 
 		int randomValue = rand() % 100;
 
@@ -387,7 +387,7 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 			//플레이어 공격
 			int b_P_dam = player->GetRandTotalAttack();
 			monster->TakeDamage(b_P_dam);
-			Hit_Boss_dot1();
+			Hit_Boss_dot1_clean();
 			cout << endl << endl << endl;
 
 			cout << yellow << player->GetName() << white << "의 공격! " << b_P_dam << "의 피해" << endl;
@@ -408,7 +408,7 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 			//플레이어 공격
 			float b_PC_dam = static_cast<float>( player->GetRandTotalAttack() * 1.6);
 			monster->TakeDamage(static_cast<int>( b_PC_dam));
-			Hit_Boss_dot1();
+			Hit_Boss_dot1_clean();
 			cout << endl << endl << endl;
 			cout << yellow << player->GetName() << white << "의 " << red << "!!크리티컬 공격!!" << white << b_PC_dam << "의 피해" << endl;
 			Sleep(500);
@@ -431,13 +431,13 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 
 		//보스 몬스터 공격
 		system("cls");
-		Attack_Boss_dot1();
+		Attack_Boss_dot1_clean();
 		Sleep(300);
 		system("cls");
 
 		int B_dam = bossmonster->GetAttack();
 		player->TakeDamage(B_dam);
-		Attack_Boss_dot2();
+		Attack_Boss_dot2_clean();
 		cout << endl << endl << endl;
 		cout << red << bossmonster->GetName() << white << "의 공격! " << B_dam << "의 피해" << endl;
 		Sleep(500);
