@@ -51,14 +51,15 @@ void GameManager::tutorialPhase()
 	Character::GetInstance()->NameValidation();
 	Sleep(500);
 	soundTrack1();
+	Character::GetInstance()->AddToInventory(new potion50());
 	PressAnyKey();
 
 }
 
 int GameManager::firstPhase()
 {
-	Stun_Player_dot_clean();
-	PressAnyKey();
+	//Stun_Player_dot_clean();
+	//PressAnyKey();
 	int value;
 	while (true) {
 		system("cls");
