@@ -394,7 +394,17 @@ void Character::CorrectName()
     cout << "                                준비운동은 운동 중 부상위험을 획기적으로 줄여줄 수 있습니다." << endl;
     Sleep(textSpeed);
     cout << "                                                  그럼, 시작해볼까요?" << endl;
-    Sleep(textSpeed * 3);
+    Sleep(textSpeed * 5);
+    cout << "\n\n\n                                                         잠깐!" << endl;
+    Sleep(textSpeed * 5);
+    system("cls");
+    cout <<"\n\n\n\n\n\n\n\n"<< s << "'" << yellow << name << white << "!" << endl;
+    Sleep(textSpeed*3); 
+    cout << "                                              다닐때 항상 길조심 차조심하고" << endl;
+    Sleep(textSpeed*3);
+    cout << "                                             밥 굶지말고 다치지않게 조심하렴.'" << endl;
+    Sleep(textSpeed * 5);
+    cout << "\n\n                                            엄마에게 용돈과 포션을 받았습니다!" << endl;
 }
 
 void Character::GetGoldMessage(int AddGold)

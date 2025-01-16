@@ -36,7 +36,7 @@ Shop* shop = nullptr;
 int main() {
 	gameManager = GameManager::GetInstance();
 	int stageguide = 0;
-	//gameManager->tutorialPhase();
+	gameManager->tutorialPhase();
 
 
 	while (1)
