@@ -66,6 +66,66 @@ void printGoblin() {
 
 
 
+
+void printOrc() {
+    mon = GameManager::GetInstance()->getMonster();
+    pl = Character::GetInstance();
+    cout << "                                ." << "                                         ▶--------------------------------------------" << endl;
+    cout << "                             ,,,," << endl;
+    cout << "                            ,,::;." << endl;
+    cout << "                            ~~--~." << "                                          | 주인공   : " << pl->GetName() << endl;
+    cout << "                          .,~~~~-,.." << "                                        | 레벨     : " << pl->GetLevel() << endl;
+    cout << "                         ,-:----,,-,-" << "                                       | 체력     : " << pl->GetHealth() << endl;
+    cout << "                       .,--,.-~-.,-~-" << "                                       | 공격력   : " << pl->GetAttack() << endl;
+    cout << "                       ,,:~,,-:--,:~--," << "                                     | 소지금   : " << pl->GetGold() << endl;
+    cout << "                      .--:-,,-;,,~~.,-:" << endl;
+    cout << "                      .;;,,:;:::!; .~~:" << endl;
+    cout << "                      .~;   :::;!,  .~:" << "                                   ▶--------------------------------------------" << endl;
+    cout << "                       ,,  -::;;!;  ~~:" << endl;
+    cout << "                       -  ,:::;!;;;  :;-!" << endl;
+    cout << "                      -,, ,:::;::;-,,,-," << "                                    | 몬스터" << endl;
+    cout << "                     ,-  .,~:;;!!:,,~: " << "                                     | 체력     : " << mon->GetHealth() << endl;
+    cout << "                         .-:~   ,:~:," << "                                       | 공격력   : " << mon->GetAttack() << endl;
+    cout << "                         ,~:.    ~;:." << endl;
+    cout << "                         ~~:    -*;-." << endl;
+    cout << "                         .,:     :,::.;" << endl;
+    cout << "                         .,:     :::-:" << endl;
+    cout << "                          ,:     :~," << endl;
+    cout << "                          ,-     ~," << endl;
+    cout << "                         ,-,     -~-," << endl;
+    cout << "                         ,..      .--" << endl;
+    cout << endl;
+}
+
+void printTroll() {
+    mon = GameManager::GetInstance()->getMonster();
+    pl = Character::GetInstance();  
+
+    cout << "                              . " << "                                          ▶--------------------------------------------" << endl;
+    cout << "                             -~-" << endl;
+    cout << "                           .,;;;," << endl;
+    cout << "                          .~,~:::." << "                                          | 주인공   : " << pl->GetName() << endl;
+    cout << "                         .-:-=#:::" << "                                          | 레벨     : " << pl->GetLevel() << endl;
+    cout << "                         ~::;:;;:;:" << "                                         | 체력     : " << pl->GetHealth() << endl;
+    cout << "                        .::~;!!;;;!:." << "                                       | 공격력   : " << pl->GetAttack() << endl;
+    cout << "                       .;::~:;;:-:;!." << "                                       | 소지금   : " << pl->GetGold() << endl;
+    cout << "                        ~:~::;::- ~;!," << endl;
+    cout << "                       -;,:;;:~:~, :*!" << endl;
+    cout << "                      --!*!:~~-:~: ;*:~" << "                                   ▶--------------------------------------------" << endl;
+    cout << "                      ~::$!=!:~;;= -;;-" << endl;
+    cout << "                      -::!-$#$===# -;:," << endl;
+    cout << "                      ;!-=.;###@#*   :" << "                                      | 몬스터" << endl;
+    cout << "                         ~.;!~~!=," << "                                          | 체력     : " << mon->GetHealth() << endl;
+    cout << "                         ;.;!:,!!," << "                                          | 공격력   : " << mon->GetAttack() << endl;
+    cout << "                          -;; -!!," << endl;
+    cout << "                          ,;.  !:." << endl;
+    cout << "                          -;   :::~" << endl;
+    cout << "                          -;.    -:," << endl;
+    cout << "                          ,::     - " << endl;
+    cout << "                            ." << endl;
+    cout << endl;
+}
+
 void printBoss() {
     const char* asciiArt = R"(
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -99,41 +159,6 @@ void printBoss() {
     std::cout << asciiArt;
 }
 
-
-
-void printOrc() {
-    const char* asciiArt = R"(
-                           
-               .,,.           
-            --,-~-~.,-~~-     
-           :;~-~*-~;!!;;;;-.  
-           ;:::;~~:!~~~---.   
-          --~!:~::**-,~       
-            ~;;;**=*:~-       
-            .~!!:!**:~-.      
- .          ~!!!:!!!!::.      
-  -         ;**;:!*!*:;-      
-  ,~      --!!!;;!**=~~-      
-   ,-    ,;;*:::::;=*~~-      
-    -~   ~;*!;;;;!=$$-~-      
-     ,-~-:;-!*==*=$==:~-      
-      .~;-  -*!*=***!!~:      
-       ,~~. ~****!!~:*;;      
-         .  :*!*=~!;!!,,      
-            :*!*..!!*!        
-            ~==;  ~*=-        
-            .*!-  .$=.        
-            ,~::  .;;-        
-             ;!~   ~!-        
-             ;!,   ,!.        
-           .,!!~   ;!-,.      
-           ~!!:-   :;*!~      
-            ,        ,-.      
-                    
-)";
-
-    std::cout << asciiArt;
-}
 
 
 void printLoding1() {

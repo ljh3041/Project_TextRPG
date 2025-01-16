@@ -17,6 +17,7 @@ protected:
 	int health = 0;		//체력
 	int attack = 0;		//공격력
 	int gold = 0;       //(추가) 골드
+	int species = 0;
 	Item* item = nullptr;
 
 public:
@@ -27,6 +28,7 @@ public:
 	int GetHealth();
 	int GetAttack();
 	int GetGold();
+	int GetSpecies() { return species; };
 	virtual Item* GetItem() { return item; };
 
 	int GetRandomHealthStat(string _name);
