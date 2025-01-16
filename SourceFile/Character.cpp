@@ -95,23 +95,35 @@ void Character::NameValidation() // 이름 검증
     }
     cout << "좋은 이름입니다. 장수할 이름이에요." << endl;
     name = converter.to_bytes(characterName);
-    cout << "\n캐릭터가 생성되었습니다. \n" << name << "님! 준비운동은 하셨나요? 준비운동의 중요성에 대해 아시나요? \n준비운동은 운동 중 부상위험을 획기적으로 줄여줄 수 있습니다." << endl;
+    cout << "\n캐릭터가 생성되었습니다. \n" << yellow << name << white << "님! 준비운동은 하셨나요? 준비운동의 중요성에 대해 아시나요? \n준비운동은 운동 중 부상위험을 획기적으로 줄여줄 수 있습니다." << endl;
 }
 
 void Character::DisplayStatus()
 {
-    cout << "- " << name << "님의 현재 상태에 대해 말씀드리자면, " << endl;
-    cout << "레벨: " << level << endl;
-    cout << "체력: " << health << "/" << maxHealth << endl;
-    cout << "공격력: " << basicAttack << "(+" << GetItemAttack() << ")" << endl;
+    int speed = 50;
+    Sleep(speed);
+    cout << "- " << yellow << name << white << "님의 현재 상태에 대해 말씀드리자면, " << endl;
+    Sleep(speed);
+    cout << "레벨: " << red << level << white << endl;
+    Sleep(speed);
+    cout << "체력: " << darkred << health << white << "/" << maxHealth << endl;
+    Sleep(speed);
+    cout << "공격력: " << blue << basicAttack << white << "(+" << blue << GetItemAttack() << white << ")" << endl;
+    Sleep(speed);
     cout << "경험치: " << green << experience << white << endl;
-    cout << "레벨업까지: " << green << expForLevelUp << "/ 100" << white << endl;
-    cout << "골드: " << yellow << gold << white << endl;
-    cout << "인벤토리 공간: " << inventoryWeight << " / " << maxInventoryWeight << endl;
+    Sleep(speed);
+    cout << "레벨업까지: " << green << expForLevelUp << white << "/ 100" << endl;
+    Sleep(speed);
+    cout << "골드: " << darkyellow << gold << white << endl;
+    Sleep(speed);
+    cout << "인벤토리 공간: " << puple << inventoryWeight << white << " / " << maxInventoryWeight << endl;
+    Sleep(speed);
     cout << "보유중인 아이템" << endl;
+    Sleep(speed);
     if(inventory.size() == 0)
     {
         cout << "- 아무것도 없어요. 상점 한번 털고 오시죠." << endl;
+        Sleep(speed);
     }
     else
     {
@@ -119,6 +131,7 @@ void Character::DisplayStatus()
         {
             int num = i + 1;
             cout << num << " - " << inventory[i]->GetName() << endl;
+            Sleep(speed);
         }
     }
     cout << "이정도네요. 화이팅!" << endl;
@@ -126,6 +139,8 @@ void Character::DisplayStatus()
 
 void Character::LevelUp()
 {
+    int speed = 300; 
+    Sleep(speed);
     if (level < maxLevel)
     {
         experience += 20;
@@ -133,7 +148,10 @@ void Character::LevelUp()
 
         if (expForLevelUp < 100)
         {
-            cout << "경험치를 20 획득했어요. 누적 경험치 " << experience << ", 다음 레벨까지 필요한 경험치는 " << 100 - expForLevelUp << "입니다." << endl;
+           
+            cout << "\n경험치를 " << green << "20" << white << "획득했어요." << endl;
+            Sleep(speed/2);
+            cout << "누적 경험치 " << green << experience << white << ", 다음 레벨까지 필요한 경험치는 " << green << 100 - expForLevelUp << white << "입니다." << endl;
             return;
         }
 
@@ -142,20 +160,25 @@ void Character::LevelUp()
         basicAttack += (level * 5);
         health = maxHealth;
         expForLevelUp = 0;
-        cout << "레벨이 올랐는데 왜 올랐냐면 경험치가 100이 쌓이면 레벨이 오르는데 방금 전투로 필요경험치 100이 누적되셨어요." << endl;
-        cout << "그래서 현재 레벨은 " << level << "입니다." << endl;
-        cout << "그리고 기본 최대 체력은 " << maxHealth << "이고 기본공격력은 " << basicAttack << "입니다." << endl;
+        cout << "\n레벨이 올랐는데 왜 올랐냐면 경험치가 " << green << "100" << white << "이 쌓이면 레벨이 오르는데 방금 전투로 필요경험치" << green << "100" << white << "이 누적되셨어요." << endl;
+        Sleep(speed/2);
+        cout << "그래서 현재 레벨은 " << red << level << white << "입니다." << endl;
+        Sleep(speed / 2);
+        cout << "그리고 최대 체력은 " << darkred << maxHealth << white << "이고 공격력은 " << blue << GetTotalAttack() << white << "입니다." << endl;
+        Sleep(speed / 2);
         cout << "체력도 완전 회복됐습니다. 쩔죠?" << endl;
+        Sleep(speed);
     }
 
     if (level == maxLevel)
     {
-        cout << "최고레벨에 도달했어요! 이제 " << name << "님을 능가할 용사는 없어요! 마지막 테스트만 통과하면요.. " << endl;
+        cout << red << "\n최고레벨" << white << "에 도달했어요!이제 " << yellow << name << white << "님을 능가할 용사는 없어요!마지막 테스트만 통과하면요.. " << endl;
     }
 }
 
 void Character::AddGold(int AddGold)
 {
+    int speed = 300;
     gold += AddGold;
 
     int messageCall = GetRandom(0, 2);
@@ -166,8 +189,12 @@ void Character::AddGold(int AddGold)
         "\n몬스터가 어머니 생일선물 사려고 모았던 ",
         "\n몬스터의 할머니가 용돈으로 주셨던 "
     };  
-    cout << goldMessage[messageCall] << yellow << AddGold << white << "G를 획득했습니다! " << endl;
-    cout << "\n현재 보유 골드 " << yellow <<  gold << white << "G 입니다." << endl;    
+
+    Sleep(speed);
+    cout << goldMessage[messageCall] << darkyellow << AddGold << white << "G를 획득했습니다! " << endl;
+    Sleep(speed/2);
+    cout << "현재 보유 골드 " << darkyellow <<  gold << white << "G 입니다." << endl;
+    Sleep(speed);
 }
 
 void Character::SetGold(int settleGold)
