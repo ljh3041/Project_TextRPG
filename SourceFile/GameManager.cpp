@@ -4,6 +4,7 @@
 #include <limits>
 #include <windows.h>
 #include "../headerFile/Sounds.h"
+#include <thread>
 
 GameManager* GameManager::instance = nullptr;
 Shop* Shop::instance = nullptr;
@@ -48,9 +49,9 @@ void GameManager::tutorialPhase()
 	}
 
 	//showTeamName();
-	//PlayOpening(1);
-	Character::GetInstance()->NameValidation();
-	//PlayOpening(0);
+	PlayWavFile("opening.wav");
+	Character::GetInstance()->NameValidation();	
+	PlaySound(NULL, NULL, 0);
 	Sleep(500);
 	soundTrack1();
 	Character::GetInstance()->AddToInventory(new potion50());
@@ -546,13 +547,4 @@ void GameManager::displayInventory(Character* player)
 Monster* GameManager::getMonster()
 {
 	return monster;
-}
-
-void GameManager::PlayOpening(int playSong)
-{
-	while (playSong)
-	{
-		PlayWavFile("opening.wav");
-		Sleep(18000);
-	}
 }
