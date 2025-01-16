@@ -33,8 +33,14 @@ int Monster::GetHealth()
 
 int Monster::GetAttack()
 {
+	return attack;
+}
+
+int Monster::GetTotalAttack()
+{
 	return attack + (rand() % 6 - 2);
-}///////////////////////////////////////불러올 때 마다 랜덤이라 수정 필요
+}
+
 
 int Monster::GetGold()
 {

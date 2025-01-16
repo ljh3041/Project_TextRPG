@@ -95,6 +95,7 @@ public:
     void StartFight();
     void EndFight();
     int GetTotalAttack();
+    int GetRandTotalAttack();
     int GetTotalHealth();
     
     
