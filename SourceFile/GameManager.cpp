@@ -66,7 +66,7 @@ int GameManager::firstPhase()
 		system("cls");
 		cout << "================================" << endl;
 		cout << "inGame" << endl;
-		cout << "시연용" << endl;
+		cout << "10 스테이지 이후 보스 몬스터 출현" << endl;
 		cout << "현재 스테이지 : " << stage << endl;
 		cout << "================================" << endl;
 		cout << "할 행동을 고르시오." << endl;
