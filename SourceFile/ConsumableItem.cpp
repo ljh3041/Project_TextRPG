@@ -10,6 +10,7 @@ void potion50::UseItem()
 		Character::GetInstance()->Healing(50);
 		cout << "체력을 50 회복하는 물약의 효과: 체력 50 회복" << endl;
 		isUsed = true;
+		Character::GetInstance()->SetInventoryWeight(Character::GetInstance()->GetInventoryWeight() - 1);//인벤토리 무게감소
 	}
 	else isUsed = false;
 }
@@ -21,6 +22,7 @@ void potion100::UseItem()
 		Character::GetInstance()->Healing(100);
 		cout << "체력을 100 회복하는 물약의 효과: 체력 100 회복" << endl;
 		isUsed = true;
+		Character::GetInstance()->SetInventoryWeight(Character::GetInstance()->GetInventoryWeight() - 1);//인벤토리 무게감소
 	}
 	else isUsed = false;
 }
@@ -32,6 +34,7 @@ void potion300::UseItem()
 		Character::GetInstance()->Healing(150);
 		cout << "체력을 150 회복하는 물약의 효과: 체력 150 회복" << endl;
 		isUsed = true;
+		Character::GetInstance()->SetInventoryWeight(Character::GetInstance()->GetInventoryWeight() - 1);//인벤토리 무게감소
 	}
 	else isUsed = false;
 }
@@ -43,6 +46,7 @@ void potion600::UseItem()
 		Character::GetInstance()->Healing(200);
 		cout << "체력을 200 회복하는 물약의 효과: 체력 200 회복" << endl;
 		isUsed = true;
+		Character::GetInstance()->SetInventoryWeight(Character::GetInstance()->GetInventoryWeight() - 1);//인벤토리 무게감소
 	}
 	else isUsed = false;
 }
@@ -55,6 +59,7 @@ void potionQuarter::UseItem()
 		Character::GetInstance()->Healing(Character::GetInstance()->GetMaxHealth() / 4);
 		cout << "체력이 25% 이하일 때 체력 25%를 회복하는 포션의 효과: " << Character::GetInstance()->GetMaxHealth() / 4 << "회복" << endl;
 		isUsed = true;
+		Character::GetInstance()->SetInventoryWeight(Character::GetInstance()->GetInventoryWeight() - 1);//인벤토리 무게감소
 	}
 	else isUsed = false;
 }
@@ -66,6 +71,7 @@ void potionHalf::UseItem()
 		Character::GetInstance()->Healing(Character::GetInstance()->GetMaxHealth() / 2);
 		cout << "체력이 50% 이하일 때 체력 50%를 회복하는 포션의 효과: " << Character::GetInstance()->GetMaxHealth() / 2 << "회복" << endl;
 		isUsed = true;
+		Character::GetInstance()->SetInventoryWeight(Character::GetInstance()->GetInventoryWeight() - 1);//인벤토리 무게감소
 	}
 	else isUsed = false;
 }
@@ -77,6 +83,7 @@ void potionFull::UseItem()
 		Character::GetInstance()->Healing(Character::GetInstance()->GetMaxHealth());
 		cout << "체력이 10% 이하일 때 체력 100%를 회복하는 포션의 효과: " << Character::GetInstance()->GetMaxHealth() << "회복" << endl;
 		isUsed = true;
+		Character::GetInstance()->SetInventoryWeight(Character::GetInstance()->GetInventoryWeight() - 1);//인벤토리 무게감소
 	}
 	else isUsed = false;
 }
