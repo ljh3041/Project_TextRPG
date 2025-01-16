@@ -16,7 +16,7 @@
 #include "../headerFile/Orc.h"
 #include "../headerFile/Troll.h"
 #include "../headerFile/Goblin.h"
-#include "../headerFile/Dragon.h"
+#include "../headerFile/Pitta.h"
 #include "../headerFile/Shop.h"
 #include "../headerFile/MyMath.h"
 #pragma endregion

@@ -41,6 +41,7 @@ void GameManager::tutorialPhase()
 			break;
 		}// 루프 종료
 	}
+  
 	//showTeamName();
 	//showGameName();
 
@@ -57,7 +58,7 @@ int GameManager::firstPhase()
 	while (true) {
 		system("cls");
 		cout << "================================" << endl;
-		cout << "갈림길" << endl;
+		cout << "inGame" << endl;
 		cout << "현재 스테이지 : " << stage << endl;
 		cout << "================================" << endl;
 
@@ -144,7 +145,7 @@ void GameManager::generateMonster()
 void GameManager::generateBossMonster()
 {
 	delete monster;
-	monster = new Dragon;
+	monster = new Pitta;
 	cout << "보스 몬스터 " << monster->GetName() << "가 나타났다!" << endl;
 }
 
@@ -436,6 +437,7 @@ void GameManager::showGameName()
                                                                                                      
 
 )";
+
 	cout << asciiArt << endl;
 	Sleep(1000);
 
