@@ -50,6 +50,7 @@
     <ClCompile Include="SourceFile\Orc.cpp" />
     <ClCompile Include="SourceFile\Project_TextRPG.cpp" />
     <ClCompile Include="SourceFile\Shop.cpp" />
+    <ClCompile Include="SourceFile\TextColor.cpp" />
     <ClCompile Include="SourceFile\Troll.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

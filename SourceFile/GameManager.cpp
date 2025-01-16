@@ -1,6 +1,6 @@
 #include "../headerFile/GameManager.h"
 #include "../headerFile/GraphicInterface.h"
-#include <windows.h>
+#include "../headerFile/TextColor.h"
 #include <limits>
 
 GameManager* GameManager::instance = nullptr;
@@ -41,7 +41,7 @@ void GameManager::tutorialPhase()
 			break;
 		}// 루프 종료
 	}
-  
+
 	//showTeamName();
 
 	Character::GetInstance()->NameValidation();
@@ -155,7 +155,7 @@ void GameManager::generateMonster()
 		break;
 	}
 	//monster;
-	cout << monster->GetName() << "(이)가 출현했다!" << endl;
+	cout << red << monster->GetName() << white << "(이)가 출현했다!" << endl;
 	PressAnyKey();
 
 }
@@ -175,19 +175,28 @@ void GameManager::battle(Character* player, Monster* monster)
 {
 	Shop::GetInstance()->InitializeShop();
 	player->StartFight(); //인벤토리 아이템 사용 함수
-	system("cls");
-	printPlayer();
-	Sleep(100);
 	while ((player->GetHealth() > 0) && (monster->GetHealth() > 0)) // 캐릭터.h에 gethealth 추가
 	{
-
 		system("cls");
-		//player->UseItem(); // 플레이어 무조건 선턴. 아이템 먼저 사용.
-		//플레이어 공격
+		printPlayer();
+		cout << endl << endl << endl << endl << endl;
+		Sleep(100);
+		system("cls");
+
 		int P_dam = player->GetRandTotalAttack();
 		monster->TakeDamage(P_dam);
+
+		if (monster->GetHealth() <= 0) // 몬스터가 공격하기 전 이미 피가 0 이하면 전투 종료.
+		{
+			monster->SetHealth(0);
+			printPlayer();
+			break;
+		}
+
 		printPlayer();
-		cout << player->GetName() << "의 공격! " << P_dam << "의 피해" << endl;
+		cout << endl << endl << endl << endl << endl;
+
+		cout << yellow << player->GetName() << white << "의 공격! " << P_dam << "의 피해" << endl;
 		Sleep(500);
 		if (monster->GetHealth() <= 0)
 		{
@@ -195,20 +204,15 @@ void GameManager::battle(Character* player, Monster* monster)
 		}
 		else
 		{
-			cout << monster->GetName() << "의 남은 체력 " << monster->GetHealth() << endl;
+			cout << red << monster->GetName() << white << "의 남은 체력 " << monster->GetHealth() << endl;
 		}
 		player->UseItem(); // 플레이어 무조건 선턴. 아이템 먼저 사용.
 		Sleep(2000);
 
-		if (monster->GetHealth() <= 0) // 몬스터가 공격하기 전 이미 피가 0 이하면 전투 종료.
-		{
-			break;
-		}
+
 
 		system("cls");
-		//몬스터 공격
-		int mon_dam = monster->GetTotalAttack();
-		player->TakeDamage(mon_dam);
+
 		switch (monster->GetSpecies())
 		{
 		case 1:
@@ -223,15 +227,37 @@ void GameManager::battle(Character* player, Monster* monster)
 		default:
 			break;
 		}
-		cout << monster->GetName() << "의 공격! " << mon_dam << "의 피해" << endl;
+		Sleep(100);
+		system("cls");
+		//몬스터 공격
+		int mon_dam = monster->GetTotalAttack();
+		player->TakeDamage(mon_dam);
+
+		switch (monster->GetSpecies())
+		{
+		case 1:
+			printGoblin();
+			cout << endl << endl;
+			break;
+		case 2:
+			printTroll();
+			cout << endl << endl;
+			break;
+		case 3:
+			printOrc();
+			break;
+		default:
+			break;
+		}
+		cout << red << monster->GetName() << white << "의 공격! " << monster->GetAttack() << "의 피해" << endl;
 		Sleep(500);
 		if (player->GetHealth() <= 0)
 		{
-			cout << player->GetName() << "의 남은 체력 0 " << endl;
+			cout << yellow << player->GetName() << white << "의 남은 체력 0 " << endl;
 		}
 		else
 		{
-			cout << player->GetName() << "의 남은 체력 " << player->GetHealth() << endl;
+			cout << yellow << player->GetName() << white << "의 남은 체력 " << player->GetHealth() << endl;
 		}
 		Sleep(2000);
 		//useitem?

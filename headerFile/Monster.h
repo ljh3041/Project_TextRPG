@@ -39,5 +39,7 @@ public:
 	void TakeDamage(int damage);
 	Item* DropItem();
 
+	void SetHealth(int _health) { health = _health; };
+
 };
 

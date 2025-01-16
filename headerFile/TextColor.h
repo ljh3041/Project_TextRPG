@@ -6,53 +6,21 @@ using namespace std;
 
 static HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
 
-ostream& blue(ostream& s)
-{
-    SetConsoleTextAttribute(hStdout, FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-    return s;
-}
+ostream& blue(ostream& s);
 
-ostream& red(ostream& s)
-{
-    SetConsoleTextAttribute(hStdout, FOREGROUND_RED | FOREGROUND_INTENSITY);
-    return s;
-}
+ostream& red(ostream& s);
 
-ostream& green(ostream& s)
-{
-    SetConsoleTextAttribute(hStdout, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-    return s;
-}
+ostream& green(ostream& s);
 
-ostream& yellow(ostream& s)
-{
-    SetConsoleTextAttribute(hStdout, FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_INTENSITY);
-    return s;
-}
+ostream& yellow(ostream& s);
 
-ostream& white(ostream& s)
-{
-    SetConsoleTextAttribute(hStdout, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-    return s;
-}
+ostream& white(ostream& s);
 
-ostream& puple(ostream& s)
-{
-    SetConsoleTextAttribute(hStdout, FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
-    return s;
-}
+ostream& puple(ostream& s);
 
-ostream& darkred(ostream& s)
-{
-    SetConsoleTextAttribute(hStdout, FOREGROUND_RED);
-    return s;
-}
+ostream& darkred(ostream& s);
 
-ostream& darkyellow(ostream& s)
-{
-    SetConsoleTextAttribute(hStdout, FOREGROUND_RED | FOREGROUND_GREEN);
-    return s;
-}
+ostream& darkyellow(ostream& s);
 
 struct color {
     color(WORD attribute) :m_color(attribute) {};
