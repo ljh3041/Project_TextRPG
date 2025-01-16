@@ -6,7 +6,7 @@ class Sword10 : public Item
 {
 public:
     Sword10()
-        : Item("무게 1, 공격력 10인 검", 1/*weight*/, 10/*price*/, 20/*attack*/, 0/*health*/) {
+        : Item("무게 1, 공격력 10인 검", 1/*weight*/, 10/*price*/, 10/*attack*/, 0/*health*/) {
     }
 };
 
@@ -14,7 +14,7 @@ class Sword20 : public Item
 {
 public:
     Sword20()
-        : Item("무게 1, 공격력 20인 검", 1/*weight*/, 20/*price*/, 20/*attack*/, 0/*health*/) {
+        : Item("무게 2, 공격력 20인 검", 2/*weight*/, 20/*price*/, 20/*attack*/, 0/*health*/) {
     }
 };
 
@@ -22,7 +22,7 @@ class Sword30 : public Item
 {
 public:
     Sword30()
-        : Item("무게 2, 공격력 20인 검", 2/*weight*/, 30/*price*/, 30/*attack*/, 0/*health*/) {
+        : Item("무게 3, 공격력 30인 검", 3/*weight*/, 30/*price*/, 30/*attack*/, 0/*health*/) {
     }
 };
 
@@ -30,7 +30,7 @@ class Sword40 : public Item
 {
 public:
     Sword40()
-        : Item("무게 2, 공격력 40인 검", 2/*weight*/, 40/*price*/, 40/*attack*/, 0/*health*/) {
+        : Item("무게 4, 공격력 40인 검", 4/*weight*/, 40/*price*/, 40/*attack*/, 0/*health*/) {
     }
 };
 
@@ -38,7 +38,7 @@ class Sword50 : public Item
 {
 public:
     Sword50()
-        : Item("무게 3, 공격력 50인 검", 3/*weight*/, 50/*price*/, 50/*attack*/, 0/*health*/) {
+        : Item("무게 5, 공격력 50인 검", 5/*weight*/, 50/*price*/, 50/*attack*/, 0/*health*/) {
     }
 };
 
@@ -48,7 +48,7 @@ class ScalingSword10 : public Item
 {
 public:
     ScalingSword10()
-        : Item("무게 3, 공격력이 레벨*5인 검", 3/*weight*/, 60/*price*/, 0/*attack*/, 0/*health*/) {
+        : Item("무게 1, 공격력이 레벨*5인 검", 1/*weight*/, 10/*price*/, 0/*attack*/, 0/*health*/) {
     }
     int GetAttack();
 };
@@ -57,7 +57,7 @@ class ScalingSword20 : public Item
 {
 public:
     ScalingSword20()
-        : Item("무게 3, 공격력이 레벨*10인 검", 3/*weight*/, 70/*price*/, 0/*attack*/, 0/*health*/) {
+        : Item("무게 1, 공격력이 레벨*10인 검", 1/*weight*/, 20/*price*/, 0/*attack*/, 0/*health*/) {
     }
     int GetAttack();
 };
@@ -66,7 +66,7 @@ class ScalingSword30 : public Item
 {
 public:
     ScalingSword30()
-        : Item("무게 4, 공격력이 레벨*15인 검", 4/*weight*/, 80/*price*/, 0/*attack*/, 0/*health*/) {
+        : Item("무게 2, 공격력이 레벨*15인 검", 2/*weight*/, 30/*price*/, 0/*attack*/, 0/*health*/) {
     }
     int GetAttack();
 };
@@ -75,7 +75,7 @@ class ScalingSword40 : public Item
 {
 public:
     ScalingSword40()
-        : Item("무게 4, 공격력이 레벨*20인 검", 4/*weight*/, 90/*price*/, 0/*attack*/, 0/*health*/) {
+        : Item("무게 2, 공격력이 레벨*20인 검", 3/*weight*/, 40/*price*/, 0/*attack*/, 0/*health*/) {
     }
     int GetAttack();
 };
@@ -84,7 +84,7 @@ class ScalingSword50 : public Item
 {
 public:
     ScalingSword50()
-        : Item("무게 5, 공격력이 레벨*25인 검", 5/*weight*/, 100/*price*/, 0/*attack*/, 0/*health*/) {
+        : Item("무게 3, 공격력이 레벨*25인 검", 3/*weight*/, 50/*price*/, 0/*attack*/, 0/*health*/) {
     }
     int GetAttack();
 };
@@ -145,7 +145,7 @@ private:
     int count = 0;
 public:
     HP_Blade1()
-        :Item("4번째 공격에 나의 현재체력의 1%의 추가 피해를 주는 무게2, 체력 10의 도", 2/*weight*/, 30/*price*/, 0/*attack*/, 10/*health*/) {
+        :Item("3번째 공격에 나의 현재체력의 10%의 추가 피해를 주는 무게 1, 체력 10의 도", 1/*weight*/, 20/*price*/, 0/*attack*/, 10/*health*/) {
     }
     int GetAttack();
     void UseItem();
@@ -157,7 +157,7 @@ private:
     int count = 0;
 public:
     HP_Blade2()
-        :Item("4번째 공격에 나의 현재체력의 2%의 추가 피해를 주는 무게2, 체력 20의 도", 2/*weight*/, 40/*price*/, 0/*attack*/, 20/*health*/) {
+        :Item("3번째 공격에 나의 현재체력의 20%의 추가 피해를 주는 무게 1, 체력 20의 도", 1/*weight*/, 40/*price*/, 0/*attack*/, 20/*health*/) {
     }
     int GetAttack();
     void UseItem();
@@ -169,7 +169,7 @@ private:
     int count = 0;
 public:
     HP_Blade3()
-        :Item("4번째 공격에 나의 현재체력의 3%의 추가 피해를 주는 무게2, 체력 30의 도", 2/*weight*/, 50/*price*/, 0/*attack*/, 30/*health*/) {
+        :Item("3번째 공격에 나의 현재체력의 30%의 추가 피해를 주는 무게 2, 체력 30의 도", 2/*weight*/, 60/*price*/, 0/*attack*/, 30/*health*/) {
     }
     int GetAttack();
     void UseItem();
@@ -181,7 +181,7 @@ private:
     int count = 0;
 public:
     HP_Blade4()
-        :Item("4번째 공격에 나의 현재체력의 4%의 추가 피해를 주는 무게2, 체력 40의 도", 2/*weight*/, 60/*price*/, 0/*attack*/, 40/*health*/) {
+        :Item("3번째 공격에 나의 현재체력의 40%의 추가 피해를 주는 무게 2, 체력 40의 도", 2/*weight*/, 80/*price*/, 0/*attack*/, 40/*health*/) {
     }
     int GetAttack();
     void UseItem();
@@ -193,7 +193,7 @@ private:
     int count = 0;
 public:
     HP_Blade5()
-        :Item("3번째 공격에 나의 현재체력의 5%의 추가 피해를 주는 무게2, 체력 50의 도", 2/*weight*/, 70/*price*/, 0/*attack*/, 50/*health*/) {
+        :Item("2번째 공격에 나의 현재체력의 50%의 추가 피해를 주는 무게 3, 체력 50의 도", 3/*weight*/, 100/*price*/, 0/*attack*/, 50/*health*/) {
     }
     int GetAttack();
     void UseItem();
@@ -205,7 +205,7 @@ class Armor10 : public Item
 {
 public:
     Armor10()
-        : Item("무게 2, 체력 100인 갑옷", 2/*weight*/, 10/*price*/, 0/*attack*/, 100/*health*/) {
+        : Item("무게 2, 체력 100인 갑옷", 2/*weight*/, 50/*price*/, 0/*attack*/, 100/*health*/) {
     }
 };
 
@@ -213,7 +213,7 @@ class Armor20 : public Item
 {
 public:
     Armor20()
-        : Item("무게 2, 체력 200인 갑옷", 2/*weight*/, 20/*price*/, 0/*attack*/, 200/*health*/) {
+        : Item("무게 2, 체력 125인 갑옷", 2/*weight*/, 65/*price*/, 0/*attack*/, 125/*health*/) {
     }
 };
 
@@ -221,7 +221,7 @@ class Armor30 : public Item
 {
 public:
     Armor30()
-        : Item("무게 3, 체력 300인 갑옷", 3/*weight*/, 30/*price*/, 0/*attack*/, 300/*health*/) {
+        : Item("무게 3, 체력 150인 갑옷", 3/*weight*/, 75/*price*/, 0/*attack*/, 150/*health*/) {
     }
 };
 
@@ -229,7 +229,7 @@ class Armor40 : public Item
 {
 public:
     Armor40()
-        : Item("무게 3, 체력 400인 갑옷", 3/*weight*/, 40/*price*/, 0/*attack*/, 400/*health*/) {
+        : Item("무게 3, 체력 175인 갑옷", 3/*weight*/, 85/*price*/, 0/*attack*/, 175/*health*/) {
     }
 };
 
@@ -237,55 +237,10 @@ class Armor50 : public Item
 {
 public:
     Armor50()
-        : Item("무게 3, 체력 500인 갑옷", 3/*weight*/, 50/*price*/, 0/*attack*/, 500/*health*/) {
+        : Item("무게 3, 체력 200인 갑옷", 3/*weight*/, 100/*price*/, 0/*attack*/, 200/*health*/) {
     }
 };
 
-//레벨비례 갑옷
-class ScalingArmor10 : public Item
-{
-public:
-    ScalingArmor10()
-        : Item("무게 3, 체력이 레벨*10인 갑옷", 3/*weight*/, 60/*price*/, 0/*attack*/, 0/*health*/) {
-    }
-    int GetHealth();
-};
-
-class ScalingArmor20 : public Item
-{
-public:
-    ScalingArmor20()
-        : Item("무게 4, 체력이 레벨*20인 갑옷", 4/*weight*/, 70/*price*/, 0/*attack*/, 0/*health*/) {
-    }
-    int GetHealth();
-};
-
-class ScalingArmor30 : public Item
-{
-public:
-    ScalingArmor30()
-        : Item("무게 4, 체력이 레벨*30인 갑옷", 4/*weight*/, 80/*price*/, 0/*attack*/, 0/*health*/) {
-    }
-    int GetHealth();
-};
-
-class ScalingArmor40 : public Item
-{
-public:
-    ScalingArmor40()
-        : Item("무게 5, 체력이 레벨*40인 갑옷", 5/*weight*/, 90/*price*/, 0/*attack*/, 0/*health*/) {
-    }
-    int GetHealth();
-};
-
-class ScalingArmor50 : public Item
-{
-public:
-    ScalingArmor50()
-        : Item("무게 5, 체력이 레벨*50인 갑옷", 5/*weight*/, 100/*price*/, 0/*attack*/, 0/*health*/) {
-    }
-    int GetHealth();
-};
 
 //회복 갑옷
 class HealingArmor2 : public Item
