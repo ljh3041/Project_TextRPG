@@ -32,14 +32,16 @@ void GameManager::tutorialPhase()
 		Sleep(1000);
 		system("cls");
 		if (_kbhit()) {
-			_getch(); // 키 입력을 받음 (입력된 키는 무시)
+			char i = 'd';
+			i=_getch(); // 키 입력을 받음 (입력된 키는 무시)
 			break;
 		}
 		printLoding4();
 		Sleep(1000);
 		system("cls");
 		if (_kbhit()) {
-			_getch(); // 키 입력을 받음 (입력된 키는 무시)
+			char i = 'd';
+			i = _getch(); // 키 입력을 받음 (입력된 키는 무시)
 			break;
 		}// 루프 종료
 	}
@@ -170,7 +172,7 @@ void GameManager::generateBossMonster()
 {
 	delete monster;
 	monster = new Pitta;
-	cout << "보스 몬스터 " <<red<< monster->GetName() <<white<< "가 나타났다!" << endl;
+	cout << "보스 몬스터 " << red << monster->GetName() << white << "가 나타났다!" << endl;
 	PressAnyKey();
 }
 
@@ -195,16 +197,17 @@ void GameManager::battle(Character* player, Monster* monster)
 			int P_dam = player->GetRandTotalAttack();
 			monster->TakeDamage(P_dam);
 			printPlayer();
+			cout << endl << endl << endl << endl << endl;
 			PlayWavFile("punch.wav");
 			cout << player->GetName() << "의 공격! " << P_dam << "의 피해" << endl;
 			Sleep(500);
 			if (monster->GetHealth() <= 0)
 			{
-				cout << monster->GetName() << "의 남은 체력 0 " << endl;
+				cout << red << monster->GetName() << white << "의 남은 체력 0 " << endl;
 			}
 			else
 			{
-				cout << monster->GetName() << "의 남은 체력 " << monster->GetHealth() << endl;
+				cout << red << monster->GetName() << white << "의 남은 체력 " << monster->GetHealth() << endl;
 			}
 		}
 		else if (randomValue >= 95 && randomValue <= 99)
@@ -212,19 +215,21 @@ void GameManager::battle(Character* player, Monster* monster)
 			system("cls");
 			//player->UseItem(); // 플레이어 무조건 선턴. 아이템 먼저 사용.
 			//플레이어 공격
-			int PC_dam = player->GetRandTotalAttack() * 1.6;
+			int PC_dam = static_cast<int>( player->GetRandTotalAttack() * 1.6);
 			monster->TakeDamage(PC_dam);
 			printPlayer();
 			PlayWavFile("punch.wav");
-			cout << player->GetName() << "의 " << red << "!!크리티컬 공격!!" << white << PC_dam << "의 피해" << endl;
+			cout << endl << endl << endl << endl << endl;
+
+			cout << yellow << player->GetName() << white << "의 " << red << "!!크리티컬 공격!!" << white << PC_dam << "의 피해" << endl;
 			Sleep(500);
 			if (monster->GetHealth() <= 0)
 			{
-				cout << monster->GetName() << "의 남은 체력 0 " << endl;
+				cout << red << monster->GetName() << white << "의 남은 체력 0 " << endl;
 			}
 			else
 			{
-				cout << monster->GetName() << "의 남은 체력 " << monster->GetHealth() << endl;
+				cout << red << monster->GetName() << white << "의 남은 체력 " << monster->GetHealth() << endl;
 			}
 		}
 
@@ -234,7 +239,7 @@ void GameManager::battle(Character* player, Monster* monster)
 		if (monster->GetHealth() <= 0) // 몬스터가 공격하기 전 이미 피가 0 이하면 전투 종료.
 		{
 			break;
-		} 
+		}
 
 		system("cls");
 
@@ -242,9 +247,11 @@ void GameManager::battle(Character* player, Monster* monster)
 		{
 		case 1:
 			printGoblin();
+			cout << endl << endl;
 			break;
 		case 2:
 			printTroll();
+			cout << endl << endl;
 			break;
 		case 3:
 			printOrc();
@@ -338,7 +345,8 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 		cout << "아무키나 입력시 보스전에 돌입합니다" << endl;
 		Sleep(1000);
 		if (_kbhit()) {
-			_getch(); // 키 입력을 받음 (입력된 키는 무시)
+			char i = 'd';
+			i = _getch(); // 키 입력을 받음 (입력된 키는 무시)
 			break;
 		}
 		system("cls");
@@ -346,7 +354,8 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 		cout << "아무키나 입력시 보스전에 돌입합니다" << endl;
 		Sleep(1000);
 		if (_kbhit()) {
-			_getch(); // 키 입력을 받음 (입력된 키는 무시)
+			char i = 'd';
+			i = _getch(); // 키 입력을 받음 (입력된 키는 무시)
 			break;
 		}
 	}
@@ -374,16 +383,17 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 			int b_P_dam = player->GetRandTotalAttack();
 			monster->TakeDamage(b_P_dam);
 			printPlayer();
+			cout << endl << endl << endl << endl << endl;
 
-			cout << player->GetName() << "의 공격! " << b_P_dam << "의 피해" << endl;
+			cout << yellow << player->GetName() << white << "의 공격! " << b_P_dam << "의 피해" << endl;
 			Sleep(500);
 			if (monster->GetHealth() <= 0)
 			{
-				cout << monster->GetName() << "의 남은 체력 0 " << endl;
+				cout << red << monster->GetName() << white << "의 남은 체력 0 " << endl;
 			}
 			else
 			{
-				cout << monster->GetName() << "의 남은 체력 " << monster->GetHealth() << endl;
+				cout << red << monster->GetName() << "의 남은 체력 " << white << monster->GetHealth() << endl;
 			}
 		}
 		else if (randomValue >= 95 && randomValue <= 99)
@@ -391,19 +401,19 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 			system("cls");
 			//player->UseItem(); // 플레이어 무조건 선턴. 아이템 먼저 사용.
 			//플레이어 공격
-			float b_PC_dam = player->GetRandTotalAttack() * 1.6;
-			monster->TakeDamage(b_PC_dam);
+			float b_PC_dam = static_cast<float>( player->GetRandTotalAttack() * 1.6);
+			monster->TakeDamage(static_cast<int>( b_PC_dam));
 			printPlayer();
-
-			cout << player->GetName() << "의 " << red << "!!크리티컬 공격!!" << white << b_PC_dam << "의 피해" << endl;
+			cout << endl << endl << endl << endl << endl;
+			cout << yellow << player->GetName() << white << "의 " << red << "!!크리티컬 공격!!" << white << b_PC_dam << "의 피해" << endl;
 			Sleep(500);
 			if (monster->GetHealth() <= 0)
 			{
-				cout << monster->GetName() << "의 남은 체력 0 " << endl;
+				cout << red << monster->GetName() << white << "의 남은 체력 0 " << endl;
 			}
 			else
 			{
-				cout << monster->GetName() << "의 남은 체력 " << monster->GetHealth() << endl;
+				cout << red << monster->GetName() << white << "의 남은 체력 " << monster->GetHealth() << endl;
 			}
 		}
 		player->UseItem(); // 플레이어 무조건 선턴. 아이템 먼저 사용.
@@ -421,16 +431,16 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 		Attack_Boss1();
 
 		int B_dam = bossmonster->GetAttack();
-		cout << bossmonster->GetName() << "의 공격! " << B_dam << "의 피해" << endl;
+		cout << red << bossmonster->GetName() << white << "의 공격! " << B_dam << "의 피해" << endl;
 		Sleep(500);
 		player->TakeDamage(B_dam);
 		if (player->GetHealth() <= 0)
 		{
-			cout << player->GetName() << "의 남은 체력 0 " << endl;
+			cout << yellow << player->GetName() << white << "의 남은 체력 0 " << endl;
 		}
 		else
 		{
-			cout << player->GetName() << "의 남은 체력 " << player->GetHealth() << endl;
+			cout << yellow << player->GetName() << white << "의 남은 체력 " << player->GetHealth() << endl;
 		}
 		Sleep(2000);
 	}
@@ -480,7 +490,7 @@ Monster* GameManager::getMonster()
 	return monster;
 }
 
-void GameManager::PlayWavFile(const char* fileName) 
+void GameManager::PlayWavFile(const char* fileName)
 {
 	const char* filePath = fileName;
 	wchar_t wFilePath[MAX_PATH];
