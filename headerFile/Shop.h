@@ -31,6 +31,7 @@ public:
     void SellItem();
     void InitializeShop();
     void printstore();
+    void printstore_dot();
 
     static Shop* GetInstance() {
         if (instance == nullptr) {
