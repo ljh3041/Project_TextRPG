@@ -268,8 +268,13 @@ void Character::EndFight()
 
 int Character::GetTotalAttack()
 {
-    totalAttack = GetItemAttack() + basicAttack + (rand() % 6 - 2);
+    totalAttack = GetItemAttack() + basicAttack;
     return totalAttack;
+}
+
+int Character::GetRandTotalAttack()
+{
+    return GetTotalAttack() + (rand() % 6 - 2);
 }
 
 int Character::GetTotalHealth()

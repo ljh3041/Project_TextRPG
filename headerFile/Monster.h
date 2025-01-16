@@ -27,6 +27,7 @@ public:
 	string GetName();
 	int GetHealth();
 	int GetAttack();
+	int GetTotalAttack();
 	int GetGold();
 	int GetSpecies() { return species; };
 	virtual Item* GetItem() { return item; };
