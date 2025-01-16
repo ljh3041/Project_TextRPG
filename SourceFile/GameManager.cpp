@@ -20,14 +20,35 @@ GameManager::~GameManager()
 //Phase
 void GameManager::tutorialPhase()
 {
-
+	int i = 0;
+	printLoding4();
+	Sleep(1000);
+	system("cls");
+	while (i == 0)
+	{
+		printLoding3();
+		Sleep(1000);
+		system("cls");
+		if (_kbhit()) {
+			_getch(); // 키 입력을 받음 (입력된 키는 무시)
+			break;
+		}
+		printLoding4();
+		Sleep(1000);
+		system("cls");
+		if (_kbhit()) {
+			_getch(); // 키 입력을 받음 (입력된 키는 무시)
+			break;
+		}// 루프 종료
+	}
+  
 	//showTeamName();
 
 	Character::GetInstance()->NameValidation();
 	Sleep(500);
 	soundTrack1();
 	PressAnyKey();
-	
+
 }
 
 int GameManager::firstPhase()
@@ -150,7 +171,7 @@ void GameManager::battle(Character* player, Monster* monster)
 		{
 			cout << monster->GetName() << "의 남은 체력 0 " << endl;
 		}
-		else 
+		else
 		{
 			cout << monster->GetName() << "의 남은 체력 " << monster->GetHealth() << endl;
 		}
@@ -168,8 +189,8 @@ void GameManager::battle(Character* player, Monster* monster)
 		cout << monster->GetName() << "의 공격! " << monster->GetAttack() << "의 피해" << endl;
 		Sleep(500);
 		player->TakeDamage(monster->GetAttack());
-		if(player->GetHealth() <= 0)
-		{ 
+		if (player->GetHealth() <= 0)
+		{
 			cout << player->GetName() << "의 남은 체력 0 " << endl;
 		}
 		else
@@ -190,12 +211,14 @@ void GameManager::battle(Character* player, Monster* monster)
 		player->LevelUp(); // 플레이어 레벨 업 함수 적용
 		player->AddGold(monster->GetGold());
 		PressAnyKey();
-		
 		//item 획득 함수;
 	}
 	else // 플레이어 패배 시 종료
 	{
-		cout << "패배" << endl;
+		system("cls");
+		Stun_Player();
+		cout << "                                       패배하였습니다." << endl;
+		PressAnyKey();
 		exit(0);
 	}
 }
@@ -203,11 +226,53 @@ void GameManager::battle(Character* player, Monster* monster)
 void GameManager::bossbattle(Character* player, Monster* bossmonster)
 {
 	player->StartFight();
+	for (int i = 0; i < 3; i++)
+	{
+		system("cls");
+		BossStanding3();
+		cout << "          보스 몬스터 출현!" << endl;
+		Sleep(50);
+		system("cls");
+		BossStanding4();
+		cout << "          보스 몬스터 출현!" << endl;
+		Sleep(50);
+	}
+	system("cls");
+	BossStanding3();
+	cout << "          보스 몬스터 출현!" << endl;
+	Sleep(1000);
+
+	while (1)
+	{
+		system("cls");
+		BossStanding2();
+		cout << "아무키나 입력시 보스전에 돌입합니다" << endl;
+		Sleep(1000);
+		if (_kbhit()) {
+			_getch(); // 키 입력을 받음 (입력된 키는 무시)
+			break;
+		}
+		system("cls");
+		BossStanding1();
+		cout << "아무키나 입력시 보스전에 돌입합니다" << endl;
+		Sleep(1000);
+		if (_kbhit()) {
+			_getch(); // 키 입력을 받음 (입력된 키는 무시)
+			break;
+		}
+	}
+
 	while ((player->GetHealth() > 0) && (bossmonster->GetHealth() > 0))
 	{
 		//player->UseItem();  // 플레이어 무조건 선턴. 아이템 먼저 사용.
-
-		//플레이어 공격
+		system("cls");
+		Hit_Boss();
+		Sleep(100);
+		system("cls");
+		Hit_Boss();
+		system("cls");
+		Sleep(150);
+		Hit_Boss();
 		cout << player->GetName() << "의 공격! " << player->GetTotalAttack() << "의 피해" << endl;
 		Sleep(500);
 		bossmonster->TakeDamage(player->GetTotalAttack());
@@ -228,11 +293,15 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 		}
 
 		//보스 몬스터 공격
+		system("cls");
+		Attack_Boss2();
+		Sleep(100);
+		Attack_Boss1();
 		cout << bossmonster->GetName() << "의 공격! " << bossmonster->GetAttack() << "의 피해" << endl;
 		Sleep(500);
 		player->TakeDamage(bossmonster->GetAttack());
-		if(player->GetHealth() <= 0)
-		{ 
+		if (player->GetHealth() <= 0)
+		{
 			cout << player->GetName() << "의 남은 체력 0 " << endl;
 		}
 		else
@@ -244,16 +313,22 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 	player->EndFight();
 	if (bossmonster->GetHealth() <= 0)
 	{
+		system("cls");
+		Stun_Boss();
 		cout << "승리" << endl; // 엔딩 문구 추가
 		//item 획득 함수;
 		//골드 획득 함수;
 		int gold = 0;
 		player->SetGold(gold);
+		PressAnyKey();
 		exit(0);
 	}
 	else
 	{
-		cout << "패배" << endl;
+		system("cls");
+		Stun_Player();
+		cout << "                                       패배하였습니다." << endl;
+		PressAnyKey();
 		exit(0);
 	}
 }
