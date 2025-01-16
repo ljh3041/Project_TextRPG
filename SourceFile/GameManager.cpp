@@ -147,7 +147,7 @@ void GameManager::EndingPhase()
 	Sleep(speed * 5);
 	system("cls");
 	Sleep(speed * 3);
-	cout << "\n\n\n\n\n\n\n\n\n\n\n\n                                                       제작 8조" << endl;
+	cout << "\n\n\n\n\n\n\n\n\n\n\n\n                                                     제작 2기 8조" << endl;
 	Sleep(speed * 5);
 	system("cls");
 	Sleep(speed * 3);
@@ -168,7 +168,9 @@ void GameManager::Bad_EndingPhase()
 	Sleep(speed * 5);
 	system("cls");
 	Sleep(speed * 3);
-	cout << "\n\n\n\n\n\n\n\n\n\n\n\n                                                       제작 8조" << endl;
+	cout << "\n\n\n\n\n\n\n\n\n\n\n\n                                                          제작" << endl;
+	Sleep(speed * 3);
+	cout << "        2기 몸길이는 18㎝이며 무지개와 같은 8색의 깃털을 가지고 있는 매우 아름다운 용모를 가졌다고 알려진 조(鳥)" << endl;
 	Sleep(speed * 5);
 	system("cls");
 	Sleep(speed * 3);
