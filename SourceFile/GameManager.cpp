@@ -22,7 +22,6 @@ void GameManager::tutorialPhase()
 {
 
 	//showTeamName();
-	//showGameName();
 
 	Character::GetInstance()->NameValidation();
 	Sleep(500);
@@ -119,6 +118,8 @@ void GameManager::generateMonster()
 	}
 	//monster;
 	cout << monster->GetName() << "가 출현했다!" << endl;
+	PressAnyKey();
+
 }
 
 void GameManager::generateBossMonster()
@@ -126,6 +127,7 @@ void GameManager::generateBossMonster()
 	delete monster;
 	monster = new Pitta;
 	cout << "보스 몬스터 " << monster->GetName() << "가 나타났다!" << endl;
+	PressAnyKey();
 }
 
 
@@ -137,6 +139,7 @@ void GameManager::battle(Character* player, Monster* monster)
 	player->StartFight(); //인벤토리 아이템 사용 함수
 	while ((player->GetHealth() > 0) && (monster->GetHealth() > 0)) // 캐릭터.h에 gethealth 추가
 	{
+		system("cls");
 		//player->UseItem(); // 플레이어 무조건 선턴. 아이템 먼저 사용.
 		//플레이어 공격
 		printPlayer();
@@ -152,15 +155,16 @@ void GameManager::battle(Character* player, Monster* monster)
 			cout << monster->GetName() << "의 남은 체력 " << monster->GetHealth() << endl;
 		}
 		player->UseItem(); // 플레이어 무조건 선턴. 아이템 먼저 사용.
-		Sleep(1000);
+		Sleep(2000);
 
 		if (monster->GetHealth() <= 0) // 몬스터가 공격하기 전 이미 피가 0 이하면 전투 종료.
 		{
 			break;
 		}
 
+		system("cls");
 		//몬스터 공격
-		printBoss();
+		printGoblin();
 		cout << monster->GetName() << "의 공격! " << monster->GetAttack() << "의 피해" << endl;
 		Sleep(500);
 		player->TakeDamage(monster->GetAttack());
@@ -172,7 +176,7 @@ void GameManager::battle(Character* player, Monster* monster)
 		{
 			cout << player->GetName() << "의 남은 체력 " << player->GetHealth() << endl;
 		}
-		Sleep(1000);
+		Sleep(2000);
 		//useitem?
 	}
 	//둘 중 하나의 체력이 0 이하가 되어도 남은 공격 기회는 반드시 사용하는 경우를 수정.
@@ -254,121 +258,6 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 	}
 }
 
-void GameManager::showTeamName()
-{
-
-	const char* asciiArt = R"( 
-                                          _____                         
-                                         |_   _|                        
-                                           | |    ___   __ _  _ __ ___  
-                                           | |   / _ \ / _` || '_ ` _ \ 
-                                           | |  |  __/| (_| || | | | | |
-                                           \_/   \___| \__,_||_| |_| |_|)";
-
-	const char* asciiArt2 = R"(   
-            
-        	  _      _            _    _                                      _             _           
-                 | |    (_)          | |  | |                                    | |           | |          
-          __ _   | |__   _  _ __   __| |  | | __ _ __    ___  __      __ _ __    | |_   ___    | |__    ___ 
-         / _` |  | '_ \ | || '__| / _` |  | |/ /| '_ \  / _ \ \ \ /\ / /| '_ \   | __| / _ \   | '_ \  / _ \
-        | (_| |  | |_) || || |   | (_| |  |   < | | | || (_) | \ V  V / | | | |  | |_ | (_) |  | |_) ||  __/
-         \__,_|  |_.__/ |_||_|    \__,_|  |_|\_\|_| |_| \___/   \_/\_/  |_| |_|   \__| \___/   |_.__/  \___|  )";
-
-	const char* asciiArt3 = R"(
-   
-      __   _____                      _                                           _    _                         
-     /  | |  _  |                    | |                                         | |  | |                        
-     `| |  \ V /    ___  _ __ ___    | |  ___   _ __    __ _     __ _  _ __    __| |  | |__    __ _ __   __  ___ 
-      | |  / _ \   / __|| '_ ` _ \   | | / _ \ | '_ \  / _` |   / _` || '_ \  / _` |  | '_ \  / _` |\ \ / / / _ \
-     _| |_| |_| | | (__ | | | | | |  | || (_) || | | || (_| |  | (_| || | | || (_| |  | | | || (_| | \ V / |  __/
-     \___/\_____/  \___||_| |_| |_|  |_| \___/ |_| |_| \__, |   \__,_||_| |_| \__,_|  |_| |_| \__,_|  \_/   \___|
-                                                        __/ |                                                    
-                                                       |___/                                                     )";
-
-	const char* asciiArt4 = R"(
-                  
-                                               _                          _    _   __         _ 
-                                              | |                        | |  (_) / _|       | |
-                  __   __  ___  _ __  _   _   | |__    ___   __ _  _   _ | |_  _ | |_  _   _ | |
-                  \ \ / / / _ \| '__|| | | |  | '_ \  / _ \ / _` || | | || __|| ||  _|| | | || |
-                   \ V / |  __/| |   | |_| |  | |_) ||  __/| (_| || |_| || |_ | || |  | |_| || |
-                    \_/   \___||_|    \__, |  |_.__/  \___| \__,_| \__,_| \__||_||_|   \__,_||_|
-                                       __/ |                                                    
-                                      |___/                                                     
-                  						    
-  )";
-
-
-	const char* asciiArt5 = R"(
-       __               _                                         _  _    _              _         _      _    
-      / _|             | |                                       (_)| |  | |            (_)       | |    | |   
-     | |_   ___   __ _ | |_  _   _  _ __   ___  ___    __      __ _ | |_ | |__      ___  _   __ _ | |__  | |_  
-     |  _| / _ \ / _` || __|| | | || '__| / _ \/ __|   \ \ /\ / /| || __|| '_ \    / _ \| | / _` || '_ \ | __| 
-     | |  |  __/| (_| || |_ | |_| || |   |  __/\__ \    \ V  V / | || |_ | | | |  |  __/| || (_| || | | || |_  
-     |_|   \___| \__,_| \__| \__,_||_|    \___||___/     \_/\_/  |_| \__||_| |_|   \___||_| \__, ||_| |_| \__| 
-                                                                                             __/ |             
-                                                                                            |___/              
-)";
-	const char* asciiArt6 = R"(
-                        _                         _     __               _    _                         
-                       | |                       | |   / _|             | |  | |                        
-            ___   ___  | |  ___   _ __   ___   __| |  | |_   ___   __ _ | |_ | |__    ___  _ __  ___    
-           / __| / _ \ | | / _ \ | '__| / _ \ / _` |  |  _| / _ \ / _` || __|| '_ \  / _ \| '__|/ __|   
-          | (__ | (_) || || (_) || |   |  __/| (_| |  | |  |  __/| (_| || |_ | | | ||  __/| |   \__ \ _ 
-           \___| \___/ |_| \___/ |_|    \___| \__,_|  |_|   \___| \__,_| \__||_| |_| \___||_|   |___/( )
-                                                                                                     |/                                                                                                        
-)";
-	const char* asciiArt7 = R"(
-                           _                                            _         _                      
-                          | |                                          (_)       | |                     
-         ___  _   _   ___ | |__      __ _  ___     __ _    _ __   __ _  _  _ __  | |__    ___  __      __
-        / __|| | | | / __|| '_ \    / _` |/ __|   / _` |  | '__| / _` || || '_ \ | '_ \  / _ \ \ \ /\ / /
-        \__ \| |_| || (__ | | | |  | (_| |\__ \  | (_| |  | |   | (_| || || | | || |_) || (_) | \ V  V / 
-        |___/ \__,_| \___||_| |_|   \__,_||___/   \__,_|  |_|    \__,_||_||_| |_||_.__/  \___/   \_/\_/  
-)";
-
-
-	cout << asciiArt << endl;
-	Sleep(1000);
-	cout << asciiArt2 << endl;
-	Sleep(1000);
-	cout << asciiArt3 << endl;
-	Sleep(1000);
-	cout << asciiArt4 << endl;
-	Sleep(1000);
-	cout << asciiArt5 << endl;
-	Sleep(1000);
-	cout << asciiArt6 << endl;
-	Sleep(1000);
-	cout << asciiArt7 << endl;
-	Sleep(1000);
-
-	system("cls");
-	
-}
-
-void GameManager::showGameName()
-{
-
-	const char* asciiArt = R"(
-
- _____                                         _       _____ ___  ___ _____     ______ ______  _____ 
-|_   _|                                       | |     |_   _||  \/  ||_   _|    | ___ \| ___ \|  __ \
-  | |    ___    ___    _ __ ___   _   _   ___ | |__     | |  | .  . |  | |      | |_/ /| |_/ /| |  \/
-  | |   / _ \  / _ \  | '_ ` _ \ | | | | / __|| '_ \    | |  | |\/| |  | |      |    / |  __/ | | __ 
-  | |  | (_) || (_) | | | | | | || |_| || (__ | | | |   | |  | |  | | _| |_  _  | |\ \ | |    | |_\ \
-  \_/   \___/  \___/  |_| |_| |_| \__,_| \___||_| |_|   \_/  \_|  |_/ \___/ (_) \_| \_|\_|     \____/
-                                                                                                     
-                                                                                                     
-
-)";
-
-	cout << asciiArt << endl;
-	Sleep(1000);
-
-	PressAnyKey();
-	system("cls");
-}
 
 
 //반드시 Shop 방문 함수를 GameManager에서 제어해야 하는가?
