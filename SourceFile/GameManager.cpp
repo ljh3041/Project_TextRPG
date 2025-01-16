@@ -88,7 +88,7 @@ int GameManager::firstPhase()
 }
 
 void GameManager::BattlePhase()
-{
+{	
 	entershop = false;
 	cout << "1번 선택" << endl;
 	Sleep(500);
