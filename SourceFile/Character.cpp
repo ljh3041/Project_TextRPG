@@ -56,13 +56,15 @@ void Character::NameValidation() // 이름 검증
     wcin.imbue(locale("ko_KR.UTF-8"));
     wcout.imbue(locale("ko_KR.UTF-8"));
     wstring_convert<codecvt_utf8<wchar_t>> converter;// 와이드 문자열 -> UTF-8 변환기
-    wstring characterName;
+    wstring inputName;
+    string characterName = "";
     NamePlease();
 
     while (true)
     {
         cout << "\n\n\n\n\n                         신중하게 지은 이름: ";
-        getline(wcin, characterName);
+        getline(wcin, inputName);
+        characterName = converter.to_bytes(inputName);
         system("cls");
 
         if (characterName.size() < 1) //한글자 허용
@@ -90,7 +92,7 @@ void Character::NameValidation() // 이름 검증
         if (isValid) { break; }
     }
 
-    name = converter.to_bytes(characterName);
+    name = characterName;
     CorrectName();
     return;
 }
