@@ -56,6 +56,7 @@ public:
 	void generateBossMonster();
 	void displayInventory(Character* player);
 	Monster* getMonster();
+	void PlayOpening(int playSong);
 };
 
 #endif
