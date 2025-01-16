@@ -64,11 +64,12 @@ int GameManager::firstPhase()
 		system("cls");
 		cout << "================================" << endl;
 		cout << "inGame" << endl;
+		cout << "10 스테이지 이후 보스 몬스터 출현" << endl;
 		cout << "현재 스테이지 : " << stage << endl;
 		cout << "================================" << endl;
-
 		cout << "할 행동을 고르시오." << endl;
-		cout << "1 : 전투   2 : 상점   3 : 상태보기" << endl;
+		cout << "▶1 : 전투   \n▶2 : 상점   \n▶3 : 상태보기\n" << endl;
+		cout << "입력 : ";
 		cin >> value;
 		if (cin.fail()) {
 			cin.clear(); // 오류 상태를 초기화
@@ -87,12 +88,13 @@ int GameManager::firstPhase()
 
 void GameManager::BattlePhase()
 {
+	entershop = false;
 	cout << "1번 선택" << endl;
 	Sleep(500);
 	cout << "몬스터와 조우!" << endl;
 	Sleep(500);
 
-	if (stage < 1)
+	if (stage < 3)
 	{
 		GameManager::GetInstance()->generateMonster();
 		GameManager::GetInstance()->battle(Character::GetInstance(), GameManager::GetInstance()->getMonster());
@@ -108,6 +110,8 @@ void GameManager::BattlePhase()
 
 void GameManager::StorePhase()
 {
+	if (entershop == false) stage++;
+	entershop = true;
 	cout << "2번 선택" << endl;
 	Sleep(500);
 	cout << "상점 오픈!" << endl;
