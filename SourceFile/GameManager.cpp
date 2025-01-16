@@ -22,6 +22,7 @@ GameManager::~GameManager()
 //Phase
 void GameManager::tutorialPhase()
 {
+	showTeamName();
 	int i = 0;
 	printLoding4();
 	Sleep(1000);
@@ -96,7 +97,7 @@ void GameManager::BattlePhase()
 	cout << "몬스터와 조우!" << endl;
 	Sleep(500);
 
-	if (stage < 3)
+	if (stage < 1)
 	{
 		GameManager::GetInstance()->generateMonster();
 		GameManager::GetInstance()->battle(Character::GetInstance(), GameManager::GetInstance()->getMonster());
