@@ -8,7 +8,7 @@ void potion50::UseItem()
 	if (Character::GetInstance()->GetHealth() <= 100)
 	{
 		Character::GetInstance()->Healing(50);
-		cout << "체력을 50회복하는 물약의 효과: 체력 50 회복" << endl;
+		cout << "체력을 50 회복하는 물약의 효과: 체력 50 회복" << endl;
 		isUsed = true;
 	}
 	else isUsed = false;
@@ -19,7 +19,7 @@ void potion100::UseItem()
 	if (Character::GetInstance()->GetHealth() <= 100)
 	{
 		Character::GetInstance()->Healing(100);
-		cout << "체력을 100회복하는 물약의 효과: 체력 100 회복" << endl;
+		cout << "체력을 100 회복하는 물약의 효과: 체력 100 회복" << endl;
 		isUsed = true;
 	}
 	else isUsed = false;
@@ -29,8 +29,8 @@ void potion300::UseItem()
 {
 	if (Character::GetInstance()->GetHealth() <= 100)
 	{
-		Character::GetInstance()->Healing(300);
-		cout << "체력을 300회복하는 물약의 효과: 체력 300 회복" << endl;
+		Character::GetInstance()->Healing(150);
+		cout << "체력을 150 회복하는 물약의 효과: 체력 150 회복" << endl;
 		isUsed = true;
 	}
 	else isUsed = false;
@@ -40,8 +40,8 @@ void potion600::UseItem()
 {
 	if (Character::GetInstance()->GetHealth() <= 100)
 	{
-		Character::GetInstance()->Healing(600);
-		cout << "체력을 600회복하는 물약의 효과: 체력 600 회복" << endl;
+		Character::GetInstance()->Healing(200);
+		cout << "체력을 200 회복하는 물약의 효과: 체력 200 회복" << endl;
 		isUsed = true;
 	}
 	else isUsed = false;

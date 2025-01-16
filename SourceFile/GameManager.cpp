@@ -86,7 +86,7 @@ void GameManager::BattlePhase()
 	cout << "몬스터와 조우!" << endl;
 	Sleep(500);
 
-	if (stage < 11)
+	if (stage < 1)
 	{
 		GameManager::GetInstance()->generateMonster();
 		GameManager::GetInstance()->battle(Character::GetInstance(), GameManager::GetInstance()->getMonster());
@@ -164,7 +164,7 @@ void GameManager::generateBossMonster()
 {
 	delete monster;
 	monster = new Pitta;
-	cout << "보스 몬스터 " << monster->GetName() << "가 나타났다!" << endl;
+	cout << "보스 몬스터 " <<red<< monster->GetName() <<white<< "가 나타났다!" << endl;
 	PressAnyKey();
 }
 

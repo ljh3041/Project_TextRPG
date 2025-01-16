@@ -1,4 +1,4 @@
-﻿#include "../headerFile/Character.h"
+#include "../headerFile/Character.h"
 #include "../headerFile/MyMath.h"
 #include "../headerFile/TextColor.h"
 
