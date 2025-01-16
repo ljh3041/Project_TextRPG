@@ -57,6 +57,8 @@ void GameManager::tutorialPhase()
 
 int GameManager::firstPhase()
 {
+	Stun_Player_dot_clean();
+	PressAnyKey();
 	int value;
 	while (true) {
 		system("cls");
@@ -444,7 +446,7 @@ Hit_Boss_dot1_clean();
 		Sleep(300);
 		system("cls");
 
-		int B_dam = bossmonster->GetAttack();
+		int B_dam = bossmonster->GetTotalAttack();
 		player->TakeDamage(B_dam);
 		Attack_Boss_dot2_clean();
 		cout << endl << endl << endl;
@@ -481,8 +483,10 @@ Hit_Boss_dot1_clean();
 	else
 	{
 		system("cls");
-		Stun_Player();
-		cout << "                                       패배하였습니다." << endl;
+		Stun_Player_dot_clean();
+		Sleep(1000);
+		cout << "                                                 패배하였습니다." << endl;
+		Sleep(2000);
 		PressAnyKey();
 		exit(0);
 	}
