@@ -90,7 +90,7 @@ void GameManager::BattlePhase()
 	cout << "몬스터와 조우!" << endl;
 	Sleep(500);
 
-	if (stage < 11)
+	if (stage < 1)
 	{
 		GameManager::GetInstance()->generateMonster();
 		GameManager::GetInstance()->battle(Character::GetInstance(), GameManager::GetInstance()->getMonster());
@@ -341,7 +341,7 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 	while (1)
 	{
 		system("cls");
-		BossStanding_dot1();
+		BossStanding_dot1_clean();
 		cout << "아무키나 입력시 보스전에 돌입합니다" << endl;
 		Sleep(1000);
 		if (_kbhit()) {
@@ -350,7 +350,7 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 			break;
 		}
 		system("cls");
-		BossStanding_dot2();
+		BossStanding_dot2_clean();
 		cout << "아무키나 입력시 보스전에 돌입합니다" << endl;
 		Sleep(1000);
 		if (_kbhit()) {

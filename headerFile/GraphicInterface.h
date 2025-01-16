@@ -390,6 +390,70 @@ void BossStanding_dot2() {
     cout << "⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄" << endl;
 }
 
+void BossStanding_dot1_clean() {
+    mon = GameManager::GetInstance()->getMonster();
+    pl = Character::GetInstance();
+
+    cout << "                                                                                                                        " << endl;
+    cout << "                                                                                                                        " << endl;
+    cout << "                                                                                                                        " << endl;
+    cout << "                                                                                                                        " << endl;
+    cout << "                                                                                                                        " << endl;
+    cout << "                                          ⢠                                ⢀                                            " << endl;
+    cout << "                                          ⣾⢰⡂                           ⢸⣷⢀⠁⡆                                           " << endl;
+    cout << "                                         ⡠⡟⢿⡇                           ⣼⣿⠜ ⠃⣤                                          " << endl;
+    cout << "                                         ⢳⣧⡀⣧        ⣠⣤⡄               ⢰⣿⡏ ⣴⡌                                           " << endl;
+    cout << "                                         ⢺⣿⣧⣿        ⢤⣿⠃               ⣸⣿⣧⣿⣿⣇⠌⠠                                         " << endl;
+    cout << "                                         ⠐⣿⣽⣿⣷⣄      ⠘⣿⣶⣆             ⣤⣿⣿⣿⠟⣯⡔⠊⡰                                         " << endl;
+    cout << "                                          ⠈⢘⣿⣿⣿⣷⣦⣄⣀  ⡸ ⡹⣟⣱⡀       ⢀⣀⣴⣾⣿⣿⣿⣿⣿⡯⠵⠂                                          " << endl;
+    cout << "                                            ⠛⠛⣿⣿⣿⣿⣿⣿⣿⣶⣷⣷⣾⣿⣿⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⣿⣷⠴⠃                                           " << endl;
+    cout << "                                              ⠉⠉⠙⠿⣿⣿⣿⣿⣿⡏⠹⡿⠛⠙⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣛⡿⠗⠋                                              " << endl;
+    cout << "                                                   ⠈⠁⠉⠉⢀      ⠭⣾⠻⠿⠿⠗⠋⠉                                                  " << endl;
+    cout << "                                                       ⠸⡆⢀   ⣸⢒⡒⠊⠡⠤⠤⠤                                                 " << endl;
+    cout << "                                                      ⢀⢀⣣⣴⣩⣧⣤⣿⡓⠫⡿⠂⠤⡒⠒⠂                                                  " << endl;
+    cout << "                                                    ⠘⠛⠿⣫⡇⣃⢿⣿⣿⡿⡙⢦⢌⡑⠠⢄⡈⠙⠒⡂                                                " << endl;
+    cout << "                                                       ⠸⠃⠁⠸⠙⢿⢧⠙⡮⡝⢫⠒⢤⣈⠉⢓⡅                                                " << endl;
+    cout << "                                                          ⠈⢈⡌⠒⠵⡈⠢    ⠈⠉                                                 " << endl;
+    cout << "                                                            ⠁  ⠈⠓⠈                                                      " << endl;
+    cout << "                                                                                                                        " << endl;
+    cout << "                                                                                                                        " << endl;
+    cout << "                                                                                                                        " << endl;
+    cout << "                                                                                                                        " << endl;
+    cout << "                                                                                                                        " << endl;
+}
+
+void BossStanding_dot2_clean() {
+    mon = GameManager::GetInstance()->getMonster();
+    pl = Character::GetInstance();
+
+    cout << "                                                                                                                        " << endl;
+    cout << "                                                                                                                        " << endl;
+    cout << "                                                                                                                        " << endl;
+    cout << "                                                                                                                        " << endl;
+    cout << "                                                                                                                        " << endl;
+    cout << "                                                                                                                        " << endl;
+    cout << "                                                                                                                        " << endl;
+    cout << "                                                                                                                        " << endl;
+    cout << "                                                        ⣠⣤⡄                                                             " << endl;
+    cout << "                                                        ⢤⣿⠃                                                             " << endl;
+    cout << "                                                        ⠘⣿⣶⣆                                                            " << endl;
+    cout << "                                                    ⣀⣤⣤⣴⣾⠋⣛⣵⣷⣶⣶⣶⣶⣶⣤⡀                                                    " << endl;
+    cout << "                                                 ⢀⣴⣿⣿⣿⣿⣿⣿⣴⠙⠿⠋⠉⠉⠟⡿⣿⣿⣿⣷⣦⣄⡀                                                " << endl;
+    cout << "                                                ⢠⣿⣿⣿⣿⡿⠛⡏⠛⠭⢆    ⢈⣈⣙⡛⠙⣿⣿⣿⣷⡀                                               " << endl;
+    cout << "                                               ⣠⣿⣿⠏⠋ ⠈    ⡈⡀⠠⣠⣀⣔⡜⡋⠬⣸⣿⣿⣿⣿⠉                                               " << endl;
+    cout << "                                              ⢰⢇⣟⠻⠈     ⢀⣬⣤⣾⡟⣿⣿⣷⡝⢟⣅⣿⣿ ⡿⠃⡆                                               " << endl;
+    cout << "                                               ⣼⡇       ⠨⠃⠁⠻⢸⠸⡏⢿⡘⡦⣽⣿⡇⠠⡇⠕                                                " << endl;
+    cout << "                                              ⠈⡏⠁        ⠈ ⡀⠸ ⣧⠈⡕⠴⠙⣽⡃⠆⠉                                                 " << endl;
+    cout << "                                                           ⠇ ⡄⠑⡀⢁  ⠈⠉                                                   " << endl;
+    cout << "                                                           ⠈ ⠑⠃⠑⠬                                                       " << endl;
+    cout << "                                                                                                                        " << endl;
+    cout << "                                                                                                                        " << endl;
+    cout << "                                                                                                                        " << endl;
+    cout << "                                                                                                                        " << endl;
+    cout << "                                                                                                                        " << endl;
+    cout << "                                                                                                                        " << endl;
+}
+
 void BossStanding1() {
     const char* asciiArt = R"(
                       
@@ -704,6 +768,7 @@ void Hit_Boss_dot2() {
     cout << "⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄" << endl;
     cout << "⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄" << endl;
 }
+
 
 void Hit_Boss1() {
     mon = GameManager::GetInstance()->getMonster();
