@@ -148,6 +148,27 @@ void GameManager::EndingPhase()
 	Sleep(speed * 3);
 }
 
+void GameManager::Bad_EndingPhase()
+{
+	system("cls");
+	int speed = 500;
+	Sleep(speed * 3);
+	cout << "\n\n\n\n\n\n\n\n\n\n\n\n                                            'TMI 팔색조의 입을 막지 못하였다.'" << endl;
+	Sleep(speed * 3);
+	system("cls");
+	Sleep(speed * 3);
+	cout << "\n\n\n\n\n\n\n\n\n\n\n\n                                                '세상이 시끄러워졌다.'" << endl;
+	Sleep(speed * 3);
+	cout << "\n\n\n\n\n                                                          Fin." << endl;
+	Sleep(speed * 5);
+	system("cls");
+	Sleep(speed * 3);
+	cout << "\n\n\n\n\n\n\n\n\n\n\n\n                                                       제작 8조" << endl;
+	Sleep(speed * 5);
+	system("cls");
+	Sleep(speed * 3);
+}
+
 //몬스터 랜덤 소환
 void GameManager::generateMonster()
 {
@@ -487,6 +508,7 @@ Hit_Boss_dot1_clean();
 		Sleep(1000);
 		cout << "                                                 패배하였습니다." << endl;
 		Sleep(2000);
+		Bad_EndingPhase();
 		PressAnyKey();
 		exit(0);
 	}

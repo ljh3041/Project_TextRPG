@@ -43,6 +43,7 @@ public:
 	void StorePhase();		//상점 페이즈
 	void StatusPhase();		//스텟 페이즈
 	void EndingPhase();     //엔딩 페이즈
+	void Bad_EndingPhase(); //배드 엔딩 페이즈
 
 	void visitShop();
 	void battle(Character* player, Monster* monster);
