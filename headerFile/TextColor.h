@@ -36,6 +36,24 @@ ostream& white(ostream& s)
     return s;
 }
 
+ostream& puple(ostream& s)
+{
+    SetConsoleTextAttribute(hStdout, FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+    return s;
+}
+
+ostream& darkred(ostream& s)
+{
+    SetConsoleTextAttribute(hStdout, FOREGROUND_RED);
+    return s;
+}
+
+ostream& darkyellow(ostream& s)
+{
+    SetConsoleTextAttribute(hStdout, FOREGROUND_RED | FOREGROUND_GREEN);
+    return s;
+}
+
 struct color {
     color(WORD attribute) :m_color(attribute) {};
     WORD m_color;
