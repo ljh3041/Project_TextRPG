@@ -156,6 +156,7 @@ void Character::LevelUp()
         basicAttack += (level * 5);
         health = maxHealth;
         expForLevelUp = 0;
+
         cout << "\n레벨이 올랐는데 왜 올랐냐면 경험치가 " << green << "100" << white << "이 쌓이면 레벨이 오르는데 방금 전투로 필요경험치" << green << "100" << white << "이 누적되셨어요." << endl;
         Sleep(textSpeed/2);
         cout << "그래서 현재 레벨은 " << red << level << white << "입니다." << endl;
