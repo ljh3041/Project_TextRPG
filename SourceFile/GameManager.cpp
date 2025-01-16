@@ -185,6 +185,12 @@ void GameManager::battle(Character* player, Monster* monster)
 			break;
 		}
 
+		system("cls");
+		//몬스터 공격
+		printGoblin();
+		int mon_dam = monster->GetAttack();
+
+		cout << monster->GetName() << "의 공격! " << mon_dam << "의 피해" << endl;
 		Sleep(500);
 		player->TakeDamage(mon_dam);
 		if (player->GetHealth() <= 0)
