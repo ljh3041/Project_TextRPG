@@ -48,8 +48,9 @@ void GameManager::tutorialPhase()
 	}
 
 	//showTeamName();
-
+	//PlayOpening(1);
 	Character::GetInstance()->NameValidation();
+	//PlayOpening(0);
 	Sleep(500);
 	soundTrack1();
 	Character::GetInstance()->AddToInventory(new potion50());
@@ -503,6 +504,7 @@ Hit_Boss_dot1_clean();
 	{
 		system("cls");
 		Stun_Boss();
+		PlayWavFile("winboss.wav");
 		cout << "승리" << endl;
 		PressAnyKey();
 		system("cls");
@@ -544,4 +546,13 @@ void GameManager::displayInventory(Character* player)
 Monster* GameManager::getMonster()
 {
 	return monster;
+}
+
+void GameManager::PlayOpening(int playSong)
+{
+	while (playSong)
+	{
+		PlayWavFile("opening.wav");
+		Sleep(18000);
+	}
 }
