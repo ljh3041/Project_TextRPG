@@ -386,7 +386,7 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 			monster->TakeDamage(b_PC_dam);
 			printPlayer();
 
-			cout << player->GetName() << "의 " << red << "!!크리티컬 공격!!" << white << PC_dam << "의 피해" << endl;
+			cout << player->GetName() << "의 " << red << "!!크리티컬 공격!!" << white << b_PC_dam << "의 피해" << endl;
 			Sleep(500);
 			if (monster->GetHealth() <= 0)
 			{
