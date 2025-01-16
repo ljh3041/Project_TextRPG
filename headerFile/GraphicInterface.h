@@ -5,6 +5,8 @@
 #include <windows.h>
 #include "GameManager.h"
 #include "TextColor.h"
+#include "../headerFile/Sounds.h"
+
 
 GameManager* gm = GameManager::GetInstance();
 Monster* mon = GameManager::GetInstance()->getMonster();
@@ -1401,18 +1403,25 @@ void showTeamName()
 
 
     cout << asciiArt << endl;
+    PlayWavFile("punch.wav");
     Sleep(1000);
     cout << asciiArt2 << endl;
+    PlayWavFile("punch.wav");
     Sleep(1000);
     cout << asciiArt3 << endl;
+    PlayWavFile("punch.wav");
     Sleep(1000);
     cout << asciiArt4 << endl;
+    PlayWavFile("punch.wav");
     Sleep(1000);
     cout << asciiArt5 << endl;
+    PlayWavFile("punch.wav");
     Sleep(1000);
     cout << asciiArt6 << endl;
+    PlayWavFile("punch.wav");
     Sleep(1000);
     cout << asciiArt7 << endl;
+    PlayWavFile("punch.wav");
     Sleep(1000);
 
     system("cls");
