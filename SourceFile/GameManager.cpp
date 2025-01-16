@@ -415,6 +415,7 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 			//플레이어 공격
 			int b_P_dam = player->GetRandTotalAttack();
 			monster->TakeDamage(b_P_dam);
+			PlayWavFile("punch.wav");
       if (monster->GetHealth() <= 0) monster->SetHealth(0);
 Hit_Boss_dot1_clean();
       
@@ -438,6 +439,7 @@ Hit_Boss_dot1_clean();
 			//플레이어 공격
 			float b_PC_dam = static_cast<float>( player->GetRandTotalAttack() * 1.6);
 			monster->TakeDamage(static_cast<int>( b_PC_dam));
+			PlayWavFile("punch.wav");
       if (monster->GetHealth() <= 0) monster->SetHealth(0);
 Hit_Boss_dot1_clean();
       
@@ -469,6 +471,7 @@ Hit_Boss_dot1_clean();
 
 		int B_dam = bossmonster->GetTotalAttack();
 		player->TakeDamage(B_dam);
+		PlayWavFile("pow.wav");
 		Attack_Boss_dot2_clean();
 		cout << endl << endl << endl;
 		cout << red << bossmonster->GetName() << white << "의 공격! " << B_dam << "의 피해" << endl;
