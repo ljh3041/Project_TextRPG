@@ -185,6 +185,23 @@ void GameManager::battle(Character* player, Monster* monster)
 			break;
 		}
 
+		system("cls");
+
+		switch (monster->GetSpecies())
+		{
+		case 1:
+			printGoblin();
+			break;
+		case 2:
+			printTroll();
+			break;
+		case 3:
+			printOrc();
+			break;
+		default:
+			break;
+		}
+		cout << monster->GetName() << "의 공격! " << monster->GetAttack() << "의 피해" << endl;
 		Sleep(500);
 		player->TakeDamage(mon_dam);
 		if (player->GetHealth() <= 0)
