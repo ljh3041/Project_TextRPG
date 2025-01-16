@@ -60,8 +60,6 @@ void GameManager::tutorialPhase()
 
 int GameManager::firstPhase()
 {
-	//Stun_Player_dot_clean();
-	//PressAnyKey();
 	int value;
 	while (true) {
 		system("cls");
