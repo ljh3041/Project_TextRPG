@@ -155,7 +155,7 @@ void GameManager::generateMonster()
 		break;
 	}
 	//monster;
-	cout << monster->GetName() << "가 출현했다!" << endl;
+	cout << monster->GetName() << "(이)가 출현했다!" << endl;
 	PressAnyKey();
 
 }
@@ -175,22 +175,20 @@ void GameManager::battle(Character* player, Monster* monster)
 {
 	Shop::GetInstance()->InitializeShop();
 	player->StartFight(); //인벤토리 아이템 사용 함수
+	system("cls");
+	printPlayer();
+	Sleep(100);
 	while ((player->GetHealth() > 0) && (monster->GetHealth() > 0)) // 캐릭터.h에 gethealth 추가
 	{
-		system("cls");
-		printPlayer();
-		Sleep(100);
+
 		system("cls");
 		//player->UseItem(); // 플레이어 무조건 선턴. 아이템 먼저 사용.
 		//플레이어 공격
 		int P_dam = player->GetRandTotalAttack();
 		monster->TakeDamage(P_dam);
 		printPlayer();
-		//int P_dam = player->GetRandTotalAttack();
-
 		cout << player->GetName() << "의 공격! " << P_dam << "의 피해" << endl;
 		Sleep(500);
-		//monster->TakeDamage(P_dam);
 		if (monster->GetHealth() <= 0)
 		{
 			cout << monster->GetName() << "의 남은 체력 0 " << endl;
@@ -208,16 +206,9 @@ void GameManager::battle(Character* player, Monster* monster)
 		}
 
 		system("cls");
-		printGoblin();
-		Sleep(100);
-		system("cls");
 		//몬스터 공격
 		int mon_dam = monster->GetTotalAttack();
 		player->TakeDamage(mon_dam);
-		printGoblin();
-		//int mon_dam = monster->GetAttack();
-
-
 		switch (monster->GetSpecies())
 		{
 		case 1:
@@ -232,9 +223,8 @@ void GameManager::battle(Character* player, Monster* monster)
 		default:
 			break;
 		}
-		cout << monster->GetName() << "의 공격! " << monster->GetAttack() << "의 피해" << endl;
+		cout << monster->GetName() << "의 공격! " << mon_dam << "의 피해" << endl;
 		Sleep(500);
-		//player->TakeDamage(mon_dam);
 		if (player->GetHealth() <= 0)
 		{
 			cout << player->GetName() << "의 남은 체력 0 " << endl;
