@@ -20,7 +20,6 @@ class GameManager
 private:
 	static GameManager* instance;
 	Monster* monster = nullptr;
-	//BossMonster* bossmonster = nullptr;
 	int stage = 1;
 
 	GameManager();
@@ -47,8 +46,7 @@ public:
 	void visitShop();
 	void battle(Character* player, Monster* monster);
     void bossbattle(Character* player, Monster* bossmonster);
-	void showTeamName();	//팀 이름 출력
-	void showGameName();	//게임 이름 출력
+	
 
 
 	void generateMonster();
