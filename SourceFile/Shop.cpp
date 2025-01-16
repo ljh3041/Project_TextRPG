@@ -44,12 +44,6 @@ void Shop::InitializeShop()
     all_items.push_back(new Armor50());
     all_items.push_back(new Armor50());
 
-    all_items.push_back(new ScalingArmor10());
-    all_items.push_back(new ScalingArmor20());
-    all_items.push_back(new ScalingArmor30());
-    all_items.push_back(new ScalingArmor40());
-    all_items.push_back(new ScalingArmor50());
-
     all_items.push_back(new HealingArmor2());
     all_items.push_back(new HealingArmor4());
     all_items.push_back(new HealingArmor6());
