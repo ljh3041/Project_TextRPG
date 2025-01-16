@@ -86,7 +86,7 @@ void GameManager::BattlePhase()
 	cout << "몬스터와 조우!" << endl;
 	Sleep(500);
 
-	if (stage < 1)
+	if (stage < 11)
 	{
 		GameManager::GetInstance()->generateMonster();
 		GameManager::GetInstance()->battle(Character::GetInstance(), GameManager::GetInstance()->getMonster());
@@ -133,6 +133,10 @@ void GameManager::EndingPhase()
 	cout << "\n\n\n\n\n\n\n\n\n\n\n\n                                                  '세상이 조용해졌다.'" << endl;
 	Sleep(speed * 3);
 	cout << "\n\n\n\n\n                                                          Fin." << endl;
+	Sleep(speed * 5);
+	system("cls");
+	Sleep(speed * 3);
+	cout << "\n\n\n\n\n\n\n\n\n\n\n\n                                                       제작 8조" << endl;
 	Sleep(speed * 5);
 	system("cls");
 	Sleep(speed * 3);
