@@ -87,7 +87,7 @@ void GameManager::BattlePhase()
 	cout << "몬스터와 조우!" << endl;
 	Sleep(500);
 
-	if (stage < 1) //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 조건 11로 다시 바꿀 것
+	if (stage < 11)
 	{
 		GameManager::GetInstance()->generateMonster();
 		GameManager::GetInstance()->battle(Character::GetInstance(), GameManager::GetInstance()->getMonster());
