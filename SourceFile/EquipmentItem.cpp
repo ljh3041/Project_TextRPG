@@ -66,9 +66,9 @@ void VampiricDagger50::UseItem()
 //체력 도
 int HP_Blade1::GetAttack()
 {
+	count += 1;
 	if (count >= 3)
 	{
-		count = 0;
 		return Character::GetInstance()->GetHealth() * 10 / 100;  //아이템에 추가 공격력을 통해 추가 데미지 구현
 	}
 	else {
@@ -78,18 +78,18 @@ int HP_Blade1::GetAttack()
 
 void HP_Blade1::UseItem()
 {
-	count += 1;
 	if (count >= 3)
 	{
+		count = 0;
 		cout << "3번째 공격에 나의 현재체력의 10%의 추가 피해를 주는 무게 1, 체력 10의 도의 효과: " << Character::GetInstance()->GetHealth() * 10 / 100 << "의 추가 데미지" << endl;
 	}
 }
 
 int HP_Blade2::GetAttack()
 {
+	count += 1;
 	if (count >= 3)
 	{
-		count = 0;
 		return Character::GetInstance()->GetHealth() * 20 / 100;  //아이템에 추가 공격력을 통해 추가 데미지 구현
 	}
 	else {
@@ -99,18 +99,18 @@ int HP_Blade2::GetAttack()
 
 void HP_Blade2::UseItem()
 {
-	count += 1;
 	if (count >= 3)
 	{
+		count = 0;
 		cout << "3번째 공격에 나의 현재체력의 20%의 추가 피해를 주는 무게 1, 체력 20의 도의 효과: " << Character::GetInstance()->GetHealth() * 20 / 100 << "의 추가 데미지" << endl;
 	}
 }
 
 int HP_Blade3::GetAttack()
 {
+	count += 1;
 	if (count >= 3)
 	{
-		count = 0;
 		return Character::GetInstance()->GetHealth() * 30 / 100;  //아이템에 추가 공격력을 통해 추가 데미지 구현
 	}
 	else {
@@ -120,15 +120,16 @@ int HP_Blade3::GetAttack()
 
 void HP_Blade3::UseItem()
 {
-	count += 1;
 	if (count >= 3)
 	{
+		count = 0;
 		cout << "3번째 공격에 나의 현재체력의 30%의 추가 피해를 주는 무게 2, 체력 30의 도의 효과: " << Character::GetInstance()->GetHealth() * 30 / 100 << "의 추가 데미지" << endl;
 	}
 }
 
 int HP_Blade4::GetAttack()
 {
+	count += 1;
 	if (count >= 3)
 	{
 		count = 0;
@@ -141,15 +142,17 @@ int HP_Blade4::GetAttack()
 
 void HP_Blade4::UseItem()
 {
-	count += 1;
 	if (count >= 3)
 	{
+		count = 0;
 		cout << "3번째 공격에 나의 현재체력의 40%의 추가 피해를 주는 무게2, 체력 40의 도의 효과: " << Character::GetInstance()->GetHealth() * 40 / 100 << "의 추가 데미지" << endl;
 	}
 }
 
 int HP_Blade5::GetAttack()
 {
+
+	count += 1;
 	if (count >= 2)
 	{
 		count = 0;
@@ -162,9 +165,9 @@ int HP_Blade5::GetAttack()
 
 void HP_Blade5::UseItem()
 {
-	count += 1;
 	if (count >= 2)
 	{
+		count = 0;
 		cout << "2번째 공격에 나의 현재체력의 50%의 추가 피해를 주는 무게2, 체력 50의 도의 효과: " << Character::GetInstance()->GetHealth() * 50 / 100 << "의 추가 데미지" << endl;
 	}
 }
