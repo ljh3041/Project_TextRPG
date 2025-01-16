@@ -150,6 +150,7 @@ void Shop::BuyItem()
 
     {
         cout << "잘못된 선택입니다." << endl;
+        Sleep(1500);
         return;
     }
 
@@ -158,6 +159,7 @@ void Shop::BuyItem()
     if (Character::GetInstance()->GetGold() < selected_item->GetPrice())
     {
         cout << "골드가 부족합니다. 보유 골드 : " << Character::GetInstance()->GetGold() << endl;
+        Sleep(1500);
         return;
     }
     if (Character::GetInstance()->GetInventoryWeight() + selected_item->GetWeight() >
@@ -167,6 +169,7 @@ void Shop::BuyItem()
             << Character::GetInstance()->GetInventoryWeight() << " "
             << selected_item->GetName() << " 무게 : "
             << selected_item->GetWeight() << endl;
+        Sleep(1500);
         return;
     }
     //골드 차감 및 인벤토리 아이템 추가
@@ -180,7 +183,7 @@ void Shop::BuyItem()
 
     items_for_sale.erase(items_for_sale.begin() + (choice - 1));
     cout << "구매 성공! 남은 골드 : " << Character::GetInstance()->GetGold() << endl;
-
+    Sleep(1500);
 }
 
 // 아이템 판매 로직

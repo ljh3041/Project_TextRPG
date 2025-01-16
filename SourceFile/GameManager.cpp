@@ -348,7 +348,7 @@ void GameManager::battle(Character* player, Monster* monster)
 		Stun_Player_dot_clean();
 		Sleep(1000);
 		cout << "                                                 패배하였습니다." << endl;
-		Sleep();
+		Sleep(2000);
 		Bad_EndingPhase();
 		PressAnyKey();
 		exit(0);
