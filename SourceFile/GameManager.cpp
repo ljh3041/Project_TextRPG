@@ -87,7 +87,7 @@ void GameManager::BattlePhase()
 	cout << "몬스터와 조우!" << endl;
 	Sleep(500);
 
-	if (stage < 11)
+	if (stage < 1)
 	{
 		GameManager::GetInstance()->generateMonster();
 		GameManager::GetInstance()->battle(Character::GetInstance(), GameManager::GetInstance()->getMonster());
@@ -161,9 +161,11 @@ void GameManager::battle(Character* player, Monster* monster)
 		//player->UseItem(); // 플레이어 무조건 선턴. 아이템 먼저 사용.
 		//플레이어 공격
 		printPlayer();
-		cout << player->GetName() << "의 공격! " << player->GetTotalAttack() << "의 피해" << endl;
+		int P_dam = player->GetTotalAttack();
+
+		cout << player->GetName() << "의 공격! " << P_dam << "의 피해" << endl;
 		Sleep(500);
-		monster->TakeDamage(player->GetTotalAttack());
+		monster->TakeDamage(P_dam);
 		if (monster->GetHealth() <= 0)
 		{
 			cout << monster->GetName() << "의 남은 체력 0 " << endl;
@@ -180,11 +182,12 @@ void GameManager::battle(Character* player, Monster* monster)
 			break;
 		}
 
+		int mon_dam = monster->GetAttack();
 		//몬스터 공격
 		printBoss();
-		cout << monster->GetName() << "의 공격! " << monster->GetAttack() << "의 피해" << endl;
+		cout << monster->GetName() << "의 공격! " << mon_dam << "의 피해" << endl;
 		Sleep(500);
-		player->TakeDamage(monster->GetAttack());
+		player->TakeDamage(mon_dam);
 		if (player->GetHealth() <= 0)
 		{
 			cout << player->GetName() << "의 남은 체력 0 " << endl;
@@ -266,12 +269,15 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 		Sleep(100);
 		system("cls");
 		Hit_Boss();
+		Sleep(10); // wldnfRK?
 		system("cls");
 		Sleep(150);
 		Hit_Boss();
-		cout << player->GetName() << "의 공격! " << player->GetTotalAttack() << "의 피해" << endl;
+
+		int b_P_dam = player->GetTotalAttack();
+		cout << player->GetName() << "의 공격! " << b_P_dam << "의 피해" << endl;
 		Sleep(500);
-		bossmonster->TakeDamage(player->GetTotalAttack());
+		bossmonster->TakeDamage(b_P_dam);
 		if (bossmonster->GetHealth() <= 0)
 		{
 			cout << bossmonster->GetName() << "의 남은 체력 0 " << endl;
@@ -293,9 +299,11 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 		Attack_Boss2();
 		Sleep(100);
 		Attack_Boss1();
-		cout << bossmonster->GetName() << "의 공격! " << bossmonster->GetAttack() << "의 피해" << endl;
+
+		int B_dam = bossmonster->GetAttack();
+		cout << bossmonster->GetName() << "의 공격! " << B_dam << "의 피해" << endl;
 		Sleep(500);
-		player->TakeDamage(bossmonster->GetAttack());
+		player->TakeDamage(B_dam);
 		if (player->GetHealth() <= 0)
 		{
 			cout << player->GetName() << "의 남은 체력 0 " << endl;

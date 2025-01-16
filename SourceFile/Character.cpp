@@ -16,7 +16,7 @@ Character::Character()
     totalAttack = basicAttack + extraAttack;
     experience = 0;
     expForLevelUp = 0;
-    gold = 1000;
+    gold = 10;
     maxLevel = 10;
     inventoryWeight = 0;
     maxInventoryWeight = 6;
@@ -259,7 +259,7 @@ void Character::EndFight()
 
 int Character::GetTotalAttack()
 {
-    totalAttack = GetItemAttack() + basicAttack;
+    totalAttack = GetItemAttack() + basicAttack + (rand() % 6 - 2);
     return totalAttack;
 }
 

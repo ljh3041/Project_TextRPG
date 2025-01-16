@@ -552,7 +552,6 @@ void Attack_Boss2() {
                , :;    ~* : ,!* ~-.  -      
                 ,:      ;  - ,!!-   .       
                           .  ,;,.  .        
-
 )";
 
     std::cout << asciiArt;
@@ -560,7 +559,7 @@ void Attack_Boss2() {
 
 void Stun_Boss() {
     const char* asciiArt = R"(
-        ....                   
+        ....                  
      .~:!**!:                 
     ~~*!*!!*==;,.             
  ~=$$!!:#:,::,;*;;!.          

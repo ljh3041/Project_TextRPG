@@ -33,8 +33,8 @@ int Monster::GetHealth()
 
 int Monster::GetAttack()
 {
-	return attack;
-}
+	return attack + (rand() % 6 - 2);
+}///////////////////////////////////////불러올 때 마다 랜덤이라 수정 필요
 
 int Monster::GetGold()
 {
@@ -56,7 +56,7 @@ int Monster::GetRandomAttackStat(string _name)
 
 int Monster::GetRandomgold(string _name)
 {
-	int final = (monsterDatas.at(_name).gold * Character::GetInstance()->GetLevel()) + (Character::GetInstance()->GetLevel() * GetRandom(5, 10));
+	int final = (monsterDatas.at(_name).gold * Character::GetInstance()->GetLevel()) + (Character::GetInstance()->GetLevel() * GetRandom(7, 10));
 	return final;
 }
 
