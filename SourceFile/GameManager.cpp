@@ -504,6 +504,7 @@ Hit_Boss_dot1_clean();
 	{
 		system("cls");
 		Stun_Boss();
+		Sleep(1000);
 		PlayWavFile("winboss.wav");
 		cout << "승리" << endl;
 		PressAnyKey();
