@@ -2,6 +2,8 @@
 #include "../headerFile/GraphicInterface.h"
 #include "../headerFile/TextColor.h"
 #include <limits>
+#include <windows.h>
+#pragma comment(lib,"winmm.lib")
 
 GameManager* GameManager::instance = nullptr;
 Shop* Shop::instance = nullptr;
@@ -193,6 +195,7 @@ void GameManager::battle(Character* player, Monster* monster)
 			int P_dam = player->GetRandTotalAttack();
 			monster->TakeDamage(P_dam);
 			printPlayer();
+			PlayWavFile("punch.wav");
 			cout << player->GetName() << "의 공격! " << P_dam << "의 피해" << endl;
 			Sleep(500);
 			if (monster->GetHealth() <= 0)
@@ -212,7 +215,7 @@ void GameManager::battle(Character* player, Monster* monster)
 			int PC_dam = player->GetRandTotalAttack() * 1.6;
 			monster->TakeDamage(PC_dam);
 			printPlayer();
-
+			PlayWavFile("punch.wav");
 			cout << player->GetName() << "의 " << red << "!!크리티컬 공격!!" << white << PC_dam << "의 피해" << endl;
 			Sleep(500);
 			if (monster->GetHealth() <= 0)
@@ -271,6 +274,7 @@ void GameManager::battle(Character* player, Monster* monster)
 		default:
 			break;
 		}
+		PlayWavFile("pow.wav");
 		cout << red << monster->GetName() << white << "의 공격! " << mon_dam << "의 피해" << endl;
 		Sleep(500);
 		if (player->GetHealth() <= 0)
@@ -292,6 +296,7 @@ void GameManager::battle(Character* player, Monster* monster)
 	if (monster->GetHealth() <= 0) // 플레이어 승리 시 if 문 내에서 함수 종료후 메인으로
 	{
 		cout << "승리" << endl;
+		PlayWavFile("win.wav");
 		player->LevelUp(); // 플레이어 레벨 업 함수 적용
 		player->AddGold(monster->GetGold());
 		PressAnyKey();
@@ -473,4 +478,12 @@ void GameManager::displayInventory(Character* player)
 Monster* GameManager::getMonster()
 {
 	return monster;
+}
+
+void GameManager::PlayWavFile(const char* fileName) 
+{
+	const char* filePath = fileName;
+	wchar_t wFilePath[MAX_PATH];
+	MultiByteToWideChar(CP_ACP, 0, filePath, -1, wFilePath, MAX_PATH);
+	PlaySound(wFilePath, NULL, SND_FILENAME | SND_ASYNC);
 }
