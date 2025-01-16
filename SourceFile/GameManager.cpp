@@ -126,7 +126,7 @@ void GameManager::EndingPhase()
 	system("cls");
 	int speed = 500;
 	Sleep(speed * 3);
-	cout << "\n\n\n\n\n\n\n\n\n\n\n\n                                                  'TMI마왕이 죽었다.'" << endl;
+	cout << "\n\n\n\n\n\n\n\n\n\n\n\n                                               'TMI 팔색조 (이)가 조용해졌다.'" << endl;
 	Sleep(speed * 3);
 	system("cls");
 	Sleep(speed * 3);
@@ -356,13 +356,15 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 	{
 		system("cls");
 		Stun_Boss();
-		cout << "승리" << endl;		
+		cout << "승리" << endl;	
+		PressAnyKey();
+		system("cls");
 		//item 획득 함수;
 		//골드 획득 함수;
 		int gold = 0;
 		player->SetGold(gold);
-		PressAnyKey();
 		EndingPhase();// 엔딩 문구
+		PressAnyKey();
 		exit(0);
 	}
 	else
