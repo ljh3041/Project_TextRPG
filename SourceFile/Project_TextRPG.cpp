@@ -42,6 +42,7 @@ int main() {
 	{
 		stageguide = gameManager->firstPhase();
 
+
 		if (stageguide == 1)
 		{
 			gameManager->BattlePhase();
