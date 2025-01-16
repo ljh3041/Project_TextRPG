@@ -4,7 +4,6 @@
 #include <atomic>
 #include <thread>
 #pragma comment(lib,"winmm.lib")
+using namespace std;
 
 void PlayWavFile(const char* fileName);
-
-void playMusicLoop(const wchar_t* filePath);
