@@ -1,6 +1,6 @@
-#include "../headerFile/Dragon.h"
+#include "../headerFile/Pitta.h"
 
-Item* Dragon::GetItem()
+Item* Pitta::GetItem()
 {
 	if (item == nullptr)
 	{
