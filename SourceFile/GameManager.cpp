@@ -53,6 +53,7 @@ void GameManager::tutorialPhase()
 	Sleep(500);
 	soundTrack1();
 	Character::GetInstance()->AddToInventory(new potion50());
+	Character::GetInstance()->SetInventoryWeight(1);
 	PressAnyKey();
 
 }
