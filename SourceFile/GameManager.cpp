@@ -196,10 +196,11 @@ void GameManager::battle(Character* player, Monster* monster)
 		{
 			int P_dam = player->GetRandTotalAttack();
 			monster->TakeDamage(P_dam);
+			if (monster->GetHealth() <= 0) monster->SetHealth(0);
 			printPlayer();
 			cout << endl << endl << endl << endl << endl;
 			PlayWavFile("punch.wav");
-			cout << player->GetName() << "의 공격! " << P_dam << "의 피해" << endl;
+			cout << yellow << player->GetName() << white << "의 공격! " << P_dam << "의 피해" << endl;
 			Sleep(500);
 			if (monster->GetHealth() <= 0)
 			{
@@ -217,6 +218,7 @@ void GameManager::battle(Character* player, Monster* monster)
 			//플레이어 공격
 			int PC_dam = static_cast<int>( player->GetRandTotalAttack() * 1.6);
 			monster->TakeDamage(PC_dam);
+			if (monster->GetHealth() <= 0) monster->SetHealth(0);
 			printPlayer();
 			PlayWavFile("punch.wav");
 			cout << endl << endl << endl << endl << endl;
@@ -302,6 +304,9 @@ void GameManager::battle(Character* player, Monster* monster)
 
 	if (monster->GetHealth() <= 0) // 플레이어 승리 시 if 문 내에서 함수 종료후 메인으로
 	{
+		system("cls");
+		printPlayer();
+		cout << endl << endl << endl << endl << endl;
 		cout << "승리" << endl;
 		PlayWavFile("win.wav");
 		player->LevelUp(); // 플레이어 레벨 업 함수 적용
@@ -387,7 +392,9 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 			//플레이어 공격
 			int b_P_dam = player->GetRandTotalAttack();
 			monster->TakeDamage(b_P_dam);
-			Hit_Boss_dot1_clean();
+      if (monster->GetHealth() <= 0) monster->SetHealth(0);
+Hit_Boss_dot1_clean();
+      
 			cout << endl << endl << endl;
 
 			cout << yellow << player->GetName() << white << "의 공격! " << b_P_dam << "의 피해" << endl;
@@ -408,7 +415,9 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 			//플레이어 공격
 			float b_PC_dam = static_cast<float>( player->GetRandTotalAttack() * 1.6);
 			monster->TakeDamage(static_cast<int>( b_PC_dam));
-			Hit_Boss_dot1_clean();
+      if (monster->GetHealth() <= 0) monster->SetHealth(0);
+Hit_Boss_dot1_clean();
+      
 			cout << endl << endl << endl;
 			cout << yellow << player->GetName() << white << "의 " << red << "!!크리티컬 공격!!" << white << b_PC_dam << "의 피해" << endl;
 			Sleep(500);

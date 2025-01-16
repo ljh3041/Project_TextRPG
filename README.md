@@ -1,7 +1,7 @@
 # Project_TextRPG
 
-## <<<제작중...>>> UML다이어그램 (최신화 25.01.15 17:14)
-![그 긴거](https://github.com/user-attachments/assets/2cc35483-4eda-4d88-95de-395481bedb4c)
+## UML다이어그램 (최신화 25.01.16 20:00)
+![image](https://github.com/user-attachments/assets/7fa72639-3f56-4bea-bb96-8b73e221d3c4)
 
 
 ## 팀 노션
