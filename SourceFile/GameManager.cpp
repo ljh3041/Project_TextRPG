@@ -345,8 +345,11 @@ void GameManager::battle(Character* player, Monster* monster)
 	else // 플레이어 패배 시 종료
 	{
 		system("cls");
-		Stun_Player();
-		cout << "                                       패배하였습니다." << endl;
+		Stun_Player_dot_clean();
+		Sleep(1000);
+		cout << "                                                 패배하였습니다." << endl;
+		Sleep();
+		Bad_EndingPhase();
 		PressAnyKey();
 		exit(0);
 	}
