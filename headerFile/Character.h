@@ -5,6 +5,8 @@
 #include <algorithm>
 #include <cctype>
 #include <vector>
+#include <windows.h>
+#include <codecvt>
 #include "Item.h"
 
 using namespace std;
@@ -28,6 +30,7 @@ private:
     int expForLevelUp;
     int gold;
     int maxLevel;
+    int textSpeed;
 
     vector<Item*> inventory;
 
@@ -100,5 +103,13 @@ public:
     void AddToInventory(Item* item);
     vector<Item*> GetInventory();
     void remove_from_inventory(Item* item);
+
+    // 텍스트 출력
+    void NamePlease();
+    void LeastOneChar();
+    void OnlyAlNum();
+    void LessThan30();
+    void CorrectName();
+    void GetGoldMessage(int AddGold);
 };
 

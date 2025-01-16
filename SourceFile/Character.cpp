@@ -1,8 +1,6 @@
 ﻿#include "../headerFile/Character.h"
 #include "../headerFile/MyMath.h"
 #include "../headerFile/TextColor.h"
-#include <windows.h>
-#include <codecvt>
 
 Character* Character::instance = nullptr;
 
@@ -20,6 +18,7 @@ Character::Character()
     maxLevel = 10;
     inventoryWeight = 0;
     maxInventoryWeight = 6;
+    textSpeed = 300;
 }
 
 Character::~Character()
@@ -53,27 +52,12 @@ void Character::ReleaseInstance()
 
 void Character::NameValidation() // 이름 검증
 {
-    string s = "                                                           ";
-    int speed = 300;
     locale::global(locale("ko_KR.UTF-8"));// 로케일을 한국어로 설정
     wcin.imbue(locale("ko_KR.UTF-8"));
     wcout.imbue(locale("ko_KR.UTF-8"));
     wstring_convert<codecvt_utf8<wchar_t>> converter;// 와이드 문자열 -> UTF-8 변환기
     wstring characterName;
-    cout << blue << "                                          !--------!  !---   ---!  !--------!" << endl;
-    cout << "                                          !--+  +--!  !   ; ;   !  !--+  +--!" << endl;
-    cout << "                                             !  !     !    *    !     !  !   " << endl;
-    cout << "                                             !  !     !  !'*'!  !  .__!  !__." << endl;
-    cout << "                                             !__!     !__!   !__!  !________!" << white; Sleep(speed * 3); cout << " RPG \n\n" << endl;
-    Sleep(speed);
-    cout << "                            캐릭터의 이름을 2세 이름짓듯 설레고도 신중한 마음으로 입력해주세요." << endl;
-    Sleep(speed);
-    cout << "                        너무 짧아도 안되고 너무 길어도 안돼요. 그리고 영어와 숫자로만 입력해주세요." << endl;
-    Sleep(speed);
-    cout << "                                                 그래야 사주가 좋대요. " << endl;
-    Sleep(speed * 3);
-    cout << "                                                        진짜로.\n\n" << endl;
-    Sleep(speed * 3);
+    NamePlease();
 
     while (true)
     {
@@ -83,25 +67,13 @@ void Character::NameValidation() // 이름 검증
 
         if (characterName.size() < 1) //한글자 허용
         {
-            Sleep(speed);
-            cout << "\n\n\n\n\n\n\n                                       캐릭터 이름은 한 글자 이상 입력해주세요. " << endl;
-            Sleep(speed);
-            cout << "                             이름이란게, 고대 로마에서는 이름이 곧 운명이라고 할 정도로" << endl;
-            Sleep(speed);
-            cout << "                                     인간에게 이름이란 중요한 것이라고 봤거든요.\n\n\n" << endl;
-            Sleep(speed);
+            LeastOneChar();
             continue;
         }
 
         if (characterName.size() >= 30)
         {
-            Sleep(speed);
-            cout << "\n\n\n\n\n\n\n                                                     적당히 하세요.." << endl;
-            Sleep(speed * 5);
-            cout << "                                                   30자는 심해요 좀.." << endl;
-            Sleep(speed * 5);
-            cout << "                                          군대가면 관등성명대다 전역하겠어요..\n\n\n" << endl;
-            Sleep(speed * 5);
+            LessThan30();
             continue;
         }
 
@@ -110,19 +82,7 @@ void Character::NameValidation() // 이름 검증
         {
             if (!isalnum(v)) // 영어, 숫자만 가려내는 함수
             {
-                Sleep(speed);
-                cout << "\n\n\n\n\n\n\n                                             영어랑 숫자만 입력 가능합니다." << endl;
-                Sleep(speed);
-                cout << "                                 왜냐면 C++ 만든 곳이 미국회사라서 영어가 기본이기도하고" << endl;
-                Sleep(speed);
-                cout << "                                          한글도 어떻게 하면 가능은 하다는데" << endl;
-                Sleep(speed);
-                cout << "                                         너무 복잡해져서 아직은 무리인거같아요." << endl;
-                Sleep(speed);
-                cout << "                                                   아니면 한글이어도" << endl;
-                Sleep(speed);
-                cout << "                                           혹시 제 마음에 들면 허락해드릴게요." << endl;
-                Sleep(speed);
+                OnlyAlNum();
                 isValid = false;
                 break;
             }
@@ -131,54 +91,36 @@ void Character::NameValidation() // 이름 검증
     }
 
     name = converter.to_bytes(characterName);
-    s.erase(0, name.size() / 2 + 1);
-
-    Sleep(speed);
-    cout << "\n\n\n\n\n\n\n                                                    좋은 이름입니다." << endl;
-    Sleep(speed);
-    cout << "                                                   장수할 이름이에요." << endl;
-    Sleep(speed);
-    cout << "\n\n                                                캐릭터가 생성되었습니다." << endl;
-    Sleep(speed);
-    cout << s << yellow << name << white << "님!" << endl;
-    Sleep(speed);
-    cout << "                                                 준비운동은 하셨나요? " << endl;
-    Sleep(speed);
-    cout << "                                           준비운동의 중요성에 대해 아시나요?" << endl;
-    Sleep(speed);
-    cout << "                                준비운동은 운동 중 부상위험을 획기적으로 줄여줄 수 있습니다." << endl;
-    Sleep(speed);
-    cout << "                                                 그럼, 시작해볼까요?" << endl;
-    Sleep(speed * 3);
+    CorrectName();
     return;
 }
 
 void Character::DisplayStatus()
 {
-    int speed = 50;
-    Sleep(speed);
+    int Speed = 50;
+    Sleep(Speed);
     cout << "- " << yellow << name << white << "님의 현재 상태에 대해 말씀드리자면, " << endl;
-    Sleep(speed);
+    Sleep(Speed);
     cout << "레벨: " << red << level << white << endl;
-    Sleep(speed);
+    Sleep(Speed);
     cout << "체력: " << darkred << health << white << "/" << maxHealth << endl;
-    Sleep(speed);
+    Sleep(Speed);
     cout << "공격력: " << blue << basicAttack << white << "(+" << blue << GetItemAttack() << white << ")" << endl;
-    Sleep(speed);
+    Sleep(Speed);
     cout << "경험치: " << green << experience << white << endl;
-    Sleep(speed);
+    Sleep(Speed);
     cout << "레벨업까지: " << green << expForLevelUp << white << "/ 100" << endl;
-    Sleep(speed);
+    Sleep(Speed);
     cout << "골드: " << darkyellow << gold << white << endl;
-    Sleep(speed);
+    Sleep(Speed);
     cout << "인벤토리 공간: " << puple << inventoryWeight << white << " / " << maxInventoryWeight << endl;
-    Sleep(speed);
+    Sleep(Speed);
     cout << "보유중인 아이템" << endl;
-    Sleep(speed);
+    Sleep(Speed);
     if(inventory.size() == 0)
     {
         cout << "- 아무것도 없어요. 상점 한번 털고 오시죠." << endl;
-        Sleep(speed);
+        Sleep(Speed);
     }
     else
     {
@@ -186,7 +128,7 @@ void Character::DisplayStatus()
         {
             int num = i + 1;
             cout << num << " - " << inventory[i]->GetName() << endl;
-            Sleep(speed);
+            Sleep(Speed);
         }
     }
     cout << "이정도네요. 화이팅!" << endl;
@@ -194,8 +136,7 @@ void Character::DisplayStatus()
 
 void Character::LevelUp()
 {
-    int speed = 300; 
-    Sleep(speed);
+    Sleep(textSpeed);
     if (level < maxLevel)
     {
         experience += 20;
@@ -205,7 +146,7 @@ void Character::LevelUp()
         {
            
             cout << "\n경험치를 " << green << "20" << white << "획득했어요." << endl;
-            Sleep(speed/2);
+            Sleep(textSpeed/2);
             cout << "누적 경험치 " << green << experience << white << ", 다음 레벨까지 필요한 경험치는 " << green << 100 - expForLevelUp << white << "입니다." << endl;
             return;
         }
@@ -216,13 +157,13 @@ void Character::LevelUp()
         health = maxHealth;
         expForLevelUp = 0;
         cout << "\n레벨이 올랐는데 왜 올랐냐면 경험치가 " << green << "100" << white << "이 쌓이면 레벨이 오르는데 방금 전투로 필요경험치" << green << "100" << white << "이 누적되셨어요." << endl;
-        Sleep(speed/2);
+        Sleep(textSpeed/2);
         cout << "그래서 현재 레벨은 " << red << level << white << "입니다." << endl;
-        Sleep(speed / 2);
+        Sleep(textSpeed / 2);
         cout << "그리고 최대 체력은 " << darkred << maxHealth << white << "이고 공격력은 " << blue << GetTotalAttack() << white << "입니다." << endl;
-        Sleep(speed / 2);
+        Sleep(textSpeed / 2);
         cout << "체력도 완전 회복됐습니다. 쩔죠?" << endl;
-        Sleep(speed);
+        Sleep(textSpeed);
     }
 
     if (level == maxLevel)
@@ -232,24 +173,9 @@ void Character::LevelUp()
 }
 
 void Character::AddGold(int AddGold)
-{
-    int speed = 300;
+{    
     gold += AddGold;
-
-    int messageCall = GetRandom(0, 2);
-
-    vector<string>goldMessage =
-    {
-        "\n몬스터가 두부 심부름값으로 들고가던 ",
-        "\n몬스터가 어머니 생일선물 사려고 모았던 ",
-        "\n몬스터의 할머니가 용돈으로 주셨던 "
-    };  
-
-    Sleep(speed);
-    cout << goldMessage[messageCall] << darkyellow << AddGold << white << "G를 획득했습니다! " << endl;
-    Sleep(speed/2);
-    cout << "현재 보유 골드 " << darkyellow <<  gold << white << "G 입니다." << endl;
-    Sleep(speed);
+    GetGoldMessage(AddGold);
 }
 
 void Character::SetGold(int settleGold)
@@ -379,4 +305,103 @@ void Character::remove_from_inventory(Item* item)
     if (it != inventory.end()) {
         inventory.erase(it); // 선택된 아이템만 제거
     }
+}
+
+void Character::NamePlease()
+{
+    cout << blue << "                                          !--------!  !---   ---!  !--------!" << endl;
+    cout << "                                          !--+  +--!  !   ; ;   !  !--+  +--!" << endl;
+    cout << "                                             !  !     !    *    !     !  !   " << endl;
+    cout << "                                             !  !     !  !'*'!  !  .__!  !__." << endl;
+    cout << "                                             !__!     !__!   !__!  !________!" << white; Sleep(textSpeed * 3); cout << " RPG \n\n" << endl;
+    Sleep(textSpeed);
+    cout << "                            캐릭터의 이름을 2세 이름짓듯 설레고도 신중한 마음으로 입력해주세요." << endl;
+    Sleep(textSpeed);
+    cout << "                        너무 짧아도 안되고 너무 길어도 안돼요. 그리고 영어와 숫자로만 입력해주세요." << endl;
+    Sleep(textSpeed);
+    cout << "                                                 그래야 사주가 좋대요. " << endl;
+    Sleep(textSpeed * 3);
+    cout << "                                                        진짜로.\n\n" << endl;
+    Sleep(textSpeed * 3);
+}
+
+void Character::LeastOneChar()
+{
+    Sleep(textSpeed);
+    cout << "\n\n\n\n\n\n\n                                       캐릭터 이름은 한 글자 이상 입력해주세요. " << endl;
+    Sleep(textSpeed);
+    cout << "                             이름이란게, 고대 로마에서는 이름이 곧 운명이라고 할 정도로" << endl;
+    Sleep(textSpeed);
+    cout << "                                     인간에게 이름이란 중요한 것이라고 봤거든요.\n\n\n" << endl;
+    Sleep(textSpeed);
+}
+
+void Character::OnlyAlNum()
+{
+    Sleep(textSpeed);
+    cout << "\n\n\n\n\n\n\n                                             영어랑 숫자만 입력 가능합니다." << endl;
+    Sleep(textSpeed);
+    cout << "                                 왜냐면 C++ 만든 곳이 미국회사라서 영어가 기본이기도하고" << endl;
+    Sleep(textSpeed);
+    cout << "                                          한글도 어떻게 하면 가능은 하다는데" << endl;
+    Sleep(textSpeed);
+    cout << "                                         너무 복잡해져서 아직은 무리인거같아요." << endl;
+    Sleep(textSpeed);
+    cout << "                                                   아니면 한글이어도" << endl;
+    Sleep(textSpeed);
+    cout << "                                           혹시 제 마음에 들면 허락해드릴게요." << endl;
+    Sleep(textSpeed);
+}
+
+void Character::LessThan30()
+{
+    Sleep(textSpeed);
+    cout << "\n\n\n\n\n\n\n                                                     적당히 하세요.." << endl;
+    Sleep(textSpeed * 5);
+    cout << "                                                   30자는 심해요 좀.." << endl;
+    Sleep(textSpeed * 5);
+    cout << "                                          군대가면 관등성명대다 전역하겠어요..\n\n\n" << endl;
+    Sleep(textSpeed * 5);
+}
+
+void Character::CorrectName()
+{    
+    string s = "                                                           ";
+    s.erase(0, name.size() / 2 + 1);
+
+    Sleep(textSpeed);
+    cout << "\n\n\n\n\n\n\n                                                    좋은 이름입니다." << endl;
+    Sleep(textSpeed);
+    cout << "                                                   장수할 이름이에요." << endl;
+    Sleep(textSpeed);
+    cout << "\n\n                                                캐릭터가 생성되었습니다." << endl;
+    Sleep(textSpeed);
+    cout << s << yellow << name << white << "님!" << endl;
+    Sleep(textSpeed);
+    cout << "                                                 준비운동은 하셨나요? " << endl;
+    Sleep(textSpeed);
+    cout << "                                           준비운동의 중요성에 대해 아시나요?" << endl;
+    Sleep(textSpeed);
+    cout << "                                준비운동은 운동 중 부상위험을 획기적으로 줄여줄 수 있습니다." << endl;
+    Sleep(textSpeed);
+    cout << "                                                 그럼, 시작해볼까요?" << endl;
+    Sleep(textSpeed * 3);
+}
+
+void Character::GetGoldMessage(int AddGold)
+{    
+    int messageCall = GetRandom(0, 2);
+
+    vector<string>goldMessage =
+    {
+        "\n몬스터가 두부 심부름값으로 들고가던 ",
+        "\n몬스터가 어머니 생일선물 사려고 모았던 ",
+        "\n몬스터의 할머니가 용돈으로 주셨던 "
+    };
+
+    Sleep(textSpeed);
+    cout << goldMessage[messageCall] << darkyellow << AddGold << white << "G를 획득했습니다! " << endl;
+    Sleep(textSpeed / 2);
+    cout << "현재 보유 골드 " << darkyellow << gold << white << "G 입니다." << endl;
+    Sleep(textSpeed);
 }
