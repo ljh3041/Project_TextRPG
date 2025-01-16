@@ -1,6 +1,7 @@
 #include "../headerFile/Character.h"
 #include "../headerFile/MyMath.h"
 #include "../headerFile/TextColor.h"
+#include "../headerFile/Sounds.h"
 
 Character* Character::instance = nullptr;
 
@@ -412,4 +413,5 @@ void Character::GetGoldMessage(int AddGold)
     Sleep(textSpeed / 2);
     cout << "현재 보유 골드 " << darkyellow << gold << white << "G 입니다." << endl;
     Sleep(textSpeed);
+    PlayWavFile("gold.wav");
 }

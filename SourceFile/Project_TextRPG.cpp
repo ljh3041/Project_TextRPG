@@ -19,6 +19,7 @@
 #include "../headerFile/Pitta.h"
 #include "../headerFile/Shop.h"
 #include "../headerFile/MyMath.h"
+#include "../headerFile/Sounds.h"
 #pragma endregion
 
 using namespace std;

@@ -3,7 +3,7 @@
 #include "../headerFile/TextColor.h"
 #include <limits>
 #include <windows.h>
-#pragma comment(lib,"winmm.lib")
+#include "../headerFile/Sounds.h"
 
 GameManager* GameManager::instance = nullptr;
 Shop* Shop::instance = nullptr;
@@ -505,12 +505,4 @@ void GameManager::displayInventory(Character* player)
 Monster* GameManager::getMonster()
 {
 	return monster;
-}
-
-void GameManager::PlayWavFile(const char* fileName)
-{
-	const char* filePath = fileName;
-	wchar_t wFilePath[MAX_PATH];
-	MultiByteToWideChar(CP_ACP, 0, filePath, -1, wFilePath, MAX_PATH);
-	PlaySound(wFilePath, NULL, SND_FILENAME | SND_ASYNC);
 }

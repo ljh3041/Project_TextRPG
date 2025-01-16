@@ -54,7 +54,6 @@ public:
 	void generateBossMonster();
 	void displayInventory(Character* player);
 	Monster* getMonster();
-	void PlayWavFile(const char* fileName);
 };
 
 #endif
