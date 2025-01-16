@@ -21,6 +21,7 @@ private:
 	static GameManager* instance;
 	Monster* monster = nullptr;
 	int stage = 1;
+	bool entershop = false;
 
 	GameManager();
 	~GameManager();
