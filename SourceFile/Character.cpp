@@ -1,4 +1,4 @@
-﻿#include "../headerFile/Character.h"
+#include "../headerFile/Character.h"
 #include "../headerFile/MyMath.h"
 #include "../headerFile/TextColor.h"
 
@@ -52,11 +52,11 @@ void Character::ReleaseInstance()
 
 void Character::NameValidation() // 이름 검증
 {
-    locale::global(locale("ko_KR.UTF-8"));           // 로케일을 한국어로 설정
+    locale::global(locale("ko_KR.UTF-8"));// 로케일을 한국어로 설정
     wcin.imbue(locale("ko_KR.UTF-8"));
     wcout.imbue(locale("ko_KR.UTF-8"));
     wstring_convert<codecvt_utf8<wchar_t>> converter;// 와이드 문자열 -> UTF-8 변환기
-    wstring inputName;                               // 와이드 문자열 받기
+    wstring inputName;
     string characterName = "";
     NamePlease();
 
@@ -64,18 +64,18 @@ void Character::NameValidation() // 이름 검증
     {
         cout << "\n\n\n\n\n                         신중하게 지은 이름: ";
         getline(wcin, inputName);
-        characterName = converter.to_bytes(inputName);//와이드 문자열 변환해서 문자열에 저장
+        characterName = converter.to_bytes(inputName);
         system("cls");
 
         if (characterName.size() < 1) //한글자 허용
         {
-            LeastOneChar();                           // 한글자 이상 입력 요청 출력
+            LeastOneChar();
             continue;
         }
 
         if (characterName.size() >= 30)
         {
-            LessThan30();                             // 30자 미만 입력 요청 출력
+            LessThan30();
             continue;
         }
 
@@ -84,7 +84,7 @@ void Character::NameValidation() // 이름 검증
         {
             if (!isalnum(v)) // 영어, 숫자만 가려내는 함수
             {
-                OnlyAlNum();                          // 영어 숫자 입력 요청 출력
+                OnlyAlNum();
                 isValid = false;
                 break;
             }
@@ -93,7 +93,7 @@ void Character::NameValidation() // 이름 검증
     }
 
     name = characterName;
-    CorrectName();                                    // 이름 검증 성공 출력
+    CorrectName();
     return;
 }
 
@@ -202,7 +202,7 @@ void Character::SetInventoryWeight(int weight)
 void Character::SetMaxHealth(int adjustMaxHealth)
 {
     maxHealth += adjustMaxHealth;
-    if (health > maxHealth)                        // 아이템 해제 시 현재 체력이 최대 체력보다 커지면 최대 체력으로 변경
+    if (health > maxHealth)
     {
         health = maxHealth;
     }
@@ -374,7 +374,7 @@ void Character::LessThan30()
 
 void Character::CorrectName()
 {    
-    string s = "                                                          ";
+    string s = "                                                           ";
     s.erase(0, name.size() / 2 + 1);
 
     Sleep(textSpeed);
@@ -384,28 +384,16 @@ void Character::CorrectName()
     Sleep(textSpeed);
     cout << "\n\n                                                캐릭터가 생성되었습니다." << endl;
     Sleep(textSpeed);
-    cout << s << " " << yellow << name << white << "님!" << endl;
+    cout << s << yellow << name << white << "님!" << endl;
     Sleep(textSpeed);
-    cout << "                                                 준비운동은 하셨나요? " << endl;
+    cout << "                                                  준비운동은 하셨나요? " << endl;
     Sleep(textSpeed);
     cout << "                                           준비운동의 중요성에 대해 아시나요?" << endl;
     Sleep(textSpeed);
     cout << "                                준비운동은 운동 중 부상위험을 획기적으로 줄여줄 수 있습니다." << endl;
     Sleep(textSpeed);
-    cout << "                                                 그럼, 시작해볼까요?" << endl;
-    Sleep(textSpeed * 5);
-    cout << "\n\n                                                       '잠깐!'" << endl;
-    Sleep(textSpeed * 5);
-    system("cls");
-    cout << "\n\n\n\n\n\n\n\n" << endl;
-    Sleep(textSpeed*3);
-    cout << s << "'" << yellow << name << white << "!" << endl;
-    Sleep(textSpeed*3);
-    cout << "                                             다닐 때 항상 길조심 차조심하고" << endl;
+    cout << "                                                  그럼, 시작해볼까요?" << endl;
     Sleep(textSpeed * 3);
-    cout << "                                               밥 잘 챙겨먹고 아프지 마렴.'" << endl;
-    Sleep(textSpeed * 5);
-    cout << "\n\n                                          엄마에게서 용돈과 포션을 받았습니다!" << endl;
 }
 
 void Character::GetGoldMessage(int AddGold)
