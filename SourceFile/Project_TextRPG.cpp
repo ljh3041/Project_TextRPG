@@ -60,7 +60,6 @@ int main() {
 			cout << "다시 입력해주세요. " << endl;
 			PressAnyKey();
 		}
-	
 	}
 	return 0;
 }
