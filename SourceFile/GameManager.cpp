@@ -182,33 +182,52 @@ void GameManager::battle(Character* player, Monster* monster)
 		Sleep(100);
 		system("cls");
 
-		int P_dam = player->GetRandTotalAttack();
-		monster->TakeDamage(P_dam);
+		int randomValue = rand() % 100;
 
-		if (monster->GetHealth() <= 0) // 몬스터가 공격하기 전 이미 피가 0 이하면 전투 종료.
+		if (randomValue >= 0 && randomValue <= 94)
 		{
-			monster->SetHealth(0);
+			int P_dam = player->GetRandTotalAttack();
+			monster->TakeDamage(P_dam);
 			printPlayer();
-			break;
+			cout << player->GetName() << "의 공격! " << P_dam << "의 피해" << endl;
+			Sleep(500);
+			if (monster->GetHealth() <= 0)
+			{
+				cout << monster->GetName() << "의 남은 체력 0 " << endl;
+			}
+			else
+			{
+				cout << monster->GetName() << "의 남은 체력 " << monster->GetHealth() << endl;
+			}
+		}
+		else if (randomValue >= 95 && randomValue <= 99)
+		{
+			system("cls");
+			//player->UseItem(); // 플레이어 무조건 선턴. 아이템 먼저 사용.
+			//플레이어 공격
+			int PC_dam = player->GetRandTotalAttack() * 1.6;
+			monster->TakeDamage(PC_dam);
+			printPlayer();
+
+			cout << player->GetName() << "의 " << red << "!!크리티컬 공격!!" << white << PC_dam << "의 피해" << endl;
+			Sleep(500);
+			if (monster->GetHealth() <= 0)
+			{
+				cout << monster->GetName() << "의 남은 체력 0 " << endl;
+			}
+			else
+			{
+				cout << monster->GetName() << "의 남은 체력 " << monster->GetHealth() << endl;
+			}
 		}
 
-		printPlayer();
-		cout << endl << endl << endl << endl << endl;
-
-		cout << yellow << player->GetName() << white << "의 공격! " << P_dam << "의 피해" << endl;
-		Sleep(500);
-		if (monster->GetHealth() <= 0)
-		{
-			cout << monster->GetName() << "의 남은 체력 0 " << endl;
-		}
-		else
-		{
-			cout << red << monster->GetName() << white << "의 남은 체력 " << monster->GetHealth() << endl;
-		}
 		player->UseItem(); // 플레이어 무조건 선턴. 아이템 먼저 사용.
 		Sleep(2000);
 
-
+		if (monster->GetHealth() <= 0) // 몬스터가 공격하기 전 이미 피가 0 이하면 전투 종료.
+		{
+			break;
+		}
 
 		system("cls");
 
@@ -248,7 +267,7 @@ void GameManager::battle(Character* player, Monster* monster)
 		default:
 			break;
 		}
-		cout << red << monster->GetName() << white << "의 공격! " << monster->GetAttack() << "의 피해" << endl;
+		cout << red << monster->GetName() << white << "의 공격! " << mon_dam << "의 피해" << endl;
 		Sleep(500);
 		if (player->GetHealth() <= 0)
 		{
@@ -336,20 +355,50 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 		Sleep(150);
 		Hit_Boss();
 
-		int b_P_dam = player->GetTotalAttack();
-		cout << player->GetName() << "의 공격! " << b_P_dam << "의 피해" << endl;
-		Sleep(500);
-		bossmonster->TakeDamage(b_P_dam);
-		if (bossmonster->GetHealth() <= 0)
+		int randomValue = rand() % 100;
+
+		if (randomValue >= 0 && randomValue <= 94)
 		{
-			cout << bossmonster->GetName() << "의 남은 체력 0 " << endl;
+			system("cls");
+			//player->UseItem(); // 플레이어 무조건 선턴. 아이템 먼저 사용.
+			//플레이어 공격
+			int b_P_dam = player->GetRandTotalAttack();
+			monster->TakeDamage(b_P_dam);
+			printPlayer();
+
+			cout << player->GetName() << "의 공격! " << b_P_dam << "의 피해" << endl;
+			Sleep(500);
+			if (monster->GetHealth() <= 0)
+			{
+				cout << monster->GetName() << "의 남은 체력 0 " << endl;
+			}
+			else
+			{
+				cout << monster->GetName() << "의 남은 체력 " << monster->GetHealth() << endl;
+			}
 		}
-		else
+		else if (randomValue >= 95 && randomValue <= 99)
 		{
-			cout << bossmonster->GetName() << "의 남은 체력 " << bossmonster->GetHealth() << endl;
+			system("cls");
+			//player->UseItem(); // 플레이어 무조건 선턴. 아이템 먼저 사용.
+			//플레이어 공격
+			float b_PC_dam = player->GetRandTotalAttack() * 1.6;
+			monster->TakeDamage(b_PC_dam);
+			printPlayer();
+
+			cout << player->GetName() << "의 " << red << "!!크리티컬 공격!!" << white << PC_dam << "의 피해" << endl;
+			Sleep(500);
+			if (monster->GetHealth() <= 0)
+			{
+				cout << monster->GetName() << "의 남은 체력 0 " << endl;
+			}
+			else
+			{
+				cout << monster->GetName() << "의 남은 체력 " << monster->GetHealth() << endl;
+			}
 		}
 		player->UseItem(); // 플레이어 무조건 선턴. 아이템 먼저 사용.
-		Sleep(1000);
+		Sleep(2000);
 
 		if (bossmonster->GetHealth() <= 0) // 몬스터가 공격하기 전 이미 피가 0 이하면 전투 종료.
 		{
@@ -374,14 +423,15 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 		{
 			cout << player->GetName() << "의 남은 체력 " << player->GetHealth() << endl;
 		}
-		Sleep(1000);
+		Sleep(2000);
 	}
+
 	player->EndFight();
 	if (bossmonster->GetHealth() <= 0)
 	{
 		system("cls");
 		Stun_Boss();
-		cout << "승리" << endl;	
+		cout << "승리" << endl;
 		PressAnyKey();
 		system("cls");
 		//item 획득 함수;

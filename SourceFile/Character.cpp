@@ -386,13 +386,13 @@ void Character::CorrectName()
     Sleep(textSpeed);
     cout << s << yellow << name << white << "님!" << endl;
     Sleep(textSpeed);
-    cout << "                                                 준비운동은 하셨나요? " << endl;
+    cout << "                                                  준비운동은 하셨나요? " << endl;
     Sleep(textSpeed);
     cout << "                                           준비운동의 중요성에 대해 아시나요?" << endl;
     Sleep(textSpeed);
     cout << "                                준비운동은 운동 중 부상위험을 획기적으로 줄여줄 수 있습니다." << endl;
     Sleep(textSpeed);
-    cout << "                                                 그럼, 시작해볼까요?" << endl;
+    cout << "                                                  그럼, 시작해볼까요?" << endl;
     Sleep(textSpeed * 3);
 }
 
