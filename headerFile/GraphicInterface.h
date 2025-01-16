@@ -551,9 +551,9 @@ void BossStanding1() {
                                         -~.~.-  -.            
                                        .,,----                
                                        .- ~-~,                
-                                            .,      
-                      
-                                                             
+                                            .,                
+                                                              
+                                                              
 )";
 
     std::cout << asciiArt;
@@ -587,7 +587,7 @@ void BossStanding2() {
                                       ., -~!:,;~:.:-,;         
                                          ,~-~---   .,.         
                                           ~~.:-~.              
-                                           -  ,::          
+                                           -  ,::              
 )";
 
     std::cout << asciiArt;
