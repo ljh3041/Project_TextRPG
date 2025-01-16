@@ -227,7 +227,7 @@ void GameManager::battle(Character* player, Monster* monster)
 		if (monster->GetHealth() <= 0) // 몬스터가 공격하기 전 이미 피가 0 이하면 전투 종료.
 		{
 			break;
-		}
+		} 
 
 		system("cls");
 
