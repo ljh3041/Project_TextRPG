@@ -121,6 +121,23 @@ void GameManager::StatusPhase()
 	PressAnyKey();
 }
 
+void GameManager::EndingPhase()
+{
+	system("cls");
+	int speed = 500;
+	Sleep(speed * 3);
+	cout << "\n\n\n\n\n\n\n\n\n\n\n\n                                                  'TMI마왕이 죽었다.'" << endl;
+	Sleep(speed * 3);
+	system("cls");
+	Sleep(speed * 3);
+	cout << "\n\n\n\n\n\n\n\n\n\n\n\n                                                  '세상이 조용해졌다.'" << endl;
+	Sleep(speed * 3);
+	cout << "\n\n\n\n\n                                                          Fin." << endl;
+	Sleep(speed * 5);
+	system("cls");
+	Sleep(speed * 3);
+}
+
 //몬스터 랜덤 소환
 void GameManager::generateMonster()
 {
@@ -200,7 +217,22 @@ void GameManager::battle(Character* player, Monster* monster)
 		printGoblin();
 		//int mon_dam = monster->GetAttack();
 
-		cout << monster->GetName() << "의 공격! " << mon_dam << "의 피해" << endl;
+
+		switch (monster->GetSpecies())
+		{
+		case 1:
+			printGoblin();
+			break;
+		case 2:
+			printTroll();
+			break;
+		case 3:
+			printOrc();
+			break;
+		default:
+			break;
+		}
+		cout << monster->GetName() << "의 공격! " << monster->GetAttack() << "의 피해" << endl;
 		Sleep(500);
 		//player->TakeDamage(mon_dam);
 		if (player->GetHealth() <= 0)
@@ -334,12 +366,13 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 	{
 		system("cls");
 		Stun_Boss();
-		cout << "승리" << endl; // 엔딩 문구 추가
+		cout << "승리" << endl;		
 		//item 획득 함수;
 		//골드 획득 함수;
 		int gold = 0;
 		player->SetGold(gold);
 		PressAnyKey();
+		EndingPhase();// 엔딩 문구
 		exit(0);
 	}
 	else
