@@ -53,30 +53,55 @@ void Character::ReleaseInstance()
 
 void Character::NameValidation() // 이름 검증
 {
-
+    string s = "                                                           ";
+    int speed = 300;
     locale::global(locale("ko_KR.UTF-8"));// 로케일을 한국어로 설정
     wcin.imbue(locale("ko_KR.UTF-8"));
     wcout.imbue(locale("ko_KR.UTF-8"));
     wstring_convert<codecvt_utf8<wchar_t>> converter;// 와이드 문자열 -> UTF-8 변환기
     wstring characterName;
-    cout << "캐릭터의 이름을 2세 이름짓듯 설레고도 신중한 마음으로 입력해주세요. 너무 짧아도 안되고 너무 길어도 안돼요. \n그리고 영어와 숫자로만 입력해주세요. 그래야 사주가 좋대요. " << endl;
+    cout << blue << "                                          !--------!  !---   ---!  !--------!" << endl;
+    cout << "                                          !--+  +--!  !   ; ;   !  !--+  +--!" << endl;
+    cout << "                                             !  !     !    *    !     !  !   " << endl;
+    cout << "                                             !  !     !  !'*'!  !  .__!  !__." << endl;
+    cout << "                                             !__!     !__!   !__!  !________!" << white; Sleep(speed * 3); cout << " RPG \n\n" << endl;
+    Sleep(speed);
+    cout << "                            캐릭터의 이름을 2세 이름짓듯 설레고도 신중한 마음으로 입력해주세요." << endl;
+    Sleep(speed);
+    cout << "                        너무 짧아도 안되고 너무 길어도 안돼요. 그리고 영어와 숫자로만 입력해주세요." << endl;
+    Sleep(speed);
+    cout << "                                                 그래야 사주가 좋대요. " << endl;
+    Sleep(speed * 3);
+    cout << "                                                        진짜로.\n\n" << endl;
+    Sleep(speed * 3);
 
     while (true)
     {
-
-        cout << "신중하게 지은 이름: ";
+        cout << "\n\n\n\n\n                         신중하게 지은 이름: ";
         getline(wcin, characterName);
         system("cls");
 
         if (characterName.size() < 1) //한글자 허용
         {
-            cout << "캐릭터 이름은 한 글자 이상 입력해주세요. 이름이란게, 고대 로마에서는 이름이 곧 운명이라고 할 정도로 인간에게 이름이란 중요한 것이라고 봤거든요." << endl;
+            Sleep(speed);
+            cout << "\n\n\n\n\n\n\n                                       캐릭터 이름은 한 글자 이상 입력해주세요. " << endl;
+            Sleep(speed);
+            cout << "                             이름이란게, 고대 로마에서는 이름이 곧 운명이라고 할 정도로" << endl;
+            Sleep(speed);
+            cout << "                                     인간에게 이름이란 중요한 것이라고 봤거든요.\n\n\n" << endl;
+            Sleep(speed);
             continue;
         }
 
         if (characterName.size() >= 30)
         {
-            cout << "적당히 하세요. 30자는 심해요 좀.. 군대가면 관등성명대다 전역하겠어요." << endl;
+            Sleep(speed);
+            cout << "\n\n\n\n\n\n\n                                                     적당히 하세요.." << endl;
+            Sleep(speed * 5);
+            cout << "                                                   30자는 심해요 좀.." << endl;
+            Sleep(speed * 5);
+            cout << "                                          군대가면 관등성명대다 전역하겠어요..\n\n\n" << endl;
+            Sleep(speed * 5);
             continue;
         }
 
@@ -85,17 +110,47 @@ void Character::NameValidation() // 이름 검증
         {
             if (!isalnum(v)) // 영어, 숫자만 가려내는 함수
             {
-                cout << "영어랑 숫자만 입력 가능합니다. \n왜냐면 C++ 만든 곳이 미국회사라서 영어가 기본이기도하고 \n한글도 어떻게 하면 가능은 하다는데 너무 복잡해져서 아직은 무리인거같아요." << endl;
-                cout << "아니면 한글이어도 혹시 제 마음에 들면 허락해드릴게요." << endl;
+                Sleep(speed);
+                cout << "\n\n\n\n\n\n\n                                             영어랑 숫자만 입력 가능합니다." << endl;
+                Sleep(speed);
+                cout << "                                 왜냐면 C++ 만든 곳이 미국회사라서 영어가 기본이기도하고" << endl;
+                Sleep(speed);
+                cout << "                                          한글도 어떻게 하면 가능은 하다는데" << endl;
+                Sleep(speed);
+                cout << "                                         너무 복잡해져서 아직은 무리인거같아요." << endl;
+                Sleep(speed);
+                cout << "                                                   아니면 한글이어도" << endl;
+                Sleep(speed);
+                cout << "                                           혹시 제 마음에 들면 허락해드릴게요." << endl;
+                Sleep(speed);
                 isValid = false;
                 break;
             }
         }
         if (isValid) { break; }
     }
-    cout << "좋은 이름입니다. 장수할 이름이에요." << endl;
+
     name = converter.to_bytes(characterName);
-    cout << "\n캐릭터가 생성되었습니다. \n" << yellow << name << white << "님! 준비운동은 하셨나요? 준비운동의 중요성에 대해 아시나요? \n준비운동은 운동 중 부상위험을 획기적으로 줄여줄 수 있습니다." << endl;
+    s.erase(0, name.size() / 2 + 1);
+
+    Sleep(speed);
+    cout << "\n\n\n\n\n\n\n                                                    좋은 이름입니다." << endl;
+    Sleep(speed);
+    cout << "                                                   장수할 이름이에요." << endl;
+    Sleep(speed);
+    cout << "\n\n                                                캐릭터가 생성되었습니다." << endl;
+    Sleep(speed);
+    cout << s << yellow << name << white << "님!" << endl;
+    Sleep(speed);
+    cout << "                                                 준비운동은 하셨나요? " << endl;
+    Sleep(speed);
+    cout << "                                           준비운동의 중요성에 대해 아시나요?" << endl;
+    Sleep(speed);
+    cout << "                                준비운동은 운동 중 부상위험을 획기적으로 줄여줄 수 있습니다." << endl;
+    Sleep(speed);
+    cout << "                                                 그럼, 시작해볼까요?" << endl;
+    Sleep(speed * 3);
+    return;
 }
 
 void Character::DisplayStatus()
