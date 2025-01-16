@@ -33,6 +33,7 @@
     <ClInclude Include="headerFile\MyMath.h" />
     <ClInclude Include="headerFile\Orc.h" />
     <ClInclude Include="headerFile\Shop.h" />
+    <ClInclude Include="headerFile\Sounds.h" />
     <ClInclude Include="headerFile\TextColor.h" />
     <ClInclude Include="headerFile\Troll.h" />
   </ItemGroup>
@@ -50,6 +51,7 @@
     <ClCompile Include="SourceFile\Orc.cpp" />
     <ClCompile Include="SourceFile\Project_TextRPG.cpp" />
     <ClCompile Include="SourceFile\Shop.cpp" />
+    <ClCompile Include="SourceFile\Sounds.cpp" />
     <ClCompile Include="SourceFile\TextColor.cpp" />
     <ClCompile Include="SourceFile\Troll.cpp" />
   </ItemGroup>
