@@ -90,7 +90,7 @@ void GameManager::BattlePhase()
 	cout << "몬스터와 조우!" << endl;
 	Sleep(500);
 
-	if (stage < 11)
+	if (stage < 1)
 	{
 		GameManager::GetInstance()->generateMonster();
 		GameManager::GetInstance()->battle(Character::GetInstance(), GameManager::GetInstance()->getMonster());
@@ -325,23 +325,23 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 	for (int i = 0; i < 3; i++)
 	{
 		system("cls");
-		BossStanding3();
+		BossStanding_dot3();
 		cout << "          보스 몬스터 출현!" << endl;
 		Sleep(50);
 		system("cls");
-		BossStanding4();
+		BossStanding_dot4();
 		cout << "          보스 몬스터 출현!" << endl;
 		Sleep(50);
 	}
 	system("cls");
-	BossStanding3();
+	BossStanding_dot3();
 	cout << "          보스 몬스터 출현!" << endl;
 	Sleep(1000);
 
 	while (1)
 	{
 		system("cls");
-		BossStanding2();
+		BossStanding_dot1();
 		cout << "아무키나 입력시 보스전에 돌입합니다" << endl;
 		Sleep(1000);
 		if (_kbhit()) {
@@ -350,7 +350,7 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 			break;
 		}
 		system("cls");
-		BossStanding1();
+		BossStanding_dot2();
 		cout << "아무키나 입력시 보스전에 돌입합니다" << endl;
 		Sleep(1000);
 		if (_kbhit()) {
@@ -364,14 +364,19 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 	{
 		//player->UseItem();  // 플레이어 무조건 선턴. 아이템 먼저 사용.
 		system("cls");
-		Hit_Boss();
-		Sleep(100);
-		system("cls");
-		Hit_Boss();
-		Sleep(10);
-		system("cls");
+		Hit_Boss_dot1();
 		Sleep(150);
-		Hit_Boss();
+		system("cls");
+		Hit_Boss_dot2();
+		Sleep(80);
+		system("cls");
+		Hit_Boss_dot1();
+		Sleep(150);
+		system("cls");
+		Hit_Boss_dot2();
+		Sleep(80);
+		system("cls");
+		Hit_Boss_dot1();
 
 		int randomValue = rand() % 100;
 
@@ -382,8 +387,8 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 			//플레이어 공격
 			int b_P_dam = player->GetRandTotalAttack();
 			monster->TakeDamage(b_P_dam);
-			printPlayer();
-			cout << endl << endl << endl << endl << endl;
+			Hit_Boss_dot1();
+			cout << endl << endl << endl;
 
 			cout << yellow << player->GetName() << white << "의 공격! " << b_P_dam << "의 피해" << endl;
 			Sleep(500);
@@ -403,8 +408,8 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 			//플레이어 공격
 			float b_PC_dam = static_cast<float>( player->GetRandTotalAttack() * 1.6);
 			monster->TakeDamage(static_cast<int>( b_PC_dam));
-			printPlayer();
-			cout << endl << endl << endl << endl << endl;
+			Hit_Boss_dot1();
+			cout << endl << endl << endl;
 			cout << yellow << player->GetName() << white << "의 " << red << "!!크리티컬 공격!!" << white << b_PC_dam << "의 피해" << endl;
 			Sleep(500);
 			if (monster->GetHealth() <= 0)
@@ -426,14 +431,17 @@ void GameManager::bossbattle(Character* player, Monster* bossmonster)
 
 		//보스 몬스터 공격
 		system("cls");
-		Attack_Boss2();
-		Sleep(100);
-		Attack_Boss1();
+		Attack_Boss_dot1();
+		Sleep(300);
+		system("cls");
 
 		int B_dam = bossmonster->GetAttack();
+		player->TakeDamage(B_dam);
+		Attack_Boss_dot2();
+		cout << endl << endl << endl;
 		cout << red << bossmonster->GetName() << white << "의 공격! " << B_dam << "의 피해" << endl;
 		Sleep(500);
-		player->TakeDamage(B_dam);
+
 		if (player->GetHealth() <= 0)
 		{
 			cout << yellow << player->GetName() << white << "의 남은 체력 0 " << endl;
