@@ -374,7 +374,7 @@ void Character::LessThan30()
 
 void Character::CorrectName()
 {    
-    string s = "                                                           ";
+    string s = "                                                          ";
     s.erase(0, name.size() / 2 + 1);
 
     Sleep(textSpeed);
@@ -384,7 +384,7 @@ void Character::CorrectName()
     Sleep(textSpeed);
     cout << "\n\n                                                캐릭터가 생성되었습니다." << endl;
     Sleep(textSpeed);
-    cout << s << yellow << name << white << "님!" << endl;
+    cout << s << " " << yellow << name << white << "님!" << endl;
     Sleep(textSpeed);
     cout << "                                                 준비운동은 하셨나요? " << endl;
     Sleep(textSpeed);
@@ -393,7 +393,19 @@ void Character::CorrectName()
     cout << "                                준비운동은 운동 중 부상위험을 획기적으로 줄여줄 수 있습니다." << endl;
     Sleep(textSpeed);
     cout << "                                                 그럼, 시작해볼까요?" << endl;
+    Sleep(textSpeed * 5);
+    cout << "\n\n                                                       '잠깐!'" << endl;
+    Sleep(textSpeed * 5);
+    system("cls");
+    cout << "\n\n\n\n\n\n\n\n" << endl;
+    Sleep(textSpeed*3);
+    cout << s << "'" << yellow << name << white << "아!" << endl;
+    Sleep(textSpeed*3);
+    cout << "                                             다닐 때 항상 길조심 차조심하고" << endl;
     Sleep(textSpeed * 3);
+    cout << "                                               밥 잘 챙겨먹고 아프지 마렴.'" << endl;
+    Sleep(textSpeed * 5);
+    cout << "\n\n                                          엄마에게서 용돈과 포션을 받았습니다!" << endl;
 }
 
 void Character::GetGoldMessage(int AddGold)
