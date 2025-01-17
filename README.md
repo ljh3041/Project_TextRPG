@@ -3,6 +3,8 @@
 ## UML다이어그램 (최신화 25.01.16 20:00)
 ![image](https://github.com/user-attachments/assets/7fa72639-3f56-4bea-bb96-8b73e221d3c4)
 
+## 중요
+.sln 파일로 실행해야 소리가 납니다!
 
 ## 팀 노션
 https://www.notion.so/teamsparta/2-8-1762dc3ef514819bae9bfb3a2124eeaf
