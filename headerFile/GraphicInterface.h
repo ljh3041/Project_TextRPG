@@ -1508,26 +1508,19 @@ void showTeamName()
 )";
 
 
-    cout << asciiArt << endl;
-    PlayWavFile("punch.wav");
+    cout << asciiArt << endl;    
     Sleep(1000);
-    cout << asciiArt2 << endl;
-    PlayWavFile("punch.wav");
+    cout << asciiArt2 << endl;    
     Sleep(1000);
-    cout << asciiArt3 << endl;
-    PlayWavFile("punch.wav");
+    cout << asciiArt3 << endl;   
     Sleep(1000);
-    cout << asciiArt4 << endl;
-    PlayWavFile("punch.wav");
+    cout << asciiArt4 << endl;    
     Sleep(1000);
-    cout << asciiArt5 << endl;
-    PlayWavFile("punch.wav");
+    cout << asciiArt5 << endl;    
     Sleep(1000);
-    cout << asciiArt6 << endl;
-    PlayWavFile("punch.wav");
+    cout << asciiArt6 << endl;   
     Sleep(1000);
-    cout << asciiArt7 << endl;
-    PlayWavFile("punch.wav");
+    cout << asciiArt7 << endl;   
     Sleep(1000);
 
     system("cls");

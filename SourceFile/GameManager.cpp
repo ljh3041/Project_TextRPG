@@ -23,6 +23,8 @@ GameManager::~GameManager()
 //Phase
 void GameManager::tutorialPhase()
 {
+	PlayWavFile("intro.wav");
+	Sleep(2000);
 	showTeamName();
 	int i = 0;
 	printLoding4();
@@ -47,7 +49,7 @@ void GameManager::tutorialPhase()
 			break;
 		}// 루프 종료
 	}
-
+	PlaySound(NULL, NULL, 0);
 	//showTeamName();
 	PlayWavFile("opening.wav");
 	Character::GetInstance()->NameValidation();	
