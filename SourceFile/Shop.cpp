@@ -3,6 +3,7 @@
 #include "../headerFile/ConsumableItem.h"
 #include <windows.h>
 #include "../headerFile/MyMath.h"
+#include "../headerFile/Sounds.h"
 
 Shop::Shop()
 {
@@ -183,6 +184,7 @@ void Shop::BuyItem()
 
     items_for_sale.erase(items_for_sale.begin() + (choice - 1));
     cout << "구매 성공! 남은 골드 : " << Character::GetInstance()->GetGold() << endl;
+    PlayWavFile("gold.wav");
     Sleep(1500);
 }
 
@@ -224,6 +226,8 @@ void Shop::SellItem()
     Character::GetInstance()->SetInventoryWeight(Character::GetInstance()->GetInventoryWeight()-selected_item->GetWeight());//인벤토리 무게감소
 
     cout << "판매 성공! 현재 보유 골드: " << Character::GetInstance()->GetGold() << endl;
+    PlayWavFile("gold.wav");
+    Sleep(1500);
 }
 
 void Shop::printstore_dot() {
